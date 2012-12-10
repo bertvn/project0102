@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=prefix
+comment0.target=Timer(java.lang.String)
+comment1.params=
+comment1.target=void\ act()
+comment2.params=
+comment2.target=boolean\ endGame()
+comment3.params=
+comment3.target=void\ updateImage()
+comment4.params=currentValue
+comment4.target=void\ setCurrentValue(int)
+comment5.params=
+comment5.target=int\ getCurrentValue()
+numComments=6
