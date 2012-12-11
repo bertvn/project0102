@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.List;
 
 public class Dike extends Actor{
     private int dikeHP;
@@ -11,6 +12,8 @@ public class Dike extends Actor{
     public void act(){
         if(endGame()){
             WorldSpawner.endGame();
+        }else if(materialOnDike()){
+            
         }else if(doDamage()){
             doSomeDamage();
         }       
@@ -26,6 +29,18 @@ public class Dike extends Actor{
     
     public boolean endGame(){
         if(dikeHP <= 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
+    public boolean materialOnDike(){
+        Actor materialOnSpot = getOneObjectAtOffset(getX(), getY(), Materials.class);
+        
+        if(materialOnSpot != null){
+            System.out.println("materialsInRange contains: "+ materialOnSpot);
+            System.out.println("returns true");
             return true;
         }else{
             return false;

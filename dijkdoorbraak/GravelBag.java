@@ -1,21 +1,13 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-public class GravelBag extends Materials{
-    private int dissolveRate;
-    private int speedReducement;
-    private int itemsLeft;
-        
+public class GravelBag extends Materials{  
     public GravelBag(){
-        dissolveRate = 1;
-        speedReducement = 1;
-        itemsLeft = 5;
+        super.setDissolveRate(2);
+        super.setSpeedReducement(2);
+        super.setItemsLeft(5);
     }
 
     public void act(){
         
-    }
-    
-    public void setItemsLeft(int itemsLeft){
-        this.itemsLeft = itemsLeft;
     }
 }
