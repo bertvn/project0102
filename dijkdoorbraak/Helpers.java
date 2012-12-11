@@ -8,6 +8,8 @@ public class Helpers extends Actor{
     private int startX = -1;
     private int startY = -1;
     private Boolean checked = false;
+    private int speed;
+    private int power;
     
     public Helpers(){
 
@@ -47,15 +49,17 @@ public class Helpers extends Actor{
         if(holding != null){
             placeHolding();
         }
-        startMovement(startX,startY);
-        movement = false;
-        
+        if(this.getX() != startX || this.getY() != startY){
+            startMovement(startX,startY);
+        }else{
+            movement = false;
+        }
     }
     
     public void startMovement(int x, int y){
         this.x = x;
         this.y = y;
-        movement = false;
+        movement = true;
     }
     
     public void moveLeft(){

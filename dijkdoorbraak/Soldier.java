@@ -10,7 +10,7 @@ public class Soldier extends Helpers{
     }
     
     public void act(){
-        
+        super.act();
     }
 }
 

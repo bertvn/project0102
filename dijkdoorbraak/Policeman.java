@@ -10,7 +10,7 @@ public class Policeman extends Helpers{
     }
     
     public void act(){
-        move();
+        super.act();
     }    
 }
 

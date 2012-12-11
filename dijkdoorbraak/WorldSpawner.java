@@ -12,8 +12,8 @@ public class WorldSpawner extends World{
     private Cardboard cardboard;
     private Paper paper;
 
-    private Helpers actorInKwestie = null;
-    private Materials materialsInKwestie = null;
+    private Helpers selectedActor = null;
+    private Materials selectedMaterials = null;
                     
     private int waitWithDikeSpawns = 0;
     
@@ -71,26 +71,42 @@ public class WorldSpawner extends World{
         //movement Persona's
         if(Greenfoot.mouseClicked(null)) {
             MouseInfo mouse = Greenfoot.getMouseInfo();
-            if(materialsInKwestie != null){
+            // if a material is selected
+            // chose dike, remove material and move actor to dike
+            if(selectedMaterials != null){
+                //select all dike objects on current mouse x and y
                 List<Dike> dk = getObjectsAt(mouse.getX(),mouse.getY(),Dike.class);
-                Dike dikeInKwestie = dk.get(0);
-                if(dikeInKwestie != null){
-                    actorInKwestie.startMovement(mouse.getX(),mouse.getY());
-                    actorInKwestie.setHolding(materialsInKwestie);
-                    removeObject(materialsInKwestie);
+                if(dk != null){
+                    //select 1
+                    Dike selectedDike = dk.get(0);
+                    selectedActor.startMovement(selectedDike.getX(),selectedDike.getY()+40);
+                    selectedActor.setHolding(selectedMaterials);
+                    removeObject(selectedMaterials);
                 }
                 
-                actorInKwestie = null;
-                materialsInKwestie = null;
+                selectedActor = null;
+                selectedMaterials = null;
                 return;
-            }else{if(actorInKwestie != null){
-                List<Materials> mat = getObjectsAt(mouse.getX(),mouse.getY(),Materials.class);
-                materialsInKwestie = mat.get(0);
-                return;
+            }else{
+                //if no material is selected
+                //if actor is selected
+                //chose material
+                if(selectedActor != null){
+                    //select all Materials objects on current mouse x and y
+                    List<Materials> mat = getObjectsAt(mouse.getX(),mouse.getY(),Materials.class);
+                    if(mat != null){
+                        //select 1
+                        selectedMaterials = mat.get(0);
+                    }
+                    return;
                 }else{
+                    //if no actor is selected
+                    //select actor
+                    //select all Helpers objects on current mouse x and y
                     List<Helpers> hlp = getObjectsAt(mouse.getX(),mouse.getY(),Helpers.class);
                     if(hlp != null){
-                        actorInKwestie = hlp.get(0);
+                        //select 1
+                        selectedActor = hlp.get(0);
                     }
                 }
             }
