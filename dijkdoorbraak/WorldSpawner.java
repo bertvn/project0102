@@ -168,7 +168,7 @@ public class WorldSpawner extends World{
     
     // This will return wheter we will create a dike or not.
     public boolean createDikeObject(){
-        if((int) Math.floor(Math.random()*500)+1 == 1){
+        if((int) (Math.random()*500)+1 == 1){
             return true;
         }else{
             return false;
@@ -190,7 +190,7 @@ public class WorldSpawner extends World{
         int randomSpot;
         boolean foundSpot = false;
         do{
-            randomSpot = (int) Math.floor(Math.random()*9);
+            randomSpot = (int) (Math.random()*9);
             if(usedSpots[randomSpot] != -1){
                 newSpotName = breakingSpots[usedSpots[randomSpot]];
                 newSpotX = breakingSpots[usedSpots[randomSpot]+1];
@@ -210,15 +210,6 @@ public class WorldSpawner extends World{
         
         // Add the dike-object on the newSpot.
         addObject(new Dike(), newSpotX, newSpotY);
-        
-        /*/ Following prints are for debugging purposes only.
-        String dikeName = "dike" + newSpotName;
-        System.out.println("dikeName = " + dikeName);
-        System.out.println("newSpotName = " + newSpotName);
-        System.out.println("newSpotX = " + newSpotX);
-        System.out.println("newSpotY = " + newSpotY);
-        System.out.println("Spawned on time: " + gameTimer.getCurrentValue()/60);
-        System.out.println("-----");*/
     }
     
     public static void endGame(){

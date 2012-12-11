@@ -5,6 +5,7 @@ public class GravelBag extends Materials{
         super.setDissolveRate(2);
         super.setSpeedReducement(2);
         super.setItemsLeft(5);
+        super.setBaseHealth(20);
     }
 
     public void act(){
