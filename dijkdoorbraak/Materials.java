@@ -6,10 +6,6 @@ public class Materials extends Actor{
     private int itemsLeft;
     private int baseHealth;
     
-    public Materials(){
-
-    }
-    
     public void act(){
         if(isMaterialBroken()){
             removeMaterial();
@@ -42,7 +38,7 @@ public class Materials extends Actor{
     }
     
     public void setBaseHealth(int baseHealth){
-        this.baseHealth -= baseHealth;
+        this.baseHealth = baseHealth;
     }
     
     public int getBaseHealth(){
