@@ -41,10 +41,10 @@ public class Materials extends Actor{
     }
         
     public void decreaseBaseHealth(int amount){ 
-        if(baseHealth - amount <= 0){
+        if(baseHealth - (amount * dissolveRate) <= 0){
             getWorld().removeObject(this);
         }else{
-            baseHealth -= amount;
+            baseHealth -= (amount * dissolveRate);
         }
     }
 }
