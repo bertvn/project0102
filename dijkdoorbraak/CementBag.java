@@ -5,7 +5,7 @@ public class CementBag extends Materials{
         super.setDissolveRate(1);
         super.setSpeedReducement(1);
         super.setItemsLeft(5);
-        super.setBaseHealth(21);
+        super.setBaseHealth(20);
     }
 
     public void act(){
