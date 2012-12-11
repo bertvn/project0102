@@ -3,7 +3,7 @@ import java.util.List;
 
 public class Dike extends Actor{
     private int dikeHP;
-    private int dikeDamage;
+    private Materials selectedMaterial;
     
     public Dike(){
         dikeHP = 24;
@@ -13,14 +13,17 @@ public class Dike extends Actor{
         if(endGame()){
             WorldSpawner.endGame();
         }else if(materialOnDike()){
-            
-        }else if(doDamage()){
+            if(doDamage(150)){
+                System.out.println("Does damage");
+                doSomeDamageToMaterial();
+            }
+        }else if(doDamage(300)){
             doSomeDamage();
         }       
     }
     
-    public boolean doDamage(){
-        if((int) Math.floor(Math.random()*300)+1 == 1){
+    public boolean doDamage(int chance){
+        if((int) Math.floor(Math.random() * chance ) +1 == 1){
             return true;
         }else{
             return false;
@@ -36,20 +39,19 @@ public class Dike extends Actor{
     }
     
     public boolean materialOnDike(){
-        Actor materialOnSpot = getOneObjectAtOffset(getX(), getY(), Materials.class);
+        //List<Materials> matList = getWorld().getObjectAt(getX(), getY()+40, Materials.class);
+        selectedMaterial = (Materials) getOneObjectAtOffset(getX(), getY()+40, Materials.class);
         
-        if(materialOnSpot != null){
-            System.out.println("materialsInRange contains: "+ materialOnSpot);
-            System.out.println("returns true");
+        if(selectedMaterial != null){
+            System.out.println("Is now true");
             return true;
         }else{
             return false;
         }
     }
     
-    public void doSomeDamage(){
-        dikeDamage = (int) Math.floor(Math.random()*3)+1;        
-        dikeHP -= dikeDamage;
+    public void doSomeDamage(){       
+        dikeHP -= (int) Math.floor(Math.random()*3)+1; 
         
         switch(dikeHP){
             case  1: case  2: case  3: this.setImage("break-8.png"); break;
@@ -60,5 +62,10 @@ public class Dike extends Actor{
             case 16: case 17: case 18: this.setImage("break-3.png"); break;
             case 19: case 20: case 21: this.setImage("break-2.png"); break;
         }
+    }
+    
+    public void doSomeDamageToMaterial(){
+        int amount = (int) Math.floor(Math.random()*3)+1;
+        //selectedMaterial.decreaseBaseHealth(amount);
     }
 }

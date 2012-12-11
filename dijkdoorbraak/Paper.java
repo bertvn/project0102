@@ -5,9 +5,14 @@ public class Paper extends Materials{
         super.setDissolveRate(16);
         super.setSpeedReducement(16);
         super.setItemsLeft(5);
+        super.setBaseHealth(21);
     }
 
     public void act(){
         
+    }
+    
+    public void decreaseBaseHealth(int amount){
+        super.setBaseHealth(getBaseHealth()-amount);
     }
 }

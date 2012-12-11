@@ -88,4 +88,12 @@ public class Helpers extends Actor{
         }
         holding = null;
     }
+    
+    public void setSpeed(int speed){
+        this.speed = speed;
+    }
+    
+    public void setPower(int power){
+        this.power = power;
+    }
 }
