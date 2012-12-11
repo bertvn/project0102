@@ -83,10 +83,11 @@ public class WorldSpawner extends World{
                 actorInKwestie = null;
                 materialsInKwestie = null;
                 return;
-            }else{if(actorInKwestie != null){
-                List<Materials> mat = getObjectsAt(mouse.getX(),mouse.getY(),Materials.class);
-                materialsInKwestie = mat.get(0);
-                return;
+            }else{
+                if(actorInKwestie != null){
+                    List<Materials> mat = getObjectsAt(mouse.getX(),mouse.getY(),Materials.class);
+                    materialsInKwestie = mat.get(0);
+                    return;
                 }else{
                     List<Helpers> hlp = getObjectsAt(mouse.getX(),mouse.getY(),Helpers.class);
                     if(hlp != null){
@@ -195,14 +196,14 @@ public class WorldSpawner extends World{
         // Add the dike-object on the newSpot.
         addObject(new Dike(), newSpotX, newSpotY);
         
-        // Following prints are for debugging purposes only.
+        /*/ Following prints are for debugging purposes only.
         String dikeName = "dike" + newSpotName;
         System.out.println("dikeName = " + dikeName);
         System.out.println("newSpotName = " + newSpotName);
         System.out.println("newSpotX = " + newSpotX);
         System.out.println("newSpotY = " + newSpotY);
         System.out.println("Spawned on time: " + gameTimer.getCurrentValue()/60);
-        System.out.println("-----");
+        System.out.println("-----");*/
     }
     
     public static void endGame(){
