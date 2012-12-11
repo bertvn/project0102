@@ -11,12 +11,4 @@ public class Paper extends Materials{
     public void act(){
         
     }
-    
-    public void decreaseBaseHealth(int amount){
-        if(getBaseHealth() - amount <= 0){
-            getWorld().removeObject(this);
-        }else{
-            super.setBaseHealth(getBaseHealth() - amount);
-        }
-    }
 }

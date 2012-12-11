@@ -168,7 +168,7 @@ public class WorldSpawner extends World{
     
     // This will return wheter we will create a dike or not.
     public boolean createDikeObject(){
-        if((int) Math.floor(Math.random()*500)+1 == 1){
+        if((int) (Math.random()*500)+1 == 1){
             return true;
         }else{
             return false;
@@ -190,7 +190,7 @@ public class WorldSpawner extends World{
         int randomSpot;
         boolean foundSpot = false;
         do{
-            randomSpot = (int) Math.floor(Math.random()*9);
+            randomSpot = (int) Math.random()*9;
             if(usedSpots[randomSpot] != -1){
                 newSpotName = breakingSpots[usedSpots[randomSpot]];
                 newSpotX = breakingSpots[usedSpots[randomSpot]+1];
