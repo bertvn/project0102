@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-import java.util.ArrayList;
+import java.util.*;
 
 /**
  * Write a description of class Map here.
@@ -24,21 +24,20 @@ public class Map extends World
     private int posX;
     private int posY;
     private int[] positionsX = 
-            {20, 50, 120, 200, 250, 280}; 
+            {40, 50, 120, 200, 250, 280}; 
     private int[] positionsY = 
-            {200, 180, 160, 120, 100, 50};
+            {220, 220, 280, 380, 480, 550};
     private int[] placedX = new int[3];
     private int[] placedY = new int[3];
+    private int marge = 200;
     public static int DAY = 0;
     private int amountPlaced;
     
     public Map()
     {    
         
-        
         // Create a new world with 640x640 cells with a cell size of 1x1 pixels;
         super(640, 640, 1);   
-        
         
         amountPlaced = 0; // start with no icons placed
         flooded = 0; // start with no flood at all;
@@ -64,7 +63,35 @@ public class Map extends World
         //add highscores button
         addObject(new HighscoresButton(), 520, 610); 
         
-        selectMinigames();
+        selectMinigames(); // select amount of games
+        
+    }
+    
+    public void act() {
+        if(Greenfoot.mouseClicked(null)) { // when mouse button is pressed
+            MouseInfo mouse = Greenfoot.getMouseInfo(); // get mouse info
+            List<Icons> icon = getObjectsAt(mouse.getX(), mouse.getY(), Icons.class); // get the object that hits mouse
+        
+            if(icon != null) { // if there is an object (are objects)
+                for(Icons test : icon) { // for every object
+
+                    if(test.getClass().equals(DijkdoorbraakIcon.class)) { // retrieve class and chose proper map
+                        //Greenfoot.setWorld(new Dijkdoorbraak());
+                        System.out.println("Fapman plays dijkdoorbraak");
+                    } else if (test.getClass().equals(CalamiteitenIcon.class)) {
+                        //Greenfoot.setWorld(new Calamiteiten());
+                        System.out.println("Fapman plays calamiteiten");
+                    } else if (test.getClass().equals(DoolhofIcon.class)) {
+                        //Greenfoot.setWorld(new Doolhof());
+                        System.out.println("Fapman plays doolhof");
+                    } else if (test.getClass().equals(OntwijkenIcon.class)) {
+                        //Greenfoot.setWorld(new Ontwijken());
+                        System.out.println("Fapman plays ontwijken");
+                    }
+                    
+                }
+            }
+        }
     }
     
     public void selectMinigames() {
@@ -74,16 +101,16 @@ public class Map extends World
     }
     
     public void placeMinigames() {
-        
+       
         while(amountOfGames > 0) { // as long not all the games are placed, keep placing
             int gameNumber = (int) (Math.random() * 4); // retrieve a random game number
             
-            while(posX == 0) { // get position X for the game.
+            //while(posX == 0) { // get position X for the game.
                 posX = randomX();
-            }
-            while(posY == 0) { // get position Y for the game.
+            //}
+            //while(posY == 0) { // get position Y for the game.
                 posY = randomY();
-            }
+            //}
            
             switch(gameNumber) { /* random geselecteerde game plaatsen 
                                   * op random positie op X en Y as 
@@ -113,41 +140,37 @@ public class Map extends World
     
     public int randomX() {
         // get random position on the X axis with a minimum of the set minimum on that day
-        int getPosX = (int) (Math.random() * 100) + positionsX[DAY];
+        int getPosX = (int) (Math.random() * marge) + positionsX[DAY];
         
         for(int compareX : placedX) { /* if the number is bigger then all placed icons X value
                                        * and minimum 40 pixels bigger { 
                                        * } else return zero;
                                        */
-            if(getPosX > compareX && getPosX > compareX+80) {
+            if(getPosX > compareX) {
                placedX[amountPlaced] = getPosX; /* when the position is good, at the position
                                                  * to the array holding the positions of the
                                                  * game icons X axis values;
                                                  */
                return getPosX; // return the X axis value;
-            } else {
-               return 0;
-            }
+            } 
         }
         return 0; // standard zero return, else greenfoot doesnt understand
     }
     
     public int randomY() {
         // get random position on the Y axis with a minimum of the set minimum on that day
-        int getPosY = (int) (Math.random() * 100) + positionsY[DAY];
+        int getPosY = (int) (Math.random() * marge) + positionsY[DAY];
         
         for(int compareY : placedY) { /* if the number is bigger then all placed icons Y value
                                        * and minimum 40 pixels bigger { 
                                        * } else return zero;
                                        */
-            if(getPosY > compareY && getPosY > compareY+80) {
+            if(getPosY > compareY) {
                placedY[amountPlaced] = getPosY; /* when the position is good, at the position
                                                  * to the array holding the positions of the
                                                  * game icons Y axis values;
                                                  */               
                return getPosY; // return the X axis value;
-            } else {
-               return 0;
             }
         }
         return 0; // standard zero return, else greenfoot doesnt understand
@@ -157,6 +180,9 @@ public class Map extends World
         DAY = val; // set the day to given value
     }
     
+    public void setMarge(int val) {
+        marge = val;
+    }
     /* to delete -> just for testing -> *
     public void act() {
         if(Greenfoot.mouseClicked(null)) {
