@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.params=input
+comment0.target=TextArea(java.lang.String)
+comment1.params=input
+comment1.target=void\ makeImage(java.lang.String)
+numComments=2

@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Score()
+comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ Score\r\n
+comment1.params=val
+comment1.target=void\ setScore(int)
+numComments=2
