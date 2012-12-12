@@ -20,4 +20,8 @@ public class Score
     public static void setScore(int val) {
         score = val; // set the score
     }
+    
+    public static void addScore(int val){
+        score += val;
+    }
 }

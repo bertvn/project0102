@@ -67,6 +67,7 @@ public class WorldSpawner extends World{
                 if(breakThroughPart == 8){
                 TextArea lose = new TextArea("lose");
                 addObject(lose, 320, 320);
+                Score.addScore(100 - gameTimer.getTimeLeft());
                 Greenfoot.setWorld(new Map());
                 }
                 
@@ -262,4 +263,5 @@ public class WorldSpawner extends World{
     public static void endGame(){
         breakThroughPart++;
     }
+    
 }

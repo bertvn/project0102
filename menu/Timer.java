@@ -32,7 +32,8 @@ public class Timer extends Actor{
         if(endGame()){ // Check if the timer has reached 0.
             TextArea win = new TextArea("win");
             getWorld().addObject(win, 320, 320);
-            Greenfoot.stop();
+            Score.addScore(100);
+            Greenfoot.setWorld(new Map());
         }else{
             currentValue--;
             updateImage();
@@ -68,4 +69,9 @@ public class Timer extends Actor{
     public int getCurrentValue(){
         return currentValue;
     }
+    
+    public int getTimeLeft(){
+        return (int) currentValue/60;
+    }
+    
 }
