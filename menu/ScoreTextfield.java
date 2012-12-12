@@ -20,13 +20,13 @@ public class ScoreTextfield extends Actor
     private final int HEIGHT = 30;
     
     public ScoreTextfield() {       
-       makeImage(0);
+       
+       Score.setScore(200);
+       score = Score.score;
+       makeImage(score);
+       
     }
     
-    public void setScore(int val) {
-        score = val;
-        makeImage(score);
-    }
     
     public void makeImage(int score)   {  
         image = new GreenfootImage(WIDTH, HEIGHT);  // prepare image

@@ -1,14 +1,14 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class CalamiteitenIcon here.
+ * Write a description of class OntwijkenIcon here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class OntwijkenIcon extends Actor
+public class OntwijkenIcon extends Icons
 {
-    /**
+     /**
      * Act - do whatever the TopPanel wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
@@ -23,5 +23,5 @@ public class OntwijkenIcon extends Actor
     public void act() 
     {
         // Add your action code here.
-    }     
+    }   
 }
