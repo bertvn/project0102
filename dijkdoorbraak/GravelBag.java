@@ -12,4 +12,12 @@ public class GravelBag extends Materials{
     public void act(){
         
     }
+    
+    public void select(){
+        setImage("selectedbigGravelBag.png");
+    }
+    
+    public void deselect(){
+        setImage("bigGravelBag.png");
+    }
 }

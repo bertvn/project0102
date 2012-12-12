@@ -9,5 +9,13 @@ public class Policeman extends Helpers{
     public void act(){
         super.act();
     }    
+    
+    public void select(){
+        setImage("selectedpoliceman.png");
+    }
+    
+    public void deselect(){
+        setImage("policeman.png");
+    }
 }
 

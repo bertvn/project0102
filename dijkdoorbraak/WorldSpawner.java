@@ -36,6 +36,7 @@ public class WorldSpawner extends World{
         // Fill the world with objects.
         startPopulating();
         createSpots();
+        setPaintOrder(Civilian.class,Soldier.class,Policeman.class,CementBag.class,SandBag.class,GravelBag.class,Cardboard.class,Paper.class,Dike.class);
     }
     
     // This method will be called every act.
@@ -63,7 +64,8 @@ public class WorldSpawner extends World{
                 }
                 
                 if(breakThroughPart == 8){
-                System.out.println("Lose State");
+                TextArea lose = new TextArea("lose");
+                addObject(lose, 320, 320);
                 Greenfoot.stop();
                 }
                 
@@ -99,7 +101,7 @@ public class WorldSpawner extends World{
                         if(Paper.class.isInstance(selectedMaterials)){
                             addObject(new Paper(), 265, 609);
                         }
-                        
+                        selectedMaterials.deselect();
                         removeObject(selectedMaterials);
                     }
                     
@@ -117,6 +119,7 @@ public class WorldSpawner extends World{
                             //select 1
                             if(mat.get(0).getWeight() <= selectedActor.getPower()){
                                 selectedMaterials = mat.get(0);
+                                selectedMaterials.select();
                             }
                         }
                         return;
@@ -128,6 +131,7 @@ public class WorldSpawner extends World{
                         if(!hlp.isEmpty() && !hlp.get(0).isBusy()){
                             //select 1
                             selectedActor = hlp.get(0);
+                            selectedActor.select();
                         }
                     }
                 }
@@ -152,13 +156,13 @@ public class WorldSpawner extends World{
     // This method will populate our world with objects.
     public void startPopulating(){
         civilian = new Civilian();
-        addObject(civilian, 80, 530);
+        addObject(civilian, 80, 510);
        
         policeman = new Policeman();
-        addObject(policeman, 170, 530);
+        addObject(policeman, 170, 510);
         
         soldier = new Soldier();
-        addObject(soldier, 260, 530);
+        addObject(soldier, 260, 510);
         
         sandBag = new SandBag();
         addObject(sandBag, 70, 605);

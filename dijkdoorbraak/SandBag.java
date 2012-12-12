@@ -12,5 +12,13 @@ public class SandBag extends Materials{
     public void act(){
         
     } 
+    
+    public void select(){
+        setImage("selectedbigSandBag.png");
+    }
+    
+    public void deselect(){
+        setImage("bigSandBag.png");
+    }
 }
 

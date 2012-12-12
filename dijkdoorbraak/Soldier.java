@@ -9,5 +9,13 @@ public class Soldier extends Helpers{
     public void act(){
         super.act();
     }
+    
+    public void select(){
+        setImage("selectedsoldier.png");
+    }
+    
+    public void deselect(){
+        setImage("soldier.png");
+    }
 }
 

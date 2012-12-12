@@ -12,4 +12,12 @@ public class Cardboard extends Materials{
     public void act(){
         
     }
+    
+    public void select(){
+        setImage("selectedcardboard.png");
+    }
+    
+    public void deselect(){
+        setImage("cardboard.png");
+    }
 }

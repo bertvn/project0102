@@ -12,5 +12,13 @@ public class CementBag extends Materials{
     public void act(){
         
     }
+    
+    public void select(){
+        setImage("selectedbigCementBag.png");
+    }
+    
+    public void deselect(){
+        setImage("bigCementBag.png");
+    }
 }
 
