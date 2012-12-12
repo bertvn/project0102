@@ -83,6 +83,23 @@ public class WorldSpawner extends World{
                         Dike selectedDike = dk.get(0);
                         selectedActor.startMovement(selectedDike.getX(), selectedDike.getY()+40);
                         selectedActor.setHolding(selectedMaterials);
+                        
+                        if(SandBag.class.isInstance(selectedMaterials)){
+                            addObject(new SandBag(), 70, 605);
+                        }
+                        if(GravelBag.class.isInstance(selectedMaterials)){
+                            addObject(new GravelBag(), 110, 605);
+                        }
+                        if(CementBag.class.isInstance(selectedMaterials)){
+                            addObject(new CementBag(), 150, 605);
+                        }
+                        if(Cardboard.class.isInstance(selectedMaterials)){
+                            addObject(new Cardboard(), 205, 609);
+                        }
+                        if(Paper.class.isInstance(selectedMaterials)){
+                            addObject(new Paper(), 265, 609);
+                        }
+                        
                         removeObject(selectedMaterials);
                     }
                     
@@ -98,7 +115,9 @@ public class WorldSpawner extends World{
                         List<Materials> mat = getObjectsAt(mouse.getX(),mouse.getY(), Materials.class);
                         if(!mat.isEmpty()){
                             //select 1
-                            selectedMaterials = mat.get(0);
+                            if(mat.get(0).getWeight() <= selectedActor.getPower()){
+                                selectedMaterials = mat.get(0);
+                            }
                         }
                         return;
                     }else{
@@ -106,7 +125,7 @@ public class WorldSpawner extends World{
                         //select actor
                         //select all Helpers objects on current mouse x and y
                         List<Helpers> hlp = getObjectsAt(mouse.getX(), mouse.getY(), Helpers.class);
-                        if(!hlp.isEmpty()){
+                        if(!hlp.isEmpty() && !hlp.get(0).isBusy()){
                             //select 1
                             selectedActor = hlp.get(0);
                         }

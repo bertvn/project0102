@@ -28,21 +28,31 @@ public class Helpers extends Actor{
     }
     
     public void move(){
+        int v = speed;
+        if(holding != null){
+            v -= holding.getSpeedReducement();
+        }
         if(this.getX() != x && x != -1){
+            if(Math.abs(this.getX() - x)< speed){
+                v = 1;
+            }
             if(this.getX()< x){
-                moveLeft();
+                moveLeft(v);
                 return;
             }else{
-                moveRight();
+                moveRight(v);
                 return;
             }
         }
         if(this.getY() != y && y != -1){
+            if(Math.abs(this.getY() - y) < speed){
+                v = 1;
+            }
             if(this.getY()< y){
-                moveDown();
+                moveDown(v);
                 return;
             }else{
-                moveUp();
+                moveUp(v);
                 return;
             }
         }
@@ -52,6 +62,7 @@ public class Helpers extends Actor{
         if(this.getX() != startX || this.getY() != startY){
             startMovement(startX,startY);
         }else{
+            
             movement = false;
         }
     }
@@ -60,22 +71,23 @@ public class Helpers extends Actor{
         this.x = x;
         this.y = y;
         movement = true;
+        
     }
     
-    public void moveLeft(){
-        setLocation(getX()+1,getY());
+    public void moveLeft(int v){
+        setLocation(getX()+v,getY());
     }
     
-    public void moveRight(){
-        setLocation(getX()-1,getY());
+    public void moveRight(int v){
+        setLocation(getX()-v,getY());
     }
     
-    public void moveDown(){
-        setLocation(getX(),getY()+1);
+    public void moveDown(int v){
+        setLocation(getX(),getY()+v);
     }
     
-    public void moveUp(){
-        setLocation(getX(),getY()-1);
+    public void moveUp(int v){
+        setLocation(getX(),getY()-v);
     }
     
     public void setHolding(Materials materiaal){
@@ -95,5 +107,13 @@ public class Helpers extends Actor{
     
     public void setPower(int power){
         this.power = power;
+    }
+    
+    public int getPower(){
+        return power;
+    }
+    
+    public Boolean isBusy(){
+        return movement;
     }
 }
