@@ -11,6 +11,7 @@ public class WorldSpawner extends World{
     private GravelBag gravelBag;
     private Cardboard cardboard;
     private Paper paper;
+    private TextArea textArea;
 
     private Helpers selectedActor = null;
     private Materials selectedMaterials = null;
@@ -39,88 +40,117 @@ public class WorldSpawner extends World{
     
     // This method will be called every act.
     public void act(){
-        if(waitWithDikeSpawns <= 0){
-            if(createDikeObject()){
-                if(anySpotsLeft()){
-                    createNewDike();
-                }else{
-                    // Set the waitWithDikeSpawns till after the game, there are no spots left.
-                    waitWithDikeSpawns = 10800; // Amount of acts in 3 minutes.
+        if(gameStarted()){
+            if(waitWithDikeSpawns <= 0){
+                if(createDikeObject()){
+                    if(anySpotsLeft()){
+                        createNewDike();
+                    }else{
+                        // Set the waitWithDikeSpawns till after the game, there are no spots left.
+                        waitWithDikeSpawns = 10800; // Amount of acts in 3 minutes.
+                    }
                 }
-            }
-        }else{
-            waitWithDikeSpawns--;
-        }
-        
-        if(breakThroughPart > 0){
-            if(breakThroughPart == 1){
-                List<Helpers> allHelpers = getObjects(Helpers.class);
-                List<Materials> allMaterials = getObjects(Materials.class);
-                removeObjects(allHelpers);
-                removeObjects(allMaterials);
+            }else{
+                waitWithDikeSpawns--;
             }
             
-            if(breakThroughPart == 8){
-            System.out.println("Lose State");
-            Greenfoot.stop();
-            }
-            
-            setBackground("background" + breakThroughPart + ".png");
-        }
-        
-        //movement Persona's
-        if(Greenfoot.mouseClicked(null)) {
-            MouseInfo mouse = Greenfoot.getMouseInfo();
-            // if a material is selected
-            // chose dike, remove material and move actor to dike
-            if(selectedMaterials != null){
-                //select all dike objects on current mouse x and y
-                List<Dike> dk = getObjectsAt(mouse.getX(),mouse.getY(),Dike.class);
-                if(dk != null){
-                    //select 1
-                    Dike selectedDike = dk.get(0);
-                    selectedActor.startMovement(selectedDike.getX(),selectedDike.getY()+40);
-                    selectedActor.setHolding(selectedMaterials);
-                    removeObject(selectedMaterials);
+            if(breakThroughPart > 0){
+                if(breakThroughPart == 1){
+                    List<Helpers> allHelpers = getObjects(Helpers.class);
+                    List<Materials> allMaterials = getObjects(Materials.class);
+                    removeObjects(allHelpers);
+                    removeObjects(allMaterials);
                 }
                 
-                selectedActor = null;
-                selectedMaterials = null;
-                return;
-            }else{
-                //if no material is selected
-                //if actor is selected
-                //chose material
-                if(selectedActor != null){
-                    //select all Materials objects on current mouse x and y
-                    List<Materials> mat = getObjectsAt(mouse.getX(),mouse.getY(),Materials.class);
-                    if(mat != null){
+                if(breakThroughPart == 8){
+                System.out.println("Lose State");
+                Greenfoot.stop();
+                }
+                
+                setBackground("background" + breakThroughPart + ".png");
+            }
+            
+            //movement Persona's
+            if(Greenfoot.mouseClicked(null)) {
+                MouseInfo mouse = Greenfoot.getMouseInfo();
+                // if a material is selected
+                // chose dike, remove material and move actor to dike
+                if(selectedMaterials != null){
+                    //select all dike objects on current mouse x and y
+                    List<Dike> dk = getObjectsAt(mouse.getX(), mouse.getY(), Dike.class);
+                    if(!dk.isEmpty()){
                         //select 1
-                        selectedMaterials = mat.get(0);
+                        Dike selectedDike = dk.get(0);
+                        selectedActor.startMovement(selectedDike.getX(), selectedDike.getY()+40);
+                        selectedActor.setHolding(selectedMaterials);
+                        
+                        if(SandBag.class.isInstance(selectedMaterials)){
+                            addObject(new SandBag(), 70, 605);
+                        }
+                        if(GravelBag.class.isInstance(selectedMaterials)){
+                            addObject(new GravelBag(), 110, 605);
+                        }
+                        if(CementBag.class.isInstance(selectedMaterials)){
+                            addObject(new CementBag(), 150, 605);
+                        }
+                        if(Cardboard.class.isInstance(selectedMaterials)){
+                            addObject(new Cardboard(), 205, 609);
+                        }
+                        if(Paper.class.isInstance(selectedMaterials)){
+                            addObject(new Paper(), 265, 609);
+                        }
+                        
+                        removeObject(selectedMaterials);
                     }
+                    
+                    selectedActor = null;
+                    selectedMaterials = null;
                     return;
                 }else{
-                    //if no actor is selected
-                    //select actor
-                    //select all Helpers objects on current mouse x and y
-                    List<Helpers> hlp = getObjectsAt(mouse.getX(),mouse.getY(),Helpers.class);
-                    if(hlp != null){
-                        //select 1
-                        selectedActor = hlp.get(0);
+                    //if no material is selected
+                    //if actor is selected
+                    //chose material
+                    if(selectedActor != null){
+                        //select all Materials objects on current mouse x and y
+                        List<Materials> mat = getObjectsAt(mouse.getX(),mouse.getY(), Materials.class);
+                        if(!mat.isEmpty()){
+                            //select 1
+                            if(mat.get(0).getWeight() <= selectedActor.getPower()){
+                                selectedMaterials = mat.get(0);
+                            }
+                        }
+                        return;
+                    }else{
+                        //if no actor is selected
+                        //select actor
+                        //select all Helpers objects on current mouse x and y
+                        List<Helpers> hlp = getObjectsAt(mouse.getX(), mouse.getY(), Helpers.class);
+                        if(!hlp.isEmpty() && !hlp.get(0).isBusy()){
+                            //select 1
+                            selectedActor = hlp.get(0);
+                        }
                     }
                 }
+            }
+        }
+        
+        if(Greenfoot.mouseClicked(null)){
+            MouseInfo mouse = Greenfoot.getMouseInfo();
+            List<TextArea> textAreas = getObjectsAt(mouse.getX(), mouse.getY(), TextArea.class);
+            if(!textAreas.isEmpty()){
+                removeObject(textArea);
+                
+                gameTimer = new Timer("Time left: ");
+                // Player must prevent the dike from breaking for 1 minute and 30 seconds.
+                // Therefor we set the timer to 90 seconds.
+                gameTimer.setCurrentValue(90);
+                addObject(gameTimer, 320, 25);
             }
         }
     }
     
     // This method will populate our world with objects.
     public void startPopulating(){
-        gameTimer = new Timer("Time left: ");
-        // Player must prevent the dike from breaking for 1 minute and 30 seconds.
-        // Therefor we set the timer to 90 seconds.
-        gameTimer.setCurrentValue(90);
-        addObject(gameTimer, 320, 25);
-        
         civilian = new Civilian();
         addObject(civilian, 80, 530);
        
@@ -144,6 +174,17 @@ public class WorldSpawner extends World{
                 
         paper = new Paper();
         addObject(paper, 265, 609);
+        
+        textArea = new TextArea("Start");
+        addObject(textArea, 320, 320);
+    }
+    
+    public boolean gameStarted(){
+        if(getObjects(TextArea.class).isEmpty()){
+            return true;
+        }else{
+            return false;
+        }
     }
     
     public void createSpots(){
@@ -170,7 +211,7 @@ public class WorldSpawner extends World{
     public boolean createDikeObject(){
         if((int) (Math.random()*500)+1 == 1){
             return true;
-        }else{
+        }else{    
             return false;
         }
     }

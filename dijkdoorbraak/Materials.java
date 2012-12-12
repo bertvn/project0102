@@ -5,6 +5,7 @@ public class Materials extends Actor{
     private int speedReducement;
     private int itemsLeft;
     private int baseHealth;
+    private int weight;
     
     public void act(){
         if(isMaterialBroken()){
@@ -32,6 +33,10 @@ public class Materials extends Actor{
         this.speedReducement = speedReducement;
     }
     
+    public int getSpeedReducement(){
+        return speedReducement;
+    }
+    
     public void setItemsLeft(int itemsLeft){
         this.itemsLeft = itemsLeft;
     }
@@ -46,6 +51,14 @@ public class Materials extends Actor{
         }else{
             baseHealth -= (amount * dissolveRate);
         }
+    }
+    
+    public void setWeight(int val){
+        weight = val;
+    }
+    
+    public int getWeight(){
+        return weight;
     }
 }
  
