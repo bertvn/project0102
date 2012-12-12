@@ -12,4 +12,12 @@ public class Paper extends Materials{
     public void act(){
         
     }
+    
+    public void select(){
+        setImage("selectedpaper.png");
+    }
+    
+    public void deselect(){
+        setImage("paper.png");
+    }
 }

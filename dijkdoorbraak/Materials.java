@@ -60,5 +60,11 @@ public class Materials extends Actor{
     public int getWeight(){
         return weight;
     }
+    
+    public void select(){
+    }
+    
+    public void deselect(){
+    }
 }
  

@@ -71,6 +71,7 @@ public class Helpers extends Actor{
         this.x = x;
         this.y = y;
         movement = true;
+        deselect();
         
     }
     
@@ -115,5 +116,13 @@ public class Helpers extends Actor{
     
     public Boolean isBusy(){
         return movement;
+    }
+    
+    public void select(){
+    
+    }
+    
+    public void deselect(){
+        
     }
 }

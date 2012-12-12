@@ -30,6 +30,8 @@ public class Timer extends Actor{
     // This method will be called every act.
     public void act(){
         if(endGame()){ // Check if the timer has reached 0.
+            TextArea win = new TextArea("win");
+            getWorld().addObject(win, 320, 320);
             Greenfoot.stop();
         }else{
             currentValue--;

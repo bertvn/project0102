@@ -9,5 +9,13 @@ public class Civilian extends Helpers{
     public void act(){
         super.act();
     }
+    
+    public void select(){
+        setImage("selectedcivilian.png");
+    }
+    
+    public void deselect(){
+        setImage("civilian.png");
+    }
 }
 
