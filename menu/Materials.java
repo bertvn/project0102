@@ -3,7 +3,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Materials extends Actor{
     private int dissolveRate;
     private int speedReducement;
-    private int itemsLeft;
     private int baseHealth;
     private int weight;
     
@@ -35,10 +34,6 @@ public class Materials extends Actor{
     
     public int getSpeedReducement(){
         return speedReducement;
-    }
-    
-    public void setItemsLeft(int itemsLeft){
-        this.itemsLeft = itemsLeft;
     }
     
     public void setBaseHealth(int baseHealth){

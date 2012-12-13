@@ -1,6 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Helpers extends Actor{
 
+
     private Boolean movement = false;
     private int x=-1;
     private int y=-1;
@@ -10,6 +11,7 @@ public class Helpers extends Actor{
     private Boolean checked = false;
     private int speed;
     private int power;
+    private int tempSpeed;
     
     public Helpers(){
 
@@ -28,41 +30,45 @@ public class Helpers extends Actor{
     }
     
     public void move(){
-        int v = speed;
+        tempSpeed = speed;
+        
         if(holding != null){
-            v -= holding.getSpeedReducement();
+            tempSpeed -= holding.getSpeedReducement();
         }
+        
         if(this.getX() != x && x != -1){
             if(Math.abs(this.getX() - x)< speed){
-                v = 1;
+                tempSpeed = 1;
             }
             if(this.getX()< x){
-                moveLeft(v);
+                moveLeft(tempSpeed);
                 return;
             }else{
-                moveRight(v);
+                moveRight(tempSpeed);
                 return;
             }
         }
+        
         if(this.getY() != y && y != -1){
             if(Math.abs(this.getY() - y) < speed){
-                v = 1;
+                tempSpeed = 1;
             }
             if(this.getY()< y){
-                moveDown(v);
+                moveDown(tempSpeed);
                 return;
             }else{
-                moveUp(v);
+                moveUp(tempSpeed);
                 return;
             }
         }
+        
         if(holding != null){
             placeHolding();
         }
+        
         if(this.getX() != startX || this.getY() != startY){
             startMovement(startX,startY);
         }else{
-            
             movement = false;
         }
     }
@@ -72,23 +78,22 @@ public class Helpers extends Actor{
         this.y = y;
         movement = true;
         deselect();
-        
     }
     
-    public void moveLeft(int v){
-        setLocation(getX()+v,getY());
+    public void moveLeft(int value){
+        setLocation(getX()+value, getY());
     }
     
-    public void moveRight(int v){
-        setLocation(getX()-v,getY());
+    public void moveRight(int value){
+        setLocation(getX()-value, getY());
     }
     
-    public void moveDown(int v){
-        setLocation(getX(),getY()+v);
+    public void moveDown(int value){
+        setLocation(getX(), getY()+value);
     }
     
-    public void moveUp(int v){
-        setLocation(getX(),getY()-v);
+    public void moveUp(int value){
+        setLocation(getX(), getY()-value);
     }
     
     public void setHolding(Materials materiaal){
@@ -97,7 +102,7 @@ public class Helpers extends Actor{
     
     public void placeHolding(){
         if(holding != null){
-           getWorld().addObject(holding,getX(),getY());
+           getWorld().addObject(holding, getX(), getY());
         }
         holding = null;
     }

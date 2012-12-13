@@ -1,12 +1,7 @@
-------------------------------------------------------------------------
-This is the project README file. Here, you should describe your project.
-Tell the reader (someone who does not know anything about this project)
-all he/she needs to know. The comments should usually include at least:
-------------------------------------------------------------------------
-
-PROJECT TITLE:
-PURPOSE OF PROJECT:
-VERSION or DATE:
-HOW TO START THIS PROJECT:
-AUTHORS:
-USER INSTRUCTIONS:
+PROJECT TITLE: Project 2 - Flood Control
+PURPOSE OF PROJECT: This project was developed for by RU Development as a
+school project. 
+VERSION or DATE: Now() = 13-12-2012 @ 21:00
+HOW TO START THIS PROJECT: Start the greenfoot.project to run this game.
+AUTHORS: Bert van Nimwegen, Paul Wols, Patrick Aleman and Youri Boerlage.
+USER INSTRUCTIONS: RTFM.

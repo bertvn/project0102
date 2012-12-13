@@ -16,10 +16,15 @@ public class TextArea extends Actor{
 
     private void makeImage(String input){
         GreenfootImage image = new GreenfootImage(WIDTH, HEIGHT);
+        
+        //border
         image.setColor(new Color(0, 0, 0, 160));
         image.fillRect(0, 0, WIDTH, HEIGHT);
+        
+        //filling
         image.setColor(new Color(255, 255, 255, 100));
         image.fillRect(5, 5, WIDTH-10, HEIGHT-10);
+        
         Font font = image.getFont();
         font = font.deriveFont(FONT_SIZE);
         image.setFont(font);

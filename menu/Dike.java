@@ -19,7 +19,7 @@ public class Dike extends Actor{
         // else if any of the objects exist ontop of the dike, do damage to
         // them (chance of 1 to 150) instead of the dike.
         if(endGame()){
-            WorldSpawner.endGame();
+            Dijkdoorbraak.endGame();
         }else if(material != null){
             if(doDamage(150)){
                 doSomeDamageToMaterial();

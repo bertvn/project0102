@@ -76,7 +76,7 @@ public class Map extends World
                 for(Icons test : icon) { // for every object
 
                     if(test.getClass().equals(DijkdoorbraakIcon.class)) { // retrieve class and chose proper map
-                        Greenfoot.setWorld(new WorldSpawner());
+                        Greenfoot.setWorld(new Dijkdoorbraak());
                         //System.out.println("Fapman plays dijkdoorbraak");
                     } else if (test.getClass().equals(CalamiteitenIcon.class)) {
                         //Greenfoot.setWorld(new Calamiteiten());
