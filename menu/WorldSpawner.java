@@ -37,6 +37,7 @@ public class WorldSpawner extends World{
         setBackground("dijkdoorbraak/background.png");
         startPopulating();
         createSpots();
+        breakThroughPart = 0;
         setPaintOrder(Civilian.class,Soldier.class,Policeman.class,CementBag.class,SandBag.class,GravelBag.class,Cardboard.class,Paper.class,Dike.class);
     }
     
@@ -68,7 +69,7 @@ public class WorldSpawner extends World{
                 TextArea lose = new TextArea("lose");
                 addObject(lose, 320, 320);
                 Score.addScore(100 - gameTimer.getTimeLeft());
-                Greenfoot.setWorld(new Map());
+                gameTimer.changeWorld();
                 }
                 
                 setBackground("dijkdoorbraak/background" + breakThroughPart + ".png");

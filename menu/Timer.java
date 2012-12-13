@@ -33,7 +33,7 @@ public class Timer extends Actor{
             TextArea win = new TextArea("win");
             getWorld().addObject(win, 320, 320);
             Score.addScore(100);
-            Greenfoot.setWorld(new Map());
+            changeWorld();
         }else{
             currentValue--;
             updateImage();
@@ -74,4 +74,7 @@ public class Timer extends Actor{
         return (int) currentValue/60;
     }
     
+    public void changeWorld(){
+        Greenfoot.setWorld(new Map());
+    }
 }
