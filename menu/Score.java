@@ -16,10 +16,6 @@ public class Score
     {
         score = 0;
     }
-
-    public static void setScore(int val) {
-        score = val; // set the score
-    }
     
     public static void addScore(int val){
         score += val;

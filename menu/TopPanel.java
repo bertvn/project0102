@@ -22,7 +22,7 @@ public class TopPanel extends Actor
     public static final int HEIGHT = 30;
     
     public TopPanel() {
-        day = 0; // start at day 1;
+        day = Map.DAY; // start at day 1;
         
         image = new GreenfootImage("opmaak/topPanel.png"); // prepare background image
         Font font = image.getFont();  // get current font
