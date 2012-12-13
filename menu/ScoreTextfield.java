@@ -20,9 +20,7 @@ public class ScoreTextfield extends Actor
     private final int HEIGHT = 30;
     
     public ScoreTextfield() {       
-       if(Score.score == 0){
-           Score.setScore(200);
-       }
+        
        score = Score.score;
        makeImage(score);
        

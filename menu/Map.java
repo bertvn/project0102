@@ -30,7 +30,7 @@ public class Map extends World
     private int[] placedX = new int[3];
     private int[] placedY = new int[3];
     private int marge = 200;
-    public static int DAY = 0;
+    public static int DAY = 1;
     private int amountPlaced;
     
     public Map()
