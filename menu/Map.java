@@ -216,6 +216,8 @@ public class Map extends World
         TextDisplay topPanel = new TextDisplay();
         topPanel.setTheGreenfootImage("opmaak/topPanel.png");
         topPanel.setFontColor(255, 255, 255, 0);
+        //topPanel.setFieldHeight(220); testing purpose to see if this worked.
+        //topPanel.setFieldWidth(50); testing purpose to see if this worked.
         topPanel.setDrawStringX(40);
         topPanel.setDrawStringY(28);
         topPanel.createTextBox("Dag " + DAY);
