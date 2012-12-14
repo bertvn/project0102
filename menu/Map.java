@@ -46,8 +46,8 @@ public class Map extends World
         backGround = new GreenfootImage("overstromingen/overstroming00.jpg"); // prepare the background;
         setBackground(backGround); // set the background;  
         
-        // add top panel
-        addObject(new TopPanel(), 320, 26);
+        // add top panel on coordinates 320, 26
+        displayTopPanel(320, 26);
         
         // add menu panel
         addObject(new MenuPanel(), 507, 540);
@@ -210,5 +210,17 @@ public class Map extends World
 
         backGround = new GreenfootImage("/overstromingen/overstroming0"+flooded+".jpg");
         setBackground(backGround);
+    }
+    
+    public void displayTopPanel(int xCoord, int yCoord){
+        TextDisplay topPanel = new TextDisplay();
+        topPanel.setTheGreenfootImage("opmaak/topPanel.png");
+        topPanel.setFontColor(255, 255, 255, 0);
+        topPanel.setDrawStringX(40);
+        topPanel.setDrawStringY(28);
+        topPanel.createTextBox("Dag " + DAY);
+        topPanel.placeImage();
+        
+        addObject(topPanel, xCoord, yCoord);
     }
 }

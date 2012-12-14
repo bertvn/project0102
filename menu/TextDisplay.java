@@ -102,11 +102,8 @@ public class TextDisplay extends Actor{
         image.setColor(borderColor);
         image.fillRect(0, 0, fieldWidth, fieldHeight);
         
-        image.setColor(backgroundColor);
-        image.fillRect(borderWidth,
-                       borderHeight,
-                       fieldWidth - (borderWidth * 2),
-                       fieldHeight - (borderHeight * 2));
+        //image.setColor(backgroundColor);
+        //image.fillRect(borderWidth, borderHeight, fieldWidth - (borderWidth * 2), fieldHeight - (borderHeight * 2));
     }
     
     public void createAreaWithoutBorder(){
@@ -121,12 +118,14 @@ public class TextDisplay extends Actor{
         }else{
             image = new GreenfootImage(fieldWidth, fieldHeight);
         }
-        
-        image.setFont(font);
-        image.setColor(fontColor);
-        image.drawString(input, drawStringX, drawStringX);      
         font = image.getFont();
         font = font.deriveFont(fontSize);
+        image.setFont(font);
+        image.setColor(fontColor);
+        
+        image.drawString("test", drawStringX, drawStringY);
+        debug();
+        System.out.println("input = " + input);
     }
     
     // Use the TextArea to create a piece of text in an area (with background)
@@ -134,7 +133,7 @@ public class TextDisplay extends Actor{
         if(borderWidth == 0 || borderHeight == 0){
             createAreaWithoutBorder();
         }else{
-            createAreaWithBorder(borderHeight, borderWidth);
+            createAreaWithBorder(borderWidth, borderHeight);
         } 
         
         createTextBox(input);
@@ -142,5 +141,21 @@ public class TextDisplay extends Actor{
     
     public void placeImage(){
        setImage(image);
+    }
+    
+    public void debug(){
+        System.out.println("image = " + image);
+        System.out.println("font = " + font);
+        System.out.println("fontColor = " + fontColor);
+        System.out.println("borderColor = " + borderColor);
+        System.out.println("backgroundColor = " + backgroundColor);
+        System.out.println("theGreenfootImage = " + theGreenfootImage);
+        System.out.println("fontSize = " + fontSize);
+        System.out.println("fieldWidth = " + fieldWidth);
+        System.out.println("fieldHeight = " + fieldHeight);
+        System.out.println("drawStringX = " + drawStringX);
+        System.out.println("drawStringY = " + drawStringY);
+        System.out.println("borderHeight = " + borderHeight);
+        System.out.println("borderWidth = " + borderWidth);
     }
 }
