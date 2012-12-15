@@ -31,7 +31,10 @@ public class Map extends World
     private int[] placedY = new int[3];
     private int marge = 200;
     public static int DAY = 1;
+    public static int minigamesPlayed = 0;
     private int amountPlaced;
+    
+    
     
     public Map()
     {    
@@ -48,20 +51,18 @@ public class Map extends World
         
         // add top panel on coordinates 320, 26
         displayTopPanel(320, 26);
-        
-        // add menu panel
-        addObject(new MenuPanel(), 507, 540);
+        // add top panel on coordinates 507, 540
+        displayMenuPanel(507, 540);
         // add scoreText
-        addObject(new ScoreText(), 513, 463);
-        // add scoreField
-        addObject(new ScoreTextfield(), 515, 495);
-        // add doneField
-        addObject(new DoneTextfield(), 515, 560);
+        displayScoreText(457, 475);
         // add doneText
-        addObject(new DoneText(), 515, 528);
-        
-        //add highscores button
-        addObject(new HighscoresButton(), 520, 610); 
+        displayDoneText(507, 540);
+        // add scoreField
+        displayScoreField(515, 495);
+        // add doneTextField
+        displayDoneField(515, 560, minigamesPlayed);
+        // add highscores button
+        displayHighscoresButton(520, 610);
         
         selectMinigames(); // select amount of games
         
@@ -179,17 +180,10 @@ public class Map extends World
     public static void setDay(int val) {
         DAY = val; // set the day to given value
     }
-    
+
     public void setMarge(int val) {
         marge = val;
     }
-    /* to delete -> just for testing -> *
-    public void act() {
-        if(Greenfoot.mouseClicked(null)) {
-            nextImage();
-        }
-    }
-    /* to delete <- just for testing <- */
     
     public void nextImage() {
         if(flooded < FLOODSTAGES) {
@@ -216,13 +210,80 @@ public class Map extends World
         TextDisplay topPanel = new TextDisplay();
         topPanel.setTheGreenfootImage("opmaak/topPanel.png");
         topPanel.setFontColor(255, 255, 255, 0);
-        //topPanel.setFieldHeight(220); testing purpose to see if this worked.
-        //topPanel.setFieldWidth(50); testing purpose to see if this worked.
         topPanel.setDrawStringX(40);
         topPanel.setDrawStringY(28);
-        topPanel.createTextBox("Dag " + DAY);
-        topPanel.placeImage();
+        topPanel.setInput("Dag " + DAY);
         
+        topPanel.createTextBox();
         addObject(topPanel, xCoord, yCoord);
+    }
+    
+    public void displayMenuPanel(int xCoord, int yCoord){
+        TextDisplay menuPanel = new TextDisplay();
+        menuPanel.setTheGreenfootImage("opmaak/menuPanel.png");
+        
+        menuPanel.createTextBox();
+        addObject(menuPanel, xCoord, yCoord);
+    }
+    
+    public void displayScoreText(int xCoord, int yCoord){
+        TextDisplay scoreText = new TextDisplay();
+        scoreText.setFontColor(255, 255, 255, 0);
+        scoreText.setInput("Score:");
+        
+        scoreText.createTextBox();
+        addObject(scoreText, xCoord, yCoord);
+    }
+    
+    public void displayDoneText(int xCoord, int yCoord){
+        TextDisplay doneText = new TextDisplay();
+        doneText.setFontColor(255, 255, 255, 0);
+        doneText.setInput("Voltooide calamiteiten:");
+        doneText.setFieldWidth(200);
+       
+        doneText.createTextBox();
+        addObject(doneText, xCoord, yCoord);
+    }
+    
+    public void displayScoreField(int xCoord, int yCoord){
+        TextDisplay scoreField = new TextDisplay();
+        scoreField.setFontColor(0, 0, 0, 0);
+        scoreField.setBackgroundColor(255, 255, 255, 255);
+        scoreField.setBorderColor(176, 176, 176, 255);
+        scoreField.setFieldWidth(220);
+        scoreField.setBorderWidth(2);
+        scoreField.setBorderHeight(2);
+        scoreField.setDrawStringX(6);
+        scoreField.setDrawStringY(22);
+        scoreField.setInput(String.valueOf(new Integer(Score.score)));
+        scoreField.setHasBackground(true);
+        
+        scoreField.createTextBox();
+        addObject(scoreField, xCoord, yCoord);
+    }
+    
+    public void displayDoneField(int xCoord, int yCoord, int minigamesPlayed){
+        TextDisplay doneField = new TextDisplay();
+        doneField.setFontColor(0, 0, 0, 0);
+        doneField.setBackgroundColor(255, 255, 255, 255);
+        doneField.setBorderColor(176, 176, 176, 255);
+        doneField.setFieldWidth(220);
+        doneField.setBorderWidth(2);
+        doneField.setBorderHeight(2);
+        doneField.setDrawStringX(6);
+        doneField.setDrawStringY(22);
+        doneField.setInput(String.valueOf(new Integer(minigamesPlayed)));
+        doneField.setHasBackground(true);
+        
+        doneField.createTextBox();
+        addObject(doneField, xCoord, yCoord);
+    }
+    
+    public void displayHighscoresButton(int xCoord, int yCoord){
+        TextDisplay highscoresButton = new TextDisplay();
+        highscoresButton.setTheGreenfootImage("opmaak/highscoresButton.png");
+        
+        highscoresButton.createTextBox();
+        addObject(highscoresButton, xCoord, yCoord);
     }
 }

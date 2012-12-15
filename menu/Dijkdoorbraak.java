@@ -2,8 +2,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
 
 public class Dijkdoorbraak extends World{
+    private boolean gameIsRunning;
+    
     private Timer gameTimer;
-    private TextArea textArea;
+    private TextDisplay theMessage;
     
     private Policeman policeman;
     private Soldier soldier;
@@ -15,7 +17,6 @@ public class Dijkdoorbraak extends World{
     private Cardboard cardboard;
     private Paper paper;
     private int[] itemsLeft;
-    //private int cementBagsLeft, gravelBagsLeft, sandBagsLeft, cardboardsLeft, papersLeft;
 
     private Helpers selectedActor = null;
     private Materials selectedMaterials = null;
@@ -36,6 +37,7 @@ public class Dijkdoorbraak extends World{
     public Dijkdoorbraak(){    
         // Create a new world with 640x640 cells with a cell size of 1x1 pixels.
         super(640, 640, 1);
+        gameIsRunning = false;
         
         // Fill the world with objects.
         setBackground("dijkdoorbraak/background.png");
@@ -45,12 +47,12 @@ public class Dijkdoorbraak extends World{
         waitWithDikeSpawns = 0;
         spotsLeft = 9;
         createItemsLeft();
-        setPaintOrder(Civilian.class,Soldier.class,Policeman.class,CementBag.class,SandBag.class,GravelBag.class,Cardboard.class,Paper.class,Dike.class);
+        setPaintOrder(TextDisplay.class, Civilian.class,Soldier.class,Policeman.class,CementBag.class,SandBag.class,GravelBag.class,Cardboard.class,Paper.class,Dike.class);
     }
     
     // This method will be called every act.
     public void act(){
-        if(gameStarted()){
+        if(gameIsRunning == true){
             if(waitWithDikeSpawns <= 0){
                 if(createDikeObject()){
                     if(anySpotsLeft()){
@@ -73,13 +75,18 @@ public class Dijkdoorbraak extends World{
                 }
                 
                 if(breakThroughPart == 8){
-                TextArea lose = new TextArea("lose");
-                addObject(lose, 320, 320);
-                Score.addScore(100 - gameTimer.getTimeLeft());
-                gameTimer.changeWorld();
+                    createMessage(320, 320, "You lost! Click to continue..");
+                    Score.addScore(-gameTimer.getTimeLeft());
+                    removeObject(gameTimer);
+                    Map.minigamesPlayed += 1;
+                    gameIsRunning = false;
                 }
                 
-                setBackground("dijkdoorbraak/background" + breakThroughPart + ".png");
+                if(breakThroughPart >= 9){
+                    gameTimer.changeWorld();
+                }else{
+                    setBackground("dijkdoorbraak/background" + breakThroughPart + ".png");
+                }
             }
             
             //movement Persona's
@@ -90,9 +97,10 @@ public class Dijkdoorbraak extends World{
         
         if(Greenfoot.mouseClicked(null)){
             MouseInfo mouse = Greenfoot.getMouseInfo();
-            List<TextArea> textAreas = getObjectsAt(mouse.getX(), mouse.getY(), TextArea.class);
-            if(!textAreas.isEmpty()){
-                removeObject(textArea);
+            List<TextDisplay> textDisplays = getObjectsAt(mouse.getX(), mouse.getY(), TextDisplay.class);
+            if(!textDisplays.isEmpty()){
+                removeObject(theMessage);
+                gameIsRunning = true;
                 
                 gameTimer = new Timer("Time left: ");
                 // Player must prevent the dike from breaking for 1 minute and 30 seconds.
@@ -129,12 +137,29 @@ public class Dijkdoorbraak extends World{
         paper = new Paper();
         addObject(paper, 265, 609);
         
-        textArea = new TextArea("Start");
-        addObject(textArea, 320, 320);
+        createMessage(320, 320, "Get ready! Click to start..");
     }
     
-    public boolean gameStarted(){
-        if(getObjects(TextArea.class).isEmpty()){
+    public void createMessage(int xCoord, int yCoord, String message){
+        theMessage = new TextDisplay();
+        theMessage.setBackgroundColor(255, 255, 255, 160);
+        theMessage.setBorderColor(0, 0, 0, 160);
+        theMessage.setFieldWidth(480);
+        theMessage.setFieldHeight(150);
+        theMessage.setFontSize(30.0f);
+        theMessage.setBorderWidth(5);
+        theMessage.setBorderHeight(5);
+        theMessage.setDrawStringX(50);
+        theMessage.setDrawStringY(90);
+        theMessage.setInput(message);
+        theMessage.setHasBackground(true);
+        
+        theMessage.createTextBox();
+        addObject(theMessage, xCoord, yCoord);
+    }
+    
+    public boolean textDisplayClicked(){
+        if(getObjects(TextDisplay.class).isEmpty()){
             return true;
         }else{
             return false;

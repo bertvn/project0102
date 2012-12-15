@@ -11,6 +11,7 @@ public class TextDisplay extends Actor{
     private Color backgroundColor;
 
     private String theGreenfootImage;
+    private String input;
     private float fontSize;
     private int fieldWidth;
     private int fieldHeight;
@@ -18,16 +19,19 @@ public class TextDisplay extends Actor{
     private int drawStringY;
     private int borderHeight;
     private int borderWidth;
+    private boolean hasBackground;
     
     
     public TextDisplay(){
         // Default values for all TextDisplays
         fontSize = 20.0f;
-        fontColor = new Color(0, 0, 0, 0);
+        fontColor = new Color(0, 0, 0);
         fieldWidth = 100;
-        fieldHeight = 100;
+        fieldHeight = 30;
         drawStringX = 0;
-        drawStringY = 0;
+        drawStringY = 15;
+        input = "";
+        hasBackground = false;
         
         // TextDisplays' TextArea specifics
         borderWidth = 5;
@@ -39,6 +43,10 @@ public class TextDisplay extends Actor{
     // All setters start here.
     public void setFontSize(float fontSize){
         this.fontSize = fontSize;
+    }
+    
+    public void setInput(String input){
+        this.input = input;
     }
 
     public void setFieldWidth(int fieldWidth){
@@ -67,8 +75,12 @@ public class TextDisplay extends Actor{
     
     public void setFontColor(int red, int green, int blue, int alpha){
         if(isTheColorInputCorrect(red, green, blue, alpha)){
-            fontColor = new Color(red, green, blue, alpha); 
+            fontColor = new Color(red, green, blue); 
         }
+    }
+    
+    public void setHasBackground(boolean hasBackground){
+        this.hasBackground = hasBackground;
     }
     
     public void setBorderColor(int red, int green, int blue, int alpha){
@@ -118,7 +130,7 @@ public class TextDisplay extends Actor{
     }
     
     // Use the TextBox to create a simple piece of text.
-    public void createTextBox(String input){
+    public void createTextBox(){
         // Check if theGreenFootImage was set, otherwise create a blanco image
         // with the specific heights.
         if(theGreenfootImage != null){
@@ -127,37 +139,25 @@ public class TextDisplay extends Actor{
             image = new GreenfootImage(fieldWidth, fieldHeight);
         }
         
+        if(hasBackground){
+            if(borderWidth == 0 || borderHeight == 0){
+                createAreaWithoutBorder();
+            } else{
+                createAreaWithBorder(borderWidth, borderHeight);
+            }
+        }
+        
         // Create the default dont with given fontsize and color.
         font = image.getFont();
         font = font.deriveFont(fontSize);
         image.setFont(font);
         image.setColor(fontColor);
-        
+          
         // Draw the string in the image with the input, on the given coordinates.
         image.drawString(input, drawStringX, drawStringY);
         
-        // For testing purposes a print with all the variables.
-        System.out.println("input = " + input);
-        debug();
-
-    }
-    
-    // Use the TextArea to create a piece of text in an area (with background)
-    public void createTextArea(String input) {       
-        // Check wheter the user want borders or not.
-        if(borderWidth == 0 || borderHeight == 0){
-            createAreaWithoutBorder();
-        }else{
-            createAreaWithBorder(borderWidth, borderHeight);
-        } 
-        
-        // Run createTextBox() to create the rest of the image.
-        createTextBox(input);
-    }
-    
-    // This places the image
-    public void placeImage(){
-       setImage(image);
+        // This places the image
+        setImage(image);
     }
     
     // Folowing prints are for debugging only.

@@ -30,7 +30,9 @@ public class Timer extends Actor{
     // This method will be called every act.
     public void act(){
         if(endGame()){ // Check if the timer has reached 0.
-            TextArea win = new TextArea("win");
+            TextDisplay win = new TextDisplay();
+            win.setInput("Win");
+            
             getWorld().addObject(win, 320, 320);
             Score.addScore(100);
             changeWorld();
