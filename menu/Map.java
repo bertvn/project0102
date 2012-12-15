@@ -210,8 +210,7 @@ public class Map extends World
         TextDisplay topPanel = new TextDisplay();
         topPanel.setTheGreenfootImage("opmaak/topPanel.png");
         topPanel.setFontColor(255, 255, 255, 0);
-        topPanel.setDrawStringX(40);
-        topPanel.setDrawStringY(28);
+        topPanel.setDrawString(40, 28);
         topPanel.setInput("Dag " + DAY);
         
         topPanel.createTextBox();
@@ -239,7 +238,7 @@ public class Map extends World
         TextDisplay doneText = new TextDisplay();
         doneText.setFontColor(255, 255, 255, 0);
         doneText.setInput("Voltooide calamiteiten:");
-        doneText.setFieldWidth(200);
+        doneText.setField(30, 200);
        
         doneText.createTextBox();
         addObject(doneText, xCoord, yCoord);
@@ -250,11 +249,9 @@ public class Map extends World
         scoreField.setFontColor(0, 0, 0, 0);
         scoreField.setBackgroundColor(255, 255, 255, 255);
         scoreField.setBorderColor(176, 176, 176, 255);
-        scoreField.setFieldWidth(220);
-        scoreField.setBorderWidth(2);
-        scoreField.setBorderHeight(2);
-        scoreField.setDrawStringX(6);
-        scoreField.setDrawStringY(22);
+        scoreField.setField(30, 220);
+        scoreField.setBorder(2, 2);
+        scoreField.setDrawString(6, 22);
         scoreField.setInput(String.valueOf(new Integer(Score.score)));
         scoreField.setHasBackground(true);
         
@@ -267,11 +264,9 @@ public class Map extends World
         doneField.setFontColor(0, 0, 0, 0);
         doneField.setBackgroundColor(255, 255, 255, 255);
         doneField.setBorderColor(176, 176, 176, 255);
-        doneField.setFieldWidth(220);
-        doneField.setBorderWidth(2);
-        doneField.setBorderHeight(2);
-        doneField.setDrawStringX(6);
-        doneField.setDrawStringY(22);
+        doneField.setField(30, 220);
+        doneField.setBorder(2, 2);
+        doneField.setDrawString(6, 22);
         doneField.setInput(String.valueOf(new Integer(minigamesPlayed)));
         doneField.setHasBackground(true);
         

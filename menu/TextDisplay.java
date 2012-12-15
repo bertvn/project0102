@@ -48,39 +48,34 @@ public class TextDisplay extends Actor{
     public void setInput(String input){
         this.input = input;
     }
-
-    public void setFieldWidth(int fieldWidth){
-        this.fieldWidth = fieldWidth;
-    }
     
-    public void setFieldHeight(int fieldHeight){
+    // backgroundColor has to be a pre-defined color here. Ie: Color.BLACK or Color.White
+    // Use setBackgroundColor to create a specific border color.
+    public void setField(int fieldHeight, int fieldWidth){
+        this.fieldWidth = fieldWidth;
         this.fieldHeight = fieldHeight;
     }
     
-    public void setBorderHeight(int borderHeight){
+    // borderColor has to be a pre-defined color here. Ie: Color.BLACK or Color.White
+    // Use setBorderColor to create a specific border color.
+    public void setBorder(int borderHeight, int borderWidth){
         this.borderHeight = borderHeight;
-    }
-    
-    public void setBorderWidth(int borderWidth){
         this.borderWidth = borderWidth;
     }
     
-    public void setDrawStringX(int drawStringX){
+    public void setDrawString(int drawStringX, int drawStringY){
         this.drawStringX = drawStringX;
+        this.drawStringY = drawStringY;
     }
     
-    public void setDrawStringY(int drawStringY){
-        this.drawStringY = drawStringY;
+    public void setHasBackground(boolean hasBackground){
+        this.hasBackground = hasBackground;
     }
     
     public void setFontColor(int red, int green, int blue, int alpha){
         if(isTheColorInputCorrect(red, green, blue, alpha)){
             fontColor = new Color(red, green, blue); 
         }
-    }
-    
-    public void setHasBackground(boolean hasBackground){
-        this.hasBackground = hasBackground;
     }
     
     public void setBorderColor(int red, int green, int blue, int alpha){
