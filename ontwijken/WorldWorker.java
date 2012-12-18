@@ -10,6 +10,8 @@ import java.awt.Color;
 public class WorldWorker extends World
 {
 
+    private int speed;
+    private int timer = 0;
     /**
      * Constructor for objects of class WorldWorde.
      * 
@@ -30,5 +32,41 @@ public class WorldWorker extends World
         
         // add the car
         addObject(new Car(), 320, 500);
+        
+        //choose speed
+        speed = 1;
+        
+        randomSpawner();
+    }
+    
+    public void act(){
+        speedUp();
+    }
+    
+    public int getSpeed(){
+        return speed;
+    }
+    
+    public void setSpeed(int speed){
+        this.speed = speed;
+    }
+    
+    public void speedUp(){
+        timer++;
+        if(timer == 150){
+            randomSpawner();
+        }
+        if(timer == 300){
+            speed++;
+            timer = 0;
+            randomSpawner();
+        }
+    }
+    
+    public void randomSpawner(){
+        int amount = (int) (Math.random()*5)+1;
+        for(int i = 0; i < amount; i++){
+            addObject(new Obstacles(), (int) (Math.random() * 408)+118, 0);
+        }
     }
 }

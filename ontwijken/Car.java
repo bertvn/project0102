@@ -34,10 +34,10 @@ public class Car extends Actor
         
         switch(direction) {
             case 0 :
-                setLocation(getX() - 1, getY());
+                setLocation(getX() - 2, getY());
                 break;
             case 1 :
-                setLocation(getX() + 1, getY());
+                setLocation(getX() + 2, getY());
                 break;
                 
         }
