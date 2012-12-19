@@ -11,10 +11,13 @@ public class WorldWorker extends World
 {
 
     public static int speed; // set speed as global variable
+    public static int distance; //distance to goal
 
     private int speedTimer = 0;
     private int spawnTimer = 0;
     public static int score = 0;
+    private boolean placed = false; //true if finish is placed
+    
     
     /**
      * Constructor for objects of class WorldWorde.
@@ -42,7 +45,12 @@ public class WorldWorker extends World
         
         //choose speed
         speed = 1;
+        
+        //set distance
+        distance = 43200;
 
+        //set Timer
+        addObject(new TimerDisplay(),60,34);
         
         randomSpawner(); // call random spawner 
     }
@@ -50,6 +58,7 @@ public class WorldWorker extends World
     public void act(){
         speedUp(); // call the speed up function
         spawnRate(); // call the spawn function
+        decreaseDistance(); //decreases distance to finish
 
     }
     //return speed
@@ -105,4 +114,13 @@ public class WorldWorker extends World
     public String getScoreString(){
         return "" + score;
    } 
+   
+   public void decreaseDistance(){
+       distance -= speed;
+       
+       if(distance <= 0 && !placed){
+           addObject(new BurningCar(),320,0);
+           placed = true;
+        }
+    }
 }

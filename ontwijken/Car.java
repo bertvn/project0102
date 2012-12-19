@@ -33,9 +33,6 @@ public class Car extends Actor
             setRotation(0);
         }
         
-        if(getX() <= 137 || getX() >= 503){
-            endGame();
-        }
         
     }    
     //moves firecar left or right if button pressed
@@ -43,10 +40,14 @@ public class Car extends Actor
         
         switch(direction) {
             case 0 :
-                setLocation(getX() - 2, getY());
+                if(getX() > 137){
+                    setLocation(getX() - 2, getY());
+                }
                 break;
             case 1 :
-                setLocation(getX() + 2, getY());
+                if(getX() < 503){
+                    setLocation(getX() + 2, getY());
+                }
                 break;
                 
         }

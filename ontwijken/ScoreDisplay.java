@@ -21,8 +21,6 @@ public class ScoreDisplay extends Actor
     private int scoreNew = 0;
     
     private final float FONT_SIZE = 20.0f;
-    private final int WIDTH = 120;
-    private final int HEIGHT = 70;
     
     //place initial score image
     public ScoreDisplay(){
@@ -40,7 +38,7 @@ public class ScoreDisplay extends Actor
     }    
     
     public void updateScore(){
-        image = new GreenfootImage("scoreDisplay.png");  // prepare image
+        image = new GreenfootImage("scoreDisplay.png");  // place background image
         font = image.getFont();  // get current font
         font = font.deriveFont(FONT_SIZE);  // set font size
         image.setFont(font);  // set font
