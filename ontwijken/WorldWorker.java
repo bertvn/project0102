@@ -47,12 +47,17 @@ public class WorldWorker extends World
         speed = 1;
         
         //set distance
-        distance = 43200;
+        distance = 40000;
 
         //set Timer
         addObject(new TimerDisplay(),60,34);
         
         randomSpawner(); // call random spawner 
+        
+        //sets order in which objects are drawn
+        setPaintOrder(Car.class,BurningCar.class,ScoreDisplay.class,TimerDisplay.class,ObsCar.class,Cracks.class,Road.class,Grass.class);
+        
+        
     }
     
     public void act(){
@@ -87,7 +92,7 @@ public class WorldWorker extends World
         
         if(speedTimer == 200){ //when speed timer = 200, speed up
             // if speed lower than max, increase speed
-            if(speed < 25){
+            if(speed < 20){
                 speed++;
             }
             speedTimer = 0; // reset speed timer
