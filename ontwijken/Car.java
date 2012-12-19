@@ -18,14 +18,19 @@ public class Car extends Actor
         // prepare image
         GreenfootImage img = new GreenfootImage("car.png");
         setImage(img); // set image
+        setRotation(0);
     }
     
     public void act() 
     {          
         if(Greenfoot.isKeyDown("left")) {
             move(0);
+            setRotation(355);
         } else if(Greenfoot.isKeyDown("right")) {
             move(1);
+            setRotation(5);
+        } else{
+            setRotation(0);
         }
         
     }    

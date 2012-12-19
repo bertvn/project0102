@@ -11,34 +11,17 @@ public class Obstacles extends Actor
     /**
      * Act - do whatever the Obstacels wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    
-    
-    public Obstacles(){
-        int random = (int) Math.round(Math.random()*5);
-        
-        switch(random){
-            case 0: setImage("obstacle0.png");
-                    break;
-            case 1: setImage("obstacle1.png");
-                    break;
-            case 2: setImage("obstacle2.png");
-                    break;
-            case 3: setImage("obstacle3.png");
-                    break;
-            case 4: setImage("obstacle4.png");
-                    break;
-            case 5: setImage("obstacle5.png");
-                    break;
-        }
-        setRotation((int)(Math.random() * 360));
-        
-    }
+     */  
+    private int range;
+    private int scoreReduce;
+    private int scoreIncrease;
     
     public void act() 
     {
         move();
         if(getY() == 639){
+            WorldWorker ww = (WorldWorker) getWorld();
+            ww.addScore(scoreIncrease);
             getWorld().removeObject(this);
             return;
         }
@@ -51,12 +34,25 @@ public class Obstacles extends Actor
     }
     
     public void isHit(){
-        List<Car> cr = getObjectsInRange(39, Car.class);
+        List<Car> cr = getObjectsInRange(range, Car.class);
         if(!cr.isEmpty()){
             WorldWorker ww = (WorldWorker) getWorld();
             ww.setSpeed(1);
+            ww.addScore(scoreReduce);
             getWorld().removeObject(this);
         }
+    }
+    
+    public void setRange(int val){
+        range = val;
+    }
+    
+    public void setScoreDecrease(int val){
+        scoreReduce = val;
+    }
+    
+    public void setScoreIncrease(int val){
+        scoreIncrease = val;
     }
     
 }
