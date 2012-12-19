@@ -15,15 +15,21 @@ public class Cracks extends Obstacles
    
     
     public Cracks(){
+        //sets image
         setImage("cracks.png");
+        //sets random rotation
         setRotation((int)(Math.random() * 360));
+        //sets range for hitdetection
         setRange(57);
+        //sets score increase for when crack is evaded
         setScoreIncrease(20);
+        //sets score decrease for when crack is hit
         setScoreDecrease(-100);
     }
     
    public void act() 
     {
+        //calls the act of Obstacles
         super.act();
     }    
        

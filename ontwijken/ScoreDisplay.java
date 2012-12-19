@@ -17,38 +17,35 @@ public class ScoreDisplay extends Actor
     private GreenfootImage image;
     private Font font;
     private Color color;
-    private int score = 0;
+    private int scoreOld = 0;
+    private int scoreNew = 0;
     
     private final float FONT_SIZE = 20.0f;
-    private final int WIDTH = 108;
-    private final int HEIGHT = 30;
+    private final int WIDTH = 120;
+    private final int HEIGHT = 70;
     
-    
+    //place initial score image
     public ScoreDisplay(){
-        
         updateScore();
     }
     
     public void act() 
     {
         // Add your action code here.
-        WorldWorker ww = (WorldWorker) getWorld();
-        score = ww.getScore();
-        updateScore();
+        scoreNew = WorldWorker.score;
+        if(scoreOld != scoreNew){
+            updateScore();
+            scoreOld = scoreNew;
+        }
     }    
     
     public void updateScore(){
-        WorldWorker ww = (WorldWorker) getWorld();
-        image = new GreenfootImage(WIDTH, HEIGHT);  // prepare image
-        image.setColor(new Color(176, 176, 176)); // set color
-        image.fill(); // fill with current color
-        image.setColor(Color.WHITE);  // reset col9or
-        image.fillRect(2, 2, image.getWidth() -4, image.getHeight() -4);  // fill rectangle with color set
+        image = new GreenfootImage("scoreDisplay.png");  // prepare image
         font = image.getFont();  // get current font
         font = font.deriveFont(FONT_SIZE);  // set font size
         image.setFont(font);  // set font
         image.setColor(Color.BLACK);  // set font color
-        image.drawString("" + score, 4, 22);   // place text
+        image.drawString("" + scoreNew, 10, 30);   // place score
         setImage(image); 
         
     }

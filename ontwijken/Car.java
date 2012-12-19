@@ -33,8 +33,12 @@ public class Car extends Actor
             setRotation(0);
         }
         
+        if(getX() <= 137 || getX() >= 503){
+            endGame();
+        }
+        
     }    
-    
+    //moves firecar left or right if button pressed
     public void move(int direction) {
         
         switch(direction) {
@@ -46,5 +50,9 @@ public class Car extends Actor
                 break;
                 
         }
+    }
+    
+    public void endGame(){
+        Greenfoot.stop();
     }
 }

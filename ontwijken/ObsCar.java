@@ -14,8 +14,11 @@ public class ObsCar extends Obstacles
      */
     
     public ObsCar(){
+        //chooses random number between 0 and 5
         int random = (int) Math.round(Math.random()*5);
         
+        //chooses image depending on number
+        //kan setImage("obstacle" + random + ".png" worden
         switch(random){
             case 0: setImage("obstacle0.png");
                     break;
@@ -30,15 +33,20 @@ public class ObsCar extends Obstacles
             case 5: setImage("obstacle5.png");
                     break;
         }
+        //sets random rotation
         setRotation((int)(Math.random() * 360));
+        //sets range for hitdetection
         setRange(55);
+        //sets score increase for when car is evaded
         setScoreIncrease(10);
+        //sets score decrease for when car is hit
         setScoreDecrease(-50);
     }
     
     public void act() 
     {
         // Add your action code here.
+        //calls the act of Obstacles
         super.act();
     }    
 }
