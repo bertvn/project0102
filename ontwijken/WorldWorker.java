@@ -10,7 +10,8 @@ import java.awt.Color;
 public class WorldWorker extends World
 {
 
-    public static int speed;
+    public static int speed; // set speed as global variable
+
     private int speedTimer = 0;
     private int spawnTimer = 0;
     public static int score = 0;
@@ -41,50 +42,58 @@ public class WorldWorker extends World
         
         //choose speed
         speed = 1;
-        //spawn obstacles
-        randomSpawner();
+
+        
+        randomSpawner(); // call random spawner 
     }
     
     public void act(){
-        speedUp();
-        spawnRate();
-        if(score < 0){
-            score = 0;
-        }
+        speedUp(); // call the speed up function
+        spawnRate(); // call the spawn function
+
     }
     //return speed
     public int getSpeed(){
         return speed;
     }
+
     //set speed
     public void setSpeed(int speed){
         this.speed = speed;
+
     }
     //choses when to spawn
     public void spawnRate(){
-        spawnTimer++;
-        if(spawnTimer >= (260 - 10 * speed)){
-            randomSpawner();
-            spawnTimer = 0;
+        spawnTimer++; // add 1 to spawnTimer
+        
+        int condition = 200 - (12 * speed); // define the condition
+        if(spawnTimer >= condition){ // if spawn timer = at current needed amount
+            randomSpawner(); // spawn obstakels
+            spawnTimer = 0; // reset spawnTimer
         }
     }
     //increases speed
     public void speedUp(){
-        speedTimer++;
+        speedTimer++; // add speed to timer
         
-        if(speedTimer == 300){
+        if(speedTimer == 200){ //when speed timer = 200, speed up
             // if speed lower than max, increase speed
             if(speed < 25){
                 speed++;
             }
-            speedTimer = 0;
+            speedTimer = 0; // reset speed timer
         }
     }
     //spawns obstacles
     public void randomSpawner(){
-        int amount = (int) (Math.random()*5);
+
+        int amount = (int) (Math.random()*5); // get random amount of obstakels to place
         for(int i = 0; i < amount; i++){
-            addObject(new ObsCar(), (int) (Math.random() * 408)+118, 0);
+            addObject(new ObsCar(), (int) (Math.random() * 408)+118, 0); /* place row of obstakels
+                                                                          * on random positions
+                                                                          * till random amount is 
+                                                                          * achieved 
+                                                                          */
         }
     }
     
@@ -95,5 +104,5 @@ public class WorldWorker extends World
     //return score as string
     public String getScoreString(){
         return "" + score;
-    }
+   } 
 }
