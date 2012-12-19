@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=
+comment0.target=void\ act()
+comment1.params=
+comment1.target=void\ move()
+comment2.params=
+comment2.target=void\ isHit()
+comment3.params=val
+comment3.target=void\ setRange(int)
+comment4.params=val
+comment4.target=void\ setScoreDecrease(int)
+comment5.params=val
+comment5.target=void\ setScoreIncrease(int)
+numComments=6
