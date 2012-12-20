@@ -28,34 +28,11 @@ public class WorldWorker extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(640, 640, 1); 
         
-        // add the grass on the left
-        addObject(new Grass(), 59, 320);
-        
-        // add the road
-        addObject(new Road(), 322, 320);
-        
-        // add the grass on the right
-        addObject(new Grass(), 585, 320);
-        
-        // add the car
-        addObject(new Car(), 320, 500);
-        
-        //add scoreDisplay
-        addObject(new ScoreDisplay(), 580, 34);
-        
-        //choose speed
-        speed = 1;
-        
-        //set distance
-        distance = 40000;
-
-        //set Timer
-        addObject(new TimerDisplay(),60,34);
-        
-        randomSpawner(); // call random spawner 
+        //populate world
+        populate();
         
         //sets order in which objects are drawn
-        setPaintOrder(Car.class,BurningCar.class,ScoreDisplay.class,TimerDisplay.class,ObsCar.class,Cracks.class,Road.class,Grass.class);
+        setPaintOrder(BAM.class,Car.class,BurningCar.class,ScoreDisplay.class,TimerDisplay.class,ObsCar.class,Cracks.class,RoadMarking.class,Trees.class,Road.class,Grass.class);
         
         
     }
@@ -127,5 +104,38 @@ public class WorldWorker extends World
            addObject(new BurningCar(),320,0);
            placed = true;
         }
+    }
+    
+    public void populate(){
+        // add the grass on the left
+        addObject(new Grass(), 59, 320);
+        
+        // add the road
+        addObject(new Road(), 320, 320);
+        
+        // add the grass on the right
+        addObject(new Grass(), 583, 320);
+        
+        // add the car
+        addObject(new Car(), 320, 500);
+        
+        //add scoreDisplay
+        addObject(new ScoreDisplay(), 580, 34);
+        
+        //choose speed
+        speed = 1;
+        
+        //set distance
+        distance = 40000;
+
+        //set Timer
+        addObject(new TimerDisplay(),60,34);
+        
+        //add RoadMarkings
+        addObject(new RoadMarking(),320,0);
+        addObject(new RoadMarking(),320,320);
+        
+        
+        randomSpawner(); // call random spawner 
     }
 }

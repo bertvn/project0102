@@ -15,9 +15,6 @@ public class Grass extends DesignObjects
     private int speed;
     
     public Grass() {
-        // get variables from parent
-        super();
-        
         // prepare the image
         img = new GreenfootImage("grass01.jpg");
         setImage(img); // set the image

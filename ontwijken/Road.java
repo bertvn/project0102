@@ -15,9 +15,6 @@ public class Road extends DesignObjects
     private int speed;
     
     public Road() {
-        // get variables from parent
-        super();
-        
         // prepare the image
         img = new GreenfootImage("road.jpg");
         setImage(img); // set the image    

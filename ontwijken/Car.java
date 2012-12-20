@@ -1,5 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Color;
+import java.util.List;
 
 /**
  * Write a description of class Car here.
@@ -23,6 +24,8 @@ public class Car extends Actor
     
     public void act() 
     {          
+        hitDetection();
+        
         if(Greenfoot.isKeyDown("left")) {
             move(0);
             setRotation(355);
@@ -49,6 +52,38 @@ public class Car extends Actor
                     setLocation(getX() + 2, getY());
                 }
                 break;
+                
+        }
+    }
+    
+    public void hitDetection(){
+        List<ObsCar> oc = getObjectsInRange(55, ObsCar.class);
+        if(!oc.isEmpty()){
+            WorldWorker.speed = 1;
+            
+            for(ObsCar ocar : oc){
+                getWorld().addObject(new BAM(),ocar.getX(),ocar.getY());
+                getWorld().removeObject(ocar);
+                if(WorldWorker.score > 50){
+                    WorldWorker.score -= 50;
+                }else{
+                    WorldWorker.score = 0;
+                }
+            }
+                
+        }
+        List<Cracks> ck = getObjectsInRange(57, Cracks.class);
+        if(!ck.isEmpty()){
+            WorldWorker.speed = 1;
+            
+            for(Cracks cr : ck){
+                //getWorld().removeObject(cr);
+                if(WorldWorker.score > 100){
+                    WorldWorker.score -= 100;
+                }else{
+                    WorldWorker.score = 0;
+                }
+            }
                 
         }
     }
