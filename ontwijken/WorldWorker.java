@@ -86,6 +86,10 @@ public class WorldWorker extends World
                                                                           * achieved 
                                                                           */
         }
+        
+        if(amount == 0){
+            addObject(new Cracks(), (int) (Math.random() * 408)+118, 0);
+        }
     }
     
     //return score
