@@ -4,6 +4,7 @@ public class Civilian extends Helpers{
     public Civilian(){
         super.setSpeed(3);
         super.setPower(1);
+        super.setScoreDecrease(50);
         setImage("dijkdoorbraak/civilian.png");
     }
     

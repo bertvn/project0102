@@ -6,6 +6,7 @@ public class Paper extends Materials{
         super.setSpeedReducement(0);
         super.setBaseHealth(20);
         super.setWeight(0);
+        super.setScoreDecrease(10);
         setImage("dijkdoorbraak/paper.png");
     }
 
