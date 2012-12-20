@@ -100,16 +100,18 @@ public class WorldWorker extends World
     public String getScoreString(){
         return "" + score;
    } 
-   
+   //decreases distance to win state
    public void decreaseDistance(){
        distance -= speed;
-       
+       //if distance is 0 place object in world
+       // boolean placed to make sure it is only placed once
        if(distance <= 0 && !placed){
            addObject(new BurningCar(),320,0);
            placed = true;
         }
     }
     
+    //fills world
     public void populate(){
         // add the grass on the left
         addObject(new Grass(), 59, 320);
