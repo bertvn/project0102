@@ -14,12 +14,14 @@ public class Car extends Actor
      * Act - do whatever the Car wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    private GreenfootSound crash;
     
     public Car() {       
         // prepare image
         GreenfootImage img = new GreenfootImage("car.png");
         setImage(img); // set image
         setRotation(0);
+        crash = new GreenfootSound("crash.mp3");
     }
     
     public void act() 
@@ -71,6 +73,9 @@ public class Car extends Actor
                 getWorld().addObject(new BAM(),ocar.getX(),ocar.getY());
                 //remove ObsCar
                 getWorld().removeObject(ocar);
+                //play crash sound
+                crash.play();
+                System.out.println(crash.toString());
                 //if score is higher than 50
                 if(WorldWorker.score > 50){
                     //score decreases with 50 points

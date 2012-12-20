@@ -21,6 +21,7 @@ public class TimerDisplay extends Actor{
         if(endGame()){ // Check if the timer has reached 0.
             //TextArea win = new TextArea("win");
             //getWorld().addObject(win, 320, 320);
+            WorldWorker.music.stop();
             Greenfoot.stop();
         }else{
             currentValue--;

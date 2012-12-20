@@ -17,7 +17,7 @@ public class WorldWorker extends World
     private int spawnTimer = 0;
     public static int score = 0;
     private boolean placed = false; //true if finish is placed
-    
+    public static GreenfootSound music;
     
     /**
      * Constructor for objects of class WorldWorde.
@@ -34,6 +34,8 @@ public class WorldWorker extends World
         //sets order in which objects are drawn
         setPaintOrder(BAM.class,Car.class,BurningCar.class,ScoreDisplay.class,TimerDisplay.class,ObsCar.class,Cracks.class,RoadMarking.class,Trees.class,Road.class,Grass.class);
         
+        //play music
+        music = new GreenfootSound("Breakdown.mp3");
         
     }
     
@@ -41,7 +43,7 @@ public class WorldWorker extends World
         speedUp(); // call the speed up function
         spawnRate(); // call the spawn function
         decreaseDistance(); //decreases distance to finish
-
+        music.play(); //starts music
     }
     //return speed
     public int getSpeed(){
