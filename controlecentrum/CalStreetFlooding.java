@@ -1,23 +1,29 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class CalStreetFlooding extends Calamities{
-    private String streetState;
+    private Boolean streetIsOpen;
+    private Boolean hasShortCircuit;
 
     public CalStreetFlooding(int imgNr){
-        streetState = "open";
+        streetIsOpen = true;
         setImage("overstroming" + imgNr + ".png");
     }
     
     public void act(){
-        if(streetState == "open"){
-            
+        if(streetIsOpen == true){
+            if((int) (Math.random() * 1000) == 1){
+                createNewShortCircuit();
+            }
         }
     }
     
     public void closeStreet(){
-        streetState = "closed";
+        streetIsOpen = false;
     }
     
+    public void createNewShortCircuit(){
+        getWorld().addObject(new CalShortCircuit(), getX()+5, getY()+5);
+    }
     
     /* Not using this for now.
      * public void setStreetState(String newState){
