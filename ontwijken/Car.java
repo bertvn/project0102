@@ -75,7 +75,6 @@ public class Car extends Actor
                 getWorld().removeObject(ocar);
                 //play crash sound
                 crash.play();
-                System.out.println(crash.toString());
                 //if score is higher than 50
                 if(WorldWorker.score > 50){
                     //score decreases with 50 points
