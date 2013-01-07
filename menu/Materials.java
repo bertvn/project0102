@@ -6,6 +6,9 @@ public class Materials extends Actor{
     private int baseHealth;
     private int weight;
     
+    //amount it costs to use this Material
+    private int scoreDecrease;
+    
     public void act(){
         if(isMaterialBroken()){
             removeMaterial();
@@ -60,6 +63,16 @@ public class Materials extends Actor{
     }
     
     public void deselect(){
+    }
+    
+    //sets scoreDecrease
+    public void setScoreDecrease(int val){
+        scoreDecrease = val;
+    }
+    
+    //decreases score
+    public void ScoreDecrease(){
+        Dijkdoorbraak.score -= scoreDecrease;
     }
 }
  

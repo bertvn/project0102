@@ -21,6 +21,7 @@ public class BurningCar extends Actor
     {
         // Add your action code here.
         if(getY() >= 320){
+            WorldWorker.music.stop();
             endGame();
         } else{
             move();

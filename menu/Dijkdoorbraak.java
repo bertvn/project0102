@@ -32,6 +32,7 @@ public class Dijkdoorbraak extends World{
     private int newSpotY;
     
     private static int breakThroughPart;
+    public static int score;
 
     // Constructor of the class WorldSpawner.
     public Dijkdoorbraak(){    
@@ -47,7 +48,8 @@ public class Dijkdoorbraak extends World{
         waitWithDikeSpawns = 0;
         spotsLeft = 9;
         createItemsLeft();
-        setPaintOrder(TextDisplay.class, Civilian.class,Soldier.class,Policeman.class,CementBag.class,SandBag.class,GravelBag.class,Cardboard.class,Paper.class,Dike.class);
+        setPaintOrder(TextDisplay.class,ScoreDisplayer.class,Civilian.class,Soldier.class,Policeman.class,CementBag.class,SandBag.class,GravelBag.class,Cardboard.class,Paper.class,Dike.class);
+        score = 3500;
     }
     
     // This method will be called every act.
@@ -76,7 +78,7 @@ public class Dijkdoorbraak extends World{
                 
                 if(breakThroughPart == 8){
                     createMessage(320, 320, "You lost! Click to continue..");
-                    Score.addScore(-gameTimer.getTimeLeft());
+                    Score.addScore(-500);
                     removeObject(gameTimer);
                     Map.minigamesPlayed += 1;
                     gameIsRunning = false;
@@ -107,6 +109,7 @@ public class Dijkdoorbraak extends World{
                 // Therefor we set the timer to 90 seconds.
                 gameTimer.setCurrentValue(90);
                 addObject(gameTimer, 320, 25);
+                addObject(new ScoreDisplayer(),579,25);
             }
         }
     }
@@ -268,6 +271,8 @@ public class Dijkdoorbraak extends World{
                 //select 1
                 Dike selectedDike = dk.get(0);
                 selectedActor.startMovement(selectedDike.getX(), selectedDike.getY()+40);
+                selectedActor.ScoreDecrease();
+                selectedMaterials.ScoreDecrease();
                 selectedActor.setHolding(selectedMaterials);
                 
                 if(CementBag.class.isInstance(selectedMaterials) && !(getItemsLeft(0) <= 1)){

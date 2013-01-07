@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-import java.util.List;
+
 /**
  * Write a description of class Cracks here.
  * 
@@ -19,12 +19,9 @@ public class Cracks extends Obstacles
         setImage("cracks.png");
         //sets random rotation
         setRotation((int)(Math.random() * 360));
-        //sets range for hitdetection
-        setRange(57);
+        
         //sets score increase for when crack is evaded
         setScoreIncrease(20);
-        //sets score decrease for when crack is hit
-        setScoreDecrease(-100);
     }
     
    public void act() 

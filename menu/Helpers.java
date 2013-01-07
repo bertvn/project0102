@@ -13,6 +13,9 @@ public class Helpers extends Actor{
     private int power;
     private int tempSpeed;
     
+    //amount it costs to use this Material
+    private int scoreDecrease;
+    
     public Helpers(){
 
     }
@@ -129,5 +132,15 @@ public class Helpers extends Actor{
     
     public void deselect(){
         
+    }
+    
+    //sets scoreDecrease
+    public void setScoreDecrease(int val){
+        scoreDecrease = val;
+    }
+    
+    //decreases score
+    public void ScoreDecrease(){
+        Dijkdoorbraak.score -= scoreDecrease;
     }
 }

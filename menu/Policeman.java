@@ -4,6 +4,7 @@ public class Policeman extends Helpers{
     public Policeman(){
         super.setSpeed(4);
         super.setPower(2);
+        super.setScoreDecrease(100);
         setImage("dijkdoorbraak/policeman.png");
     }
     
