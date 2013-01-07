@@ -6,6 +6,7 @@ public class Cardboard extends Materials{
         super.setSpeedReducement(1);
         super.setBaseHealth(20);
         super.setWeight(1);
+        super.setScoreDecrease(20);
         setImage("dijkdoorbraak/cardboard.png");
     }
 

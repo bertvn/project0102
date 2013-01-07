@@ -34,7 +34,7 @@ public class Timer extends Actor{
             win.setInput("Win");
             
             getWorld().addObject(win, 320, 320);
-            Score.addScore(100);
+            Score.addScore(Dijkdoorbraak.score);
             changeWorld();
         }else{
             currentValue--;

@@ -17,7 +17,7 @@ public class WorldWorker extends World
     private int spawnTimer = 0;
     public static int score = 0;
     private boolean placed = false; //true if finish is placed
-    
+    public static GreenfootSound music;
     
     /**
      * Constructor for objects of class WorldWorde.
@@ -34,6 +34,8 @@ public class WorldWorker extends World
         //sets order in which objects are drawn
         setPaintOrder(BAM.class,Car.class,BurningCar.class,ScoreDisplay.class,TimerDisplay.class,ObsCar.class,Cracks.class,RoadMarking.class,Trees.class,Road.class,Grass.class);
         
+        //play music
+        music = new GreenfootSound("Breakdown.mp3");
         
     }
     
@@ -41,7 +43,7 @@ public class WorldWorker extends World
         speedUp(); // call the speed up function
         spawnRate(); // call the spawn function
         decreaseDistance(); //decreases distance to finish
-
+        music.play(); //starts music
     }
     //return speed
     public int getSpeed(){
@@ -86,6 +88,10 @@ public class WorldWorker extends World
                                                                           * achieved 
                                                                           */
         }
+        
+        if(amount == 0){
+            addObject(new Cracks(), (int) (Math.random() * 408)+118, 0);
+        }
     }
     
     //return score
@@ -96,16 +102,18 @@ public class WorldWorker extends World
     public String getScoreString(){
         return "" + score;
    } 
-   
+   //decreases distance to win state
    public void decreaseDistance(){
        distance -= speed;
-       
+       //if distance is 0 place object in world
+       // boolean placed to make sure it is only placed once
        if(distance <= 0 && !placed){
            addObject(new BurningCar(),320,0);
            placed = true;
         }
     }
     
+    //fills world
     public void populate(){
         // add the grass on the left
         addObject(new Grass(), 59, 320);
@@ -135,6 +143,26 @@ public class WorldWorker extends World
         addObject(new RoadMarking(),320,0);
         addObject(new RoadMarking(),320,320);
         
+        //add trees
+        //right hand side
+        addObject(new Trees(),567,65);
+        addObject(new Trees(),605,143);
+        addObject(new Trees(),564,221);
+        addObject(new Trees(),605,301);
+        addObject(new Trees(),565,404);
+        addObject(new Trees(),614,477);
+        addObject(new Trees(),567,538);
+        addObject(new Trees(),610,608);
+        
+        //left hand side
+        addObject(new Trees(),81,59);
+        addObject(new Trees(),37,128);
+        addObject(new Trees(),79,183);
+        addObject(new Trees(),29,264);
+        addObject(new Trees(),77,364);
+        addObject(new Trees(),27,434);
+        addObject(new Trees(),95,517);
+        addObject(new Trees(),37,620);
         
         randomSpawner(); // call random spawner 
     }
