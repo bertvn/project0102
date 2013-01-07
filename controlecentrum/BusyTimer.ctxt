@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=prefix
+comment0.target=BusyTimer(java.lang.String)
+comment1.params=
+comment1.target=void\ act()
+comment2.params=
+comment2.target=void\ updateImage()
+comment3.params=currentValue
+comment3.target=void\ setCurrentValue(int)
+comment4.params=
+comment4.target=int\ getCurrentValue()
+comment5.params=
+comment5.target=int\ getTimeLeft()
+numComments=6
