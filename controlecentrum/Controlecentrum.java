@@ -9,6 +9,8 @@ public class Controlecentrum extends World{
     private int newSpotX;
     private int newSpotY;
     
+    private static int  xCoordCalamityTimer = 500;
+    
     public Controlecentrum(){    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(640, 640, 1);
@@ -75,4 +77,16 @@ public class Controlecentrum extends World{
             return true;
         }
     }
+    
+    public static int getXCoord(){
+        return xCoordCalamityTimer;
+    }
+    
+    public static void setXCoord(int value){
+        xCoordCalamityTimer += value;
+        if(xCoordCalamityTimer > 630){
+            xCoordCalamityTimer = 500;
+        }
+    }
+        
 }

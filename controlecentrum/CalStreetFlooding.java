@@ -6,11 +6,12 @@ public class CalStreetFlooding extends Calamities{
 
     public CalStreetFlooding(int imgNr){
         streetIsOpen = true;
+        hasShortCircuit = false;
         setImage("overstroming" + imgNr + ".png");
     }
     
     public void act(){
-        if(streetIsOpen == true){
+        if(streetIsOpen == true && hasShortCircuit == false){
             if((int) (Math.random() * 1000) == 1){
                 createNewShortCircuit();
             }
@@ -23,6 +24,7 @@ public class CalStreetFlooding extends Calamities{
     
     public void createNewShortCircuit(){
         getWorld().addObject(new CalShortCircuit(), getX()+5, getY()+5);
+        hasShortCircuit = true;
     }
     
     /* Not using this for now.

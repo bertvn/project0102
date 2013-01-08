@@ -2,17 +2,19 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Font;
 
 public class BusyTimer extends Actor{
-    private int currentValue = 0;
-    private int targetValue = 0;
+    private long currentValue;
+    private long targetValue;
     
     private String prefix;
     private static String suffix = "s";
     private int stringLength;
     
     // Constructor of the class Timer.
-    public BusyTimer(String prefix){
+    public BusyTimer(String prefix, long currentValue, long targetValue){
         // Set the prefix for later use.
         this.prefix = prefix;
+        this.currentValue = currentValue;
+        this.targetValue = targetValue;
         
         // Count the amount of characters in prefix + suffix and multiply by 10.
         stringLength = (this.prefix.length() + suffix.length() + 2) * 10;
@@ -21,7 +23,7 @@ public class BusyTimer extends Actor{
         setImage(new GreenfootImage(stringLength, 24));
         GreenfootImage timerImage = getImage();
         Font timerFont = timerImage.getFont();
-        timerImage.setFont(timerFont.deriveFont(1.0F));
+        timerImage.setFont(timerFont.deriveFont(16.0F));
         
         // Start updating the image.
         updateImage();
@@ -37,25 +39,25 @@ public class BusyTimer extends Actor{
     public void updateImage(){
         GreenfootImage timerImage = getImage();
         timerImage.clear();
-        timerImage.drawString(this.prefix + (Math.round(currentValue/60)) + suffix, 1, 18);
+        timerImage.drawString(this.prefix + (Math.round(currentValue)) + suffix, 1, 18);
     }
     
-    public void setCurrentValue(int currentValue){
+    public void setCurrentValue(long currentValue){
         if(currentValue < 0){
             System.out.println("currentValue must be equal or greater than 0");
         }else{
             // currentValue is in seconds, multiply with 60 because 60 acts is 1 second.
-            this.currentValue = currentValue * 60;
+            this.currentValue = currentValue;
             updateImage();
         }
     }
     
     // This method updates the timer to the 
-    public int getCurrentValue(){
+    public long getCurrentValue(){
         return currentValue;
     }
     
-    public int getTimeLeft(){
-        return (int) currentValue/60;
+    public long getTimeLeft(){
+        return (long) currentValue/60;
     }
 }
