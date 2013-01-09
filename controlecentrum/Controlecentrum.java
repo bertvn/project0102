@@ -41,11 +41,17 @@ public class Controlecentrum extends World{
     }
     
     public void act(){
-        if(createNewFlood()){
-            // createNewFlood results true so we are going to create a new flood. Therfore we update
-            // the total mount of street floodings. Then place the flooding.
-            totalStreetFloodings++;
+        if(totalStreetFloodings == 0){
+            while(totalStreetFloodings == 0){
+                createNewFlood();
+            }
+            
             addObject(new CalStreetFlooding(currentNewSpot), newSpotX, newSpotY);
+        }else{        
+            if(createNewFlood()){
+                // createNewFlood results true so we are going to create a new flood. Therfore we update
+                addObject(new CalStreetFlooding(currentNewSpot), newSpotX, newSpotY);
+            }
         }
     }
     
@@ -72,8 +78,11 @@ public class Controlecentrum extends World{
                     // Make this spot unavailable by setting it with -1.
                     usedSpots[randomSpot] = -1;
                     foundSpot = true;
+                    
+                    
                 }
             }while(!foundSpot);
+            totalStreetFloodings++;
             return true;
         }
     }

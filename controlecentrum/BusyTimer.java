@@ -23,7 +23,7 @@ public class BusyTimer extends Actor{
         setImage(new GreenfootImage(stringLength, 24));
         GreenfootImage timerImage = getImage();
         Font timerFont = timerImage.getFont();
-        timerImage.setFont(timerFont.deriveFont(16.0F));
+        timerImage.setFont(timerFont.deriveFont(12.0F));
         
         // Start updating the image.
         updateImage();

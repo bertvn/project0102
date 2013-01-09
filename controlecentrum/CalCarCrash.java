@@ -1,8 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class CalCarCrash extends Calamities{
-    public void act() 
-    {
-        // Add your action code here.
+    private long endTime;
+    private long timeLeft;
+    private boolean imageHasChanged;
+    private CalamityTimer calamityTimer;
+    
+    public void act(){
+        setImage("carCrash.png");
     }    
 }

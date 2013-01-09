@@ -23,7 +23,13 @@ public class CalShortCircuit extends Calamities{
             timeLeft = endTime - (System.currentTimeMillis() / 1000);
             if(imageHasChanged){
                 updateTimer();
-            }else if(timeLeft < 28){
+            }else if(timeLeft == 29){
+                setImage("empty.png");
+            }else if(timeLeft == 28){
+                setImage("shortCircuit.png");
+            }else if(timeLeft == 27){
+                setImage("empty.png");
+            }else if(timeLeft <= 26){
                 setImage("burningImage.png");
                 imageHasChanged = true;
                 long targetTime = endTime - 30;
@@ -35,7 +41,7 @@ public class CalShortCircuit extends Calamities{
     public void createNewTimer(long timeLeft, long targetTime){
         calamityTimer = new CalamityTimer("Short circuit fire: ", timeLeft, targetTime);
         getWorld().addObject(calamityTimer, 125, Controlecentrum.getXCoord());
-        Controlecentrum.setXCoord(20);
+        Controlecentrum.setXCoord(15);
     }
     
     public void updateTimer(){
