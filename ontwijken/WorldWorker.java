@@ -32,7 +32,7 @@ public class WorldWorker extends World
         populate();
         
         //sets order in which objects are drawn
-        setPaintOrder(BAM.class,Car.class,BurningCar.class,ScoreDisplay.class,TimerDisplay.class,ObsCar.class,Cracks.class,RoadMarking.class,Trees.class,Road.class,Grass.class);
+        setPaintOrder(ProgressIndicator.class,ProgressBar.class,BAM.class,Car.class,BurningCar.class,ScoreDisplay.class,TimerDisplay.class,ObsCar.class,Cracks.class,RoadMarking.class,Trees.class,Road.class,Grass.class);
         
         //play music
         music = new GreenfootSound("Breakdown.mp3");
@@ -163,6 +163,10 @@ public class WorldWorker extends World
         addObject(new Trees(),27,434);
         addObject(new Trees(),95,517);
         addObject(new Trees(),37,620);
+        
+        //add progressbar
+        addObject(new ProgressBar(),320,542);
+        addObject(new ProgressIndicator(),28,625);
         
         randomSpawner(); // call random spawner 
     }
