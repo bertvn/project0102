@@ -1,13 +1,36 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/* Deze actor is ongeveer hetzelfde verhaal als calamities. Deze actor is ook bedoeld om 
- * default gegevens voor alle hulpdiensten te maken. Deze actor ook drie subclasses
- * waarin specifiekere informatie terecht kan komen.
- */ 
-
 public class Enforcements extends Actor{
-    public void act() 
-    {
+
+    private boolean fireTruckIsBusy;
+    private boolean policeCarIsBusy;
+    private boolean ambulanceCarIsBusy;
+    
+    public void act(){
         // Add your action code here.
-    }    
+    }
+    
+    public void setIsBusy(String value){
+        if(value == "fireTruck"){
+            fireTruckIsBusy = true;
+        }else if(value == "policeCar"){
+            policeCarIsBusy = true; 
+        }else if(value == "ambulanceCar"){
+            ambulanceCarIsBusy = true;
+        }
+        
+        setImage(value + "Used.png");
+        
+        /* Switches worden niet ondersteund met Strings.
+        switch(value){
+            case "fireTruck": 
+                fireTruckIsBusy = true; break;
+            case "policeCar": 
+                policeCarIsBusy = true; break;
+            case "ambulance": 
+                ambulanceCarIsBusy = true; break;
+            default: 
+                System.out.println("Enforcement type is not recognized"); break;
+        }*/
+    }
 }

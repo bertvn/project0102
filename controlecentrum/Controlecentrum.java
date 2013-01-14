@@ -37,7 +37,17 @@ public class Controlecentrum extends World{
         addObject(new HeaderText("Calamiteiten"), 175, 476);
         
         // Headertext aanmaken voor kopje Hulpdiensten
-        addObject(new HeaderText("Hulpdiensten"), 550, 476);       
+        addObject(new HeaderText("Hulpdiensten"), 550, 476);      
+        
+        // Adding enforcements
+        EnfFirefighter fireTruck = new EnfFirefighter();
+        addObject(fireTruck, 375, 531);
+        
+        EnfPolice policeCar = new EnfPolice();
+        addObject(policeCar, 475, 532);
+        
+        EnfAmbulance ambulanceCar = new EnfAmbulance();
+        addObject(ambulanceCar, 575, 532);
     }
     
     public void act(){
