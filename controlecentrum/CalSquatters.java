@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Font;
 
-public class CalCarCrash extends Calamities{
+public class CalSquatters extends Calamities{
 
     private int belongsToFloodNumber;
     private long endTime;
@@ -9,9 +9,9 @@ public class CalCarCrash extends Calamities{
     private boolean imageHasChanged;
     private CalamityTimer calamityTimer;
 
-    public CalCarCrash(int floodNumber){
+    public CalSquatters(int floodNumber){
         belongsToFloodNumber = floodNumber;
-        setImage("carCrash.png");
+        setImage("squatters.png");
         // spawnTime contains current number of seconds since 1-1-1970
         endTime = (System.currentTimeMillis() / 1000) + 34;
         imageHasChanged = false;
@@ -29,11 +29,11 @@ public class CalCarCrash extends Calamities{
             }else if(timeLeft == 34){
                 setImage("empty.png");
             }else if(timeLeft == 33){
-                setImage("carCrash.png");
+                setImage("squatters.png");
             }else if(timeLeft == 32){
                 setImage("empty.png");
             }else if(timeLeft <= 31){
-                setImage("carCrash.png");
+                setImage("squatters.png");
                 imageHasChanged = true;
                 long targetTime = endTime - 34;
                 createNewTimer(timeLeft, targetTime);
@@ -42,8 +42,8 @@ public class CalCarCrash extends Calamities{
     }
     
     public void createNewTimer(long timeLeft, long targetTime){
-        calamityTimer = new CalamityTimer("Cars crashed: ", timeLeft, targetTime, belongsToFloodNumber);
-        getWorld().addObject(calamityTimer, 94, Controlecentrum.getXCoord());
+        calamityTimer = new CalamityTimer("Squatters in buildings: ", timeLeft, targetTime, belongsToFloodNumber);
+        getWorld().addObject(calamityTimer, 145, Controlecentrum.getXCoord());
         Controlecentrum.setXCoord(15);
     }
     
@@ -51,3 +51,5 @@ public class CalCarCrash extends Calamities{
         calamityTimer.setCurrentValue(timeLeft);
     }
 }
+
+

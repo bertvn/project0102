@@ -10,16 +10,20 @@ public class Enforcements extends Actor{
         // Add your action code here.
     }
     
-    public void setIsBusy(String value){
-        if(value == "fireTruck"){
-            fireTruckIsBusy = true;
-        }else if(value == "policeCar"){
-            policeCarIsBusy = true; 
-        }else if(value == "ambulanceCar"){
-            ambulanceCarIsBusy = true;
+    public void setIsBusy(String value, boolean status){
+        if(status){
+            setImage(value + "Used.png");
+        }else{
+            setImage(value + ".png");
         }
-        
-        setImage(value + "Used.png");
+    
+        if(value == "fireTruck"){
+            fireTruckIsBusy = status;
+        }else if(value == "policeCar"){
+            policeCarIsBusy = status; 
+        }else if(value == "ambulanceCar"){
+            ambulanceCarIsBusy = status;
+        }
         
         /* Switches worden niet ondersteund met Strings.
         switch(value){

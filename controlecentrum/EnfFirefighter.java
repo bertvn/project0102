@@ -11,7 +11,7 @@ public class EnfFirefighter extends Enforcements {
         // Add your action code here.
     }
     
-    public void setIsBusy(){
-        super.setIsBusy("fireTruck");
+    public void setIsBusy(boolean status){
+        super.setIsBusy("fireTruck", status);
     }
 }
