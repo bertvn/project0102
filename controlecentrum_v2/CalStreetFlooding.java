@@ -11,32 +11,43 @@ public class CalStreetFlooding extends Calamities{
     private long timeEnd;
     private long timeLeft;
     private CalamityTimer calamityTimer;
+    
+    // Creating a boolean to check for first act.
+    private boolean firstAct;
 
     public CalStreetFlooding(int imgNr){
         setImage("overstroming" + imgNr + ".png");
         streetIsOpen = true;
+        
         streetFloodingRefNr = imgNr; // Reference number for this flooding.
         
-        createTimer(); // Creating new timer.
+        firstAct = true;
+    }
+    
+    public void act(){
+        if(firstAct == true){
+            createTimer(); // Creating new timer.
+            firstAct = false;
+        }
+    }
+    
+     public void closeStreet(){
+        streetIsOpen = false;
+        calamityTimer.moveTimerBelow();
+        
+        getWorld().removeObject(this.calamityTimer);
     }
     
     public void createTimer(){
         long timeCurrent = System.currentTimeMillis() / 1000;
         
-        duration = (int) Math.random() * 10 + 25; // Duration (25 ~ 35s) of the timer.
+        duration = (int) (Math.random() * 10) + 25; // Duration (25 ~ 35s) of the timer.
         timeEnd = timeCurrent + duration;
         timeLeft = timeEnd - timeCurrent;
         
         calamityTimer = new CalamityTimer("Flooded street open: ", timeLeft, timeEnd, streetFloodingRefNr);
-
-        getWorld().addObject(calamityTimer, 200, 476);
         
-        //getWorld().addObject(calamityTimer, 130, 500); //Controlecentrum.getXCoord());
-        //Controlecentrum.setXCoord(15);
-    }
-       
-    public void act(){
-        
+        getWorld().addObject(calamityTimer, 130, Controlecentrum.getNextTimerPosition());
     }
 
 }

@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.*;
 
 public class Controlecentrum extends World{
     
@@ -10,6 +11,9 @@ public class Controlecentrum extends World{
     private int currentNewSpot;
     private int newSpotX;
     private int newSpotY;
+    
+    // Creating a var to contain the x coordinate for the next timer.
+    private static int nextTimerPosition;
 
     public Controlecentrum(){    
         // Create a new world with 640x640 cells with a cell size of 1x1 pixels.
@@ -28,6 +32,8 @@ public class Controlecentrum extends World{
         usedSpots = new int[]{ // Making array with spots still open.
             0, 3, 6, 9, 12, 15, 18, 21
         };
+        
+        nextTimerPosition = 500;
     }
     
     public void populate(){
@@ -55,6 +61,9 @@ public class Controlecentrum extends World{
                 addObject(new CalStreetFlooding(currentNewSpot), newSpotX, newSpotY);
             }
         }
+        
+        
+        updateNextTimerPosition();
     }
     
     public boolean createNewFlood(){
@@ -86,5 +95,14 @@ public class Controlecentrum extends World{
             totalStreetFloodings++; // We found a new flooding so add 1 to total.
             return true;
         }
+    }
+    
+    public void updateNextTimerPosition(){
+        int counter = getObjects(CalamityTimer.class).size(); // Amount of timers 
+        nextTimerPosition = counter * 15 + 500;
+    }
+    
+    public static int getNextTimerPosition(){
+        return nextTimerPosition;
     }
 }

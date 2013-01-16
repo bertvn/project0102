@@ -38,7 +38,7 @@ public class Timers extends Actor{
     public void updateImage(){
         GreenfootImage timerImage = getImage();
         timerImage.clear();
-        timerImage.drawString(prefix + (Math.round(timeLeft)) + suffix, 1, 18);
+        timerImage.drawString(prefix + timeLeft + suffix, 1, 18);
     }
     
 
