@@ -1,7 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Helpers extends Actor{
 
-
     private Boolean movement = false;
     private int x=-1;
     private int y=-1;
@@ -123,7 +122,6 @@ public class Helpers extends Actor{
         return movement;
     }
     
-    
     //sets scoreDecrease
     public void setScoreDecrease(int val){
         scoreDecrease = val;
@@ -141,12 +139,9 @@ public class Helpers extends Actor{
     //abstract maken?
     
     public void select(){
-    
     }
     
-    public void deselect(){
-        
+    public void deselect(){  
     }
-    
 }
 

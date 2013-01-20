@@ -1,7 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Materials extends Actor{
-    private int dissolveRate;
+    
+private int dissolveRate;
     private int speedReducement;
     private int baseHealth;
     private int weight;
@@ -70,7 +71,6 @@ public class Materials extends Actor{
     }
     
     //abstract maken?
-    
     public void select(){
     }
     
@@ -78,11 +78,9 @@ public class Materials extends Actor{
     }
     
     public void selectable(){
-    
     }
     
     public void unselectable(){
-    
     }
 }
  

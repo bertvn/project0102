@@ -1,6 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class GravelBag extends Materials{  
+    
     public GravelBag(){
         super.setDissolveRate(2);
         super.setSpeedReducement(3);
@@ -11,7 +12,6 @@ public class GravelBag extends Materials{
     }
 
     public void act(){
-        
     }
     
     public void select(){
@@ -29,5 +29,4 @@ public class GravelBag extends Materials{
     public void unselectable(){
         setImage("dijkdoorbraak/greyBigGravelBag.png");
     }
-    
 }

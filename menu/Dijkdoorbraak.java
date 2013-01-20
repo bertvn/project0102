@@ -2,6 +2,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
 
 public class Dijkdoorbraak extends World{
+    
     private boolean gameIsRunning;
     
     private Timer gameTimer;

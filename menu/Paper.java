@@ -1,6 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Paper extends Materials{
+    
     public Paper(){
         super.setDissolveRate(5);
         super.setSpeedReducement(0);
@@ -11,7 +12,6 @@ public class Paper extends Materials{
     }
 
     public void act(){
-        
     }
     
     public void select(){
@@ -30,5 +30,4 @@ public class Paper extends Materials{
     public void unselectable(){
         setImage("dijkdoorbraak/greyPaper.png");
     }
-    
 }
