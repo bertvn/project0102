@@ -18,7 +18,7 @@ public class EnfFirefighter extends Enforcements {
     
         
     public void createTimer(){
-        createTimeInformation();
+        createTimeInformation(10, 5);
         
         firetruckTimer = new EnforcementTimer("Busy: ", super.getTimeLeft(), super.getTimeEnd());
         getWorld().addObject(firetruckTimer, 396, 585);
