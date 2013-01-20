@@ -1,6 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class SandBag extends Materials{
+    
     public SandBag(){
         super.setDissolveRate(3);
         super.setSpeedReducement(2);
@@ -11,7 +12,6 @@ public class SandBag extends Materials{
     }
 
     public void act(){
-        
     } 
     
     public void select(){
@@ -29,7 +29,5 @@ public class SandBag extends Materials{
     public void unselectable(){
         setImage("dijkdoorbraak/greyBigSandBag.png");
     }
-     
-    
 }
 

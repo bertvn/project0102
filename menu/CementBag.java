@@ -1,6 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class CementBag extends Materials{
+    
     public CementBag(){
         super.setDissolveRate(1);
         super.setSpeedReducement(4);
@@ -10,8 +11,7 @@ public class CementBag extends Materials{
         setImage("dijkdoorbraak/greyBigCementBag.png");
     }
 
-    public void act(){
-        
+    public void act(){ 
     }
     
     public void select(){
@@ -29,6 +29,5 @@ public class CementBag extends Materials{
     public void unselectable(){
         setImage("dijkdoorbraak/greyBigCementBag.png");
     }
-    
 }
 

@@ -1,7 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Cardboard extends Materials{
-    public Cardboard(){
+    
+public Cardboard(){
         super.setDissolveRate(4);
         super.setSpeedReducement(1);
         super.setBaseHealth(20);
@@ -10,8 +11,7 @@ public class Cardboard extends Materials{
         setImage("dijkdoorbraak/greyCardboard.png");
     }
 
-    public void act(){
-        
+    public void act(){ 
     }
     
     public void select(){
@@ -29,5 +29,4 @@ public class Cardboard extends Materials{
     public void unselectable(){
         setImage("dijkdoorbraak/greyCardboard.png");
     }
-    
 }
