@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.*;
 
 public class Controlecentrum extends World{
     private int totalStreetFloodings;
@@ -10,6 +11,15 @@ public class Controlecentrum extends World{
     private int newSpotY;
     
     private static int  xCoordCalamityTimer = 500;
+    
+    EnfFirefighter fireTruck;
+    EnforcementTimer fireTruckTimer;
+    
+    EnfPolice policeCar;
+    EnforcementTimer policeCarTimer;
+    
+    EnfAmbulance ambulanceCar;
+    EnforcementTimer ambulanceCarTimer;
     
     public Controlecentrum(){    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -37,16 +47,41 @@ public class Controlecentrum extends World{
         addObject(new HeaderText("Calamiteiten"), 175, 476);
         
         // Headertext aanmaken voor kopje Hulpdiensten
-        addObject(new HeaderText("Hulpdiensten"), 550, 476);       
+        addObject(new HeaderText("Hulpdiensten"), 550, 476);      
+        
+        // Adding enforcements
+        fireTruck = new EnfFirefighter();
+        fireTruckTimer = new EnforcementTimer("Ready: ", 0, 0);
+        addObject(fireTruck, 375, 550);
+        addObject(fireTruckTimer, 396, 585);
+        
+        policeCar = new EnfPolice();
+        policeCarTimer = new EnforcementTimer("Ready: ", 0, 0);
+        addObject(policeCar, 480, 550);
+        addObject(policeCarTimer, 505, 585);
+        
+        ambulanceCar = new EnfAmbulance();
+        ambulanceCarTimer = new EnforcementTimer("Ready: ", 0, 0);
+        addObject(ambulanceCar, 585, 550);
+        addObject(ambulanceCarTimer, 612, 585);
     }
     
     public void act(){
-        if(createNewFlood()){
-            // createNewFlood results true so we are going to create a new flood. Therfore we update
-            // the total mount of street floodings. Then place the flooding.
-            totalStreetFloodings++;
+        if(totalStreetFloodings == 0){
+            while(totalStreetFloodings == 0){
+                createNewFlood();
+            }
+            
             addObject(new CalStreetFlooding(currentNewSpot), newSpotX, newSpotY);
+        }else{        
+            if(createNewFlood()){
+                // createNewFlood results true so we are going to create a new flood. Therfore we update
+                addObject(new CalStreetFlooding(currentNewSpot), newSpotX, newSpotY);
+            }
         }
+        
+        // Checking for mouse interaction
+        checkForMouseInteraction();
     }
     
     public boolean createNewFlood(){
@@ -72,8 +107,11 @@ public class Controlecentrum extends World{
                     // Make this spot unavailable by setting it with -1.
                     usedSpots[randomSpot] = -1;
                     foundSpot = true;
+                    
+                    
                 }
             }while(!foundSpot);
+            totalStreetFloodings++;
             return true;
         }
     }
@@ -86,6 +124,23 @@ public class Controlecentrum extends World{
         xCoordCalamityTimer += value;
         if(xCoordCalamityTimer > 630){
             xCoordCalamityTimer = 500;
+        }
+    }
+    
+    public void checkForMouseInteraction(){
+        if(Greenfoot.mouseClicked(null)) { // when mouse button is pressed
+            MouseInfo mouse = Greenfoot.getMouseInfo(); // get mouse info
+            List<BusyTimer> timers = getObjectsAt(mouse.getX(), mouse.getY(), BusyTimer.class); // get the object that hits mouse
+        
+            if(timers != null) { // if there is an object (are objects)
+                for(BusyTimer test : timers) { // for every object
+                    if(test.getClass().equals(CalamityTimer.class)) { // retrieve class and chose proper map
+                        System.out.println("CalamityTimer");
+                    }else if(test.getClass().equals(EnforcementTimer.class)) {
+                        System.out.println("EnforcementTimer");
+                    }
+                }
+            }
         }
     }
         
