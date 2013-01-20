@@ -13,6 +13,7 @@ public class Cracks extends Obstacles
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
    
+    private Boolean hitAlready = false;
     
     public Cracks(){
         //sets image
@@ -28,6 +29,14 @@ public class Cracks extends Obstacles
     {
         //calls the act of Obstacles
         super.act();
-    }    
+    } 
+    
+   public Boolean isHitAlready(){
+       return hitAlready;
+    }
        
+   public void hitAlreadyIndeed(){
+       //sets hitAlready to true
+       hitAlready = true;
+    }
 }

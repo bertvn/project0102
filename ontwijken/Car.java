@@ -94,14 +94,20 @@ public class Car extends Actor
             WorldWorker.speed = 1;
             //for every Crack
             for(Cracks cr : ck){
-                //getWorld().removeObject(cr);
-                //if score is higher than 100
-                if(WorldWorker.score > 100){
-                    //score decreases with 100 points
-                    WorldWorker.score -= 100;
-                }else{
-                    //else score is 0
-                    WorldWorker.score = 0;
+                //checks if the crack is already hit
+                if(cr.isHitAlready() == false){
+                    //set score increase for evade to 0
+                    cr.setScoreIncrease(0);
+                    //makes sure this crack doesn't cost points a second time
+                    cr.hitAlreadyIndeed();
+                    
+                    if(WorldWorker.score > 100){
+                        //score decreases with 100 points
+                        WorldWorker.score -= 100;
+                    }else{
+                        //else score is 0
+                        WorldWorker.score = 0;
+                    }
                 }
             }
                 

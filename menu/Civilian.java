@@ -1,7 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Civilian extends Helpers{
-    public Civilian(){
+    public Civilian(int sx, int sy){
+        super(sx,sy);
         super.setSpeed(3);
         super.setPower(1);
         super.setScoreDecrease(50);

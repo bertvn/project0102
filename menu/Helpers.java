@@ -8,25 +8,22 @@ public class Helpers extends Actor{
     private Materials holding = null;
     private int startX = -1;
     private int startY = -1;
-    private Boolean checked = false;
     private int speed;
     private int power;
     private int tempSpeed;
     
+    //checks if bag can be selected
+    private Boolean selectable = false;
+    
     //amount it costs to use this Material
     private int scoreDecrease;
     
-    public Helpers(){
-
+    public Helpers(int sx, int sy){
+        startX = sx;
+        startY = sy;
     }
     
     public void act(){
-        if(!checked){
-            startX = getX();
-            startY = getY();
-            checked = true;
-        }
-        
         if(movement){
             move();
         }
@@ -126,13 +123,6 @@ public class Helpers extends Actor{
         return movement;
     }
     
-    public void select(){
-    
-    }
-    
-    public void deselect(){
-        
-    }
     
     //sets scoreDecrease
     public void setScoreDecrease(int val){
@@ -143,4 +133,20 @@ public class Helpers extends Actor{
     public void ScoreDecrease(){
         Dijkdoorbraak.score -= scoreDecrease;
     }
+
+    public Boolean isSelectable(){
+        return selectable;
+    }
+    
+    //abstract maken?
+    
+    public void select(){
+    
+    }
+    
+    public void deselect(){
+        
+    }
+    
 }
+

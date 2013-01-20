@@ -1,7 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Policeman extends Helpers{
-    public Policeman(){
+    public Policeman(int sx, int sy){
+        super(sx,sy);
         super.setSpeed(4);
         super.setPower(2);
         super.setScoreDecrease(100);

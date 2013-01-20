@@ -7,7 +7,7 @@ public class SandBag extends Materials{
         super.setBaseHealth(20);
         super.setWeight(2);
         super.setScoreDecrease(100);
-        setImage("dijkdoorbraak/bigSandBag.png");
+        setImage("dijkdoorbraak/greyBigSandBag.png");
     }
 
     public void act(){
@@ -21,5 +21,15 @@ public class SandBag extends Materials{
     public void deselect(){
         setImage("dijkdoorbraak/bigSandBag.png");
     }
+    
+   public void selectable(){
+        setImage("dijkdoorbraak/bigSandBag.png");
+    }
+    
+    public void unselectable(){
+        setImage("dijkdoorbraak/greyBigSandBag.png");
+    }
+     
+    
 }
 

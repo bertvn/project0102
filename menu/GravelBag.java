@@ -7,7 +7,7 @@ public class GravelBag extends Materials{
         super.setBaseHealth(20);
         super.setWeight(2);
         super.setScoreDecrease(150);
-        setImage("dijkdoorbraak/bigGravelBag.png");
+        setImage("dijkdoorbraak/greyBigGravelBag.png");
     }
 
     public void act(){
@@ -21,4 +21,13 @@ public class GravelBag extends Materials{
     public void deselect(){
         setImage("dijkdoorbraak/bigGravelBag.png");
     }
+    
+    public void selectable(){
+        setImage("dijkdoorbraak/bigGravelBag.png");
+    }
+    
+    public void unselectable(){
+        setImage("dijkdoorbraak/greyBigGravelBag.png");
+    }
+    
 }

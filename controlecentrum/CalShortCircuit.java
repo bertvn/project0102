@@ -1,6 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Font;
 
+
 public class CalShortCircuit extends Calamities{
 
     private int belongsToFloodNumber;
@@ -50,4 +51,5 @@ public class CalShortCircuit extends Calamities{
     public void updateTimer(){
         calamityTimer.setCurrentValue(timeLeft);
     }
+
 }
