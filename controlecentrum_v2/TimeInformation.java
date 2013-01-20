@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+ 
 public class TimeInformation extends Actor{
     private int duration;
     private long timeEnd;

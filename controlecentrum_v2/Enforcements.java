@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+ 
 public class Enforcements extends TimeInformation{
 
     private boolean fireTruckIsBusy;

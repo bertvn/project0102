@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+ 
 public class Calamities extends TimeInformation{
     
     private CalamityTimer calamityTimer;
