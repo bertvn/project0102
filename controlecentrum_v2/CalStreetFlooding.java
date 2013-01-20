@@ -4,7 +4,7 @@ public class CalStreetFlooding extends Calamities{
 
     // Properties of the flooding.
     private boolean streetIsOpen;
-    private int streetFloodingRefNr;
+    //private int streetFloodingRefNr;
     
     // Time properties of the flooding.
     private int duration;
@@ -19,7 +19,7 @@ public class CalStreetFlooding extends Calamities{
         setImage("overstroming" + imgNr + ".png");
         streetIsOpen = true;
         
-        streetFloodingRefNr = imgNr; // Reference number for this flooding.
+        //streetFloodingRefNr = imgNr; // Reference number for this flooding.
         
         firstAct = true;
     }
@@ -45,7 +45,7 @@ public class CalStreetFlooding extends Calamities{
         timeEnd = timeCurrent + duration;
         timeLeft = timeEnd - timeCurrent;
         
-        calamityTimer = new CalamityTimer("Flooded street open: ", timeLeft, timeEnd, streetFloodingRefNr);
+        calamityTimer = new CalamityTimer("Flooded street open: ", timeLeft, timeEnd);//, streetFloodingRefNr);
         
         getWorld().addObject(calamityTimer, 130, Controlecentrum.getNextTimerPosition());
     }
