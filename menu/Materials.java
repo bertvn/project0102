@@ -1,8 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Materials extends Actor{
-    
-private int dissolveRate;
+    private int dissolveRate;
     private int speedReducement;
     private int baseHealth;
     private int weight;
@@ -60,6 +59,12 @@ private int dissolveRate;
         return weight;
     }
     
+    public void select(){
+    }
+    
+    public void deselect(){
+    }
+    
     //sets scoreDecrease
     public void setScoreDecrease(int val){
         scoreDecrease = val;
@@ -68,19 +73,6 @@ private int dissolveRate;
     //decreases score
     public void ScoreDecrease(){
         Dijkdoorbraak.score -= scoreDecrease;
-    }
-    
-    //abstract maken?
-    public void select(){
-    }
-    
-    public void deselect(){
-    }
-    
-    public void selectable(){
-    }
-    
-    public void unselectable(){
     }
 }
  

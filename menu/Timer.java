@@ -2,7 +2,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Font;
 
 public class Timer extends Actor{
-    
     private int currentValue = 0;
     private int targetValue = 0;
     
@@ -78,6 +77,6 @@ public class Timer extends Actor{
     }
     
     public void changeWorld(){
-        Greenfoot.setWorld(new Map());
+        Greenfoot.setWorld(new Menu());
     }
 }

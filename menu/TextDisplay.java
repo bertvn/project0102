@@ -4,7 +4,6 @@ import java.awt.Font;
 import java.util.Calendar;
 
 public class TextDisplay extends Actor{
-    
     private GreenfootImage image;
     private Font font;
     private Color fontColor;

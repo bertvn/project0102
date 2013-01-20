@@ -2,8 +2,18 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Font;
 import java.awt.Color;
 
-public class ScoreDisplayer extends Actor{
-
+/**
+ * Write a description of class ScoreDisplayer here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class ScoreDisplayer extends Actor
+{
+    /**
+     * Act - do whatever the ScoreDisplayer wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
     private GreenfootImage image;
     private Font font;
     private Color color;
@@ -36,6 +46,7 @@ public class ScoreDisplayer extends Actor{
         image.setFont(font);  // set font
         image.setColor(Color.BLACK);  // set font color
         image.drawString("score: " + scoreNew, 10, 17);   // place score
-        setImage(image);  
+        setImage(image); 
+        
     }    
 }
