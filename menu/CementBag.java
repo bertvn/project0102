@@ -7,6 +7,7 @@ public class CementBag extends Materials{
         super.setBaseHealth(20);
         super.setWeight(3);
         super.setScoreDecrease(300);
+        
         setImage("dijkdoorbraak/greyBigCementBag.png");
     }
 
