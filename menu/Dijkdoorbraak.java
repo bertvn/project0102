@@ -96,7 +96,7 @@ public class Dijkdoorbraak extends World{
                 moveCharacters();
             }
         }
-        
+        //this inside if statement to reduce usage?
         if(Greenfoot.mouseClicked(null)){
             MouseInfo mouse = Greenfoot.getMouseInfo();
             List<TextDisplay> textDisplays = getObjectsAt(mouse.getX(), mouse.getY(), TextDisplay.class);
@@ -116,13 +116,13 @@ public class Dijkdoorbraak extends World{
     
     // This method will populate our world with objects.
     public void startPopulating(){
-        civilian = new Civilian();
+        civilian = new Civilian(80, 510);
         addObject(civilian, 80, 510);
        
-        policeman = new Policeman();
+        policeman = new Policeman(170, 510);
         addObject(policeman, 170, 510);
         
-        soldier = new Soldier();
+        soldier = new Soldier(260, 510);
         addObject(soldier, 260, 510);
         
         sandBag = new SandBag();
@@ -306,6 +306,7 @@ public class Dijkdoorbraak extends World{
             selectedMaterials.deselect();
             selectedActor = null;
             selectedMaterials = null;
+            resetSelectable();
             return;
         }else{
             //if no material is selected
@@ -316,7 +317,7 @@ public class Dijkdoorbraak extends World{
                 List<Materials> mat = getObjectsAt(mouse.getX(),mouse.getY(), Materials.class);
                 if(!mat.isEmpty()){
                     //select 1
-                    if(mat.get(0).getWeight() <= selectedActor.getPower()){
+                    if(mat.get(0).getWeight() <= selectedActor.getPower() && mat.get(0).getY() > 500){
                         selectedMaterials = mat.get(0);
                         selectedMaterials.select();
                     }
@@ -331,9 +332,29 @@ public class Dijkdoorbraak extends World{
                     //select 1
                     selectedActor = hlp.get(0);
                     selectedActor.select();
+                    selectable(selectedActor.getPower());
                 }
             }
         }
+    }
+    
+    public void selectable(int weight){
+        List<Materials> mat = getObjects(Materials.class);
+        for(Materials mater : mat){
+            if(mater.getWeight() <= weight){
+                mater.selectable();
+            }
+        }
+    }
+    
+    //removed object zorgt hier voor problemen
+    public void resetSelectable(){
+       List<Materials> mat = getObjects(Materials.class);
+        for(Materials mater : mat){
+            if(mater.getY() > 500){
+                mater.unselectable();
+            }
+        } 
     }
     
 }

@@ -59,12 +59,6 @@ public class Materials extends Actor{
         return weight;
     }
     
-    public void select(){
-    }
-    
-    public void deselect(){
-    }
-    
     //sets scoreDecrease
     public void setScoreDecrease(int val){
         scoreDecrease = val;
@@ -73,6 +67,22 @@ public class Materials extends Actor{
     //decreases score
     public void ScoreDecrease(){
         Dijkdoorbraak.score -= scoreDecrease;
+    }
+    
+    //abstract maken?
+    
+    public void select(){
+    }
+    
+    public void deselect(){
+    }
+    
+    public void selectable(){
+    
+    }
+    
+    public void unselectable(){
+    
     }
 }
  

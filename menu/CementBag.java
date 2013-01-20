@@ -7,7 +7,7 @@ public class CementBag extends Materials{
         super.setBaseHealth(20);
         super.setWeight(3);
         super.setScoreDecrease(300);
-        setImage("dijkdoorbraak/bigCementBag.png");
+        setImage("dijkdoorbraak/greyBigCementBag.png");
     }
 
     public void act(){
@@ -21,5 +21,14 @@ public class CementBag extends Materials{
     public void deselect(){
         setImage("dijkdoorbraak/bigCementBag.png");
     }
+    
+    public void selectable(){
+        setImage("dijkdoorbraak/bigCementBag.png");
+    }
+    
+    public void unselectable(){
+        setImage("dijkdoorbraak/greyBigCementBag.png");
+    }
+    
 }
 

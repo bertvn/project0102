@@ -7,7 +7,7 @@ public class Cardboard extends Materials{
         super.setBaseHealth(20);
         super.setWeight(1);
         super.setScoreDecrease(20);
-        setImage("dijkdoorbraak/cardboard.png");
+        setImage("dijkdoorbraak/greyCardboard.png");
     }
 
     public void act(){
@@ -21,4 +21,13 @@ public class Cardboard extends Materials{
     public void deselect(){
         setImage("dijkdoorbraak/cardboard.png");
     }
+    
+    public void selectable(){
+        setImage("dijkdoorbraak/cardboard.png");
+    }
+    
+    public void unselectable(){
+        setImage("dijkdoorbraak/greyCardboard.png");
+    }
+    
 }

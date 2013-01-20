@@ -7,7 +7,7 @@ public class Paper extends Materials{
         super.setBaseHealth(20);
         super.setWeight(0);
         super.setScoreDecrease(10);
-        setImage("dijkdoorbraak/paper.png");
+        setImage("dijkdoorbraak/greyPaper.png");
     }
 
     public void act(){
@@ -18,7 +18,17 @@ public class Paper extends Materials{
         setImage("dijkdoorbraak/selectedpaper.png");
     }
     
+    //next 2 methods do the same?
     public void deselect(){
         setImage("dijkdoorbraak/paper.png");
     }
+    
+    public void selectable(){
+        setImage("dijkdoorbraak/paper.png");
+    }
+    
+    public void unselectable(){
+        setImage("dijkdoorbraak/greyPaper.png");
+    }
+    
 }
