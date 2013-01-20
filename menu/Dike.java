@@ -2,9 +2,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
 
 public class Dike extends Actor{
-    
     private int dikeHP;
     private Materials material;
+    
     
     public Dike(){
         dikeHP = 24;

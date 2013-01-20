@@ -14,6 +14,9 @@ public class Controlecentrum extends World{
     
     // Creating a var to contain the x coordinate for the next timer.
     private static int nextTimerPosition;
+    
+    // Enforcements
+    EnfFirefighter fireTruck;
 
     public Controlecentrum(){    
         // Create a new world with 640x640 cells with a cell size of 1x1 pixels.
@@ -44,6 +47,11 @@ public class Controlecentrum extends World{
         
         // Headertext aanmaken voor kopje Hulpdiensten
         addObject(new HeaderText("Hulpdiensten"), 550, 476);
+        
+        // Adding enforcements to the world.
+        fireTruck = new EnfFirefighter();
+        addObject(fireTruck, 375, 550);
+
     }
     
     public void act(){

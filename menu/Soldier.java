@@ -1,9 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Soldier extends Helpers{
-    
-public Soldier(int sx, int sy){
-        super(sx,sy);
+    public Soldier(){
         super.setSpeed(5);
         super.setPower(4);
         super.setScoreDecrease(200);
