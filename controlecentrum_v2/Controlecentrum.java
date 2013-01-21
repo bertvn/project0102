@@ -16,7 +16,9 @@ public class Controlecentrum extends World{
     private static int nextTimerPosition;
     
     // Enforcements
-    EnfFirefighter fireTruck;
+    public EnfFirefighter fireTruck;
+    public EnfPolice policeCar;    
+    public EnfAmbulance ambulanceCar;
 
     public Controlecentrum(){    
         // Create a new world with 640x640 cells with a cell size of 1x1 pixels.
@@ -51,6 +53,12 @@ public class Controlecentrum extends World{
         // Adding enforcements to the world.
         fireTruck = new EnfFirefighter();
         addObject(fireTruck, 375, 550);
+        
+        policeCar = new EnfPolice();
+        addObject(policeCar, 480, 550);
+        
+        ambulanceCar = new EnfAmbulance();
+        addObject(ambulanceCar, 585, 550);
 
     }
     
@@ -69,8 +77,6 @@ public class Controlecentrum extends World{
                 addObject(new CalStreetFlooding(currentNewSpot), newSpotX, newSpotY);
             }
         }
-        
-        
         updateNextTimerPosition();
     }
     

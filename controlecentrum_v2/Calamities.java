@@ -15,20 +15,22 @@ public class Calamities extends TimeInformation{
         }
     }
     
-    public void createTimer(){
+    public void createTimer(String suffix){
         createTimeInformation(25, 10);
         
-        calamityTimer = new CalamityTimer("Flooded street open: ", super.getTimeLeft(), super.getTimeEnd());
-        
+        calamityTimer = new CalamityTimer(suffix, super.getTimeLeft(), super.getTimeEnd());
         getWorld().addObject(calamityTimer, 130, Controlecentrum.getNextTimerPosition());
+    }
+    
+    public void removeCalamityTimer(){
+        System.out.print("Trying to remove: ");
+        System.out.println(calamityTimer);
+        calamityTimer.moveTimerBelow();
+        getWorld().removeObject(calamityTimer);
+        calamityTimer = null;
     }
     
     public CalamityTimer getCalamityTimer(){
         return calamityTimer;
-    }
-    
-    public void removeCalamityTimer(){
-        calamityTimer.moveTimerBelow();
-        getWorld().removeObject(calamityTimer);
     }
 }

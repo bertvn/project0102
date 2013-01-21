@@ -1,16 +1,16 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  
-public class EnfFirefighter extends Enforcements {
+public class EnfPolice extends Enforcements {
     
-    public EnfFirefighter(){
+    public EnfPolice(){
         super();
-        setImage("fireTruck.png");
+        setImage("policeCar.png");
     }
     
     // Change status to input.
     public void setIsBusy(boolean status){
-        setIsBusy("fireTruck", status);
-        createTimer(396);
+        setIsBusy("policeCar", status);
+        createTimer(497);
     }
     
     public void act(){
@@ -18,7 +18,7 @@ public class EnfFirefighter extends Enforcements {
             long currentTimeLeft = super.getTimeLeft();
             if(currentTimeLeft <= 0){
                 removeEnforcementTimer();
-                setIsBusy("fireTruck", false);
+                setIsBusy("policeCar", false);
             }else{
                 enforcementTimer.setCurrentValue(super.getTimeLeft());
             }

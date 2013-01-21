@@ -6,6 +6,20 @@ public class Enforcements extends TimeInformation{
     private boolean policeCarIsBusy;
     private boolean ambulanceCarIsBusy;
     
+    EnforcementTimer enforcementTimer;
+ 
+    public void createTimer(int xCoordinate){
+        createTimeInformation(10, 5);
+        
+        enforcementTimer = new EnforcementTimer("Busy: ", super.getTimeLeft(), super.getTimeEnd());
+        getWorld().addObject(enforcementTimer, xCoordinate, 585);
+    }
+    
+    public void removeEnforcementTimer(){
+        getWorld().removeObject(enforcementTimer);
+        enforcementTimer = null;
+    }
+    
     // Updating the enforcement to the correct image / status.
     public void setIsBusy(String value, boolean status){
         if(status){
@@ -22,4 +36,5 @@ public class Enforcements extends TimeInformation{
             ambulanceCarIsBusy = status;
         }
     }
+    
 }
