@@ -3,7 +3,7 @@ import java.awt.Font;
 import java.awt.Color;
 
 public class TimerDisplay extends Actor{
-    private int currentValue = 10800;
+    public static int currentValue;
     private int targetValue = 0;
     private GreenfootImage image;
     private Font font;
@@ -12,6 +12,8 @@ public class TimerDisplay extends Actor{
     
     // Constructor of the class Timer.
     public TimerDisplay(){
+        //set time
+        currentValue = 10800;        
         // Start updating the image.
         updateImage();
     }
