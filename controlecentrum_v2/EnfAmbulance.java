@@ -10,7 +10,6 @@ public class EnfAmbulance extends Enforcements {
     // Change status to input.
     public void setIsBusy(boolean status){
         isNowBusy(status);
-
     }
     
     // Update the timer and start removing procedure if it reached 0.

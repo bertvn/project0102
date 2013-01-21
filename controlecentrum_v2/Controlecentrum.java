@@ -24,6 +24,9 @@ public class Controlecentrum extends World{
     private int clickedItems;
     private CalamityTimer clickedCalamity;
     private Enforcements clickedEnforcement;
+    
+    // Maximum number of timers.
+    public static boolean maxTimersReached;
 
     public Controlecentrum(){    
         // Create a new world with 640x640 cells with a cell size of 1x1 pixels.
@@ -93,7 +96,9 @@ public class Controlecentrum extends World{
     }
     
     public boolean createNewFlood(){
-        if(totalStreetFloodings >= 8){
+        if(maxTimersReached){
+            return false;
+        }else if(totalStreetFloodings >= 8){
             // If we have 8, or somehow more, floodings we will not create a new one.
             return false;
         }else if((int) (Math.random() * 600) != 1){
@@ -125,7 +130,12 @@ public class Controlecentrum extends World{
     
     public void updateNextTimerPosition(){
         int counter = getObjects(CalamityTimer.class).size(); // Amount of timers 
-        nextTimerPosition = counter * 15 + 500;
+        if(counter < 9){
+            maxTimersReached = false;
+            nextTimerPosition = counter * 15 + 500;
+        }else{
+            maxTimersReached = true;
+        }
     }
     
     public static int getNextTimerPosition(){
@@ -146,10 +156,14 @@ public class Controlecentrum extends World{
             }
             
             if(!enfItems.isEmpty()){
-                if(clickedEnforcement == null){
-                    clickedItems++;
+                if(!enfItems.get(0).getStatus()){
+                    if(clickedEnforcement == null){
+                        clickedItems++;
+                    }
+                    clickedEnforcement = enfItems.get(0);
+                }else{
+                    System.out.println("Enforcement is busy");
                 }
-                clickedEnforcement = enfItems.get(0);
             }
             
             if(clickedItems == 2){
@@ -159,12 +173,26 @@ public class Controlecentrum extends World{
     }
     
     public void checkForCombinations(){
-        if(clickedCalamity.getCalamityType() == clickedEnforcement.getEnfType()){
-            clickedCalamity.removeCalamityTimer();
-            System.out.println(clickedCalamity);
+        if(clickedCalamity.getCalamityType() == null){
+            System.out.println("Is nu leeg");
+            clickedCalamity = null;
+            clickedItems--;
+        }else if(clickedCalamity.getCalamityType() == clickedEnforcement.getEnfType()){
+            System.out.println("Ziet het niet als leeg");
+            System.out.println(clickedCalamity.getBelongsTo().getClass());
+            if(clickedCalamity.getBelongsTo().getClass() != CalStreetFlooding.class){
+                removeObject(clickedCalamity.getBelongsTo());
+                clickedCalamity.removeCalamityTimer();
+            }else{
+                clickedCalamity.getBelongsTo().removeCalamityTimer();
+                // clickedCalamity.getBelongsTo().setCalamityTimer(null);
+            }
+
             clickedEnforcement.isNowBusy(true);
-        }else{
-            System.out.println("false");
+            
+            clickedCalamity = null;
+            clickedEnforcement = null;
+            clickedItems = 0;
         }
     }
 }

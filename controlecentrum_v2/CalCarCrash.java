@@ -15,7 +15,7 @@ public class CalCarCrash extends Calamities{
         // Creating a new timer in the first act (this can't be done in constructor
         // because the object does not exist yet).
         if(firstAct == true){
-            createTimer("Cars have crashed:   ", "EnfAmbulance");
+            createTimer("Cars have crashed:   ", "EnfAmbulance", this);
             firstAct = false;
         }
     }

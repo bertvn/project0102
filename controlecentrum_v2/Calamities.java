@@ -17,10 +17,10 @@ public class Calamities extends TimeInformation{
     }
     
     // Method for creating a new timer with given prefix.
-    public void createTimer(String suffix, String calamityTypeVal){
+    public void createTimer(String suffix, String calamityTypeVal, Calamities classVal){
         createTimeInformation(25, 10);
         
-        calamityTimer = new CalamityTimer(suffix, super.getTimeLeft(), super.getTimeEnd(), calamityTypeVal);
+        calamityTimer = new CalamityTimer(suffix, super.getTimeLeft(), super.getTimeEnd(), calamityTypeVal, classVal);
         getWorld().addObject(calamityTimer, 130, Controlecentrum.getNextTimerPosition());
     }
     
@@ -34,5 +34,9 @@ public class Calamities extends TimeInformation{
     // Get information about timer (mostly used for wheter it exists or not).
     public CalamityTimer getCalamityTimer(){
         return calamityTimer;
+    }
+    
+    public void setCalamityTimer(CalamityTimer newVal){
+        calamityTimer = newVal;
     }
 }

@@ -3,10 +3,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class CalamityTimer extends Timers{
     
     private String calamityType;
-
-    public CalamityTimer(String prefix, long timeLeft, long timeEnd, String calamityTypeVal){//, int streetFloodingRefNr){
+    private Calamities belongsTo;
+    
+    public CalamityTimer(String prefix, long timeLeft, long timeEnd, String calamityTypeVal, Calamities classVal){//, int streetFloodingRefNr){
         super(prefix, timeLeft, timeEnd);
         
+        belongsTo = classVal;
         calamityType = calamityTypeVal;
     }
     
@@ -29,7 +31,12 @@ public class CalamityTimer extends Timers{
         return calamityType;
     }
     
+    public Calamities getBelongsTo(){
+        return belongsTo;
+    }
+    
     public void removeCalamityTimer(){
+        moveTimerBelow();
         getWorld().removeObject(this);
     }
 }
