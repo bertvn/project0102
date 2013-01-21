@@ -3,7 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Calamities extends TimeInformation{
     
     private CalamityTimer calamityTimer;
-
+    
     // Update the timer and start removing procedure if it reached 0.
     public void act(){
         if(calamityTimer != null){
@@ -17,10 +17,10 @@ public class Calamities extends TimeInformation{
     }
     
     // Method for creating a new timer with given prefix.
-    public void createTimer(String suffix){
+    public void createTimer(String suffix, String calamityTypeVal){
         createTimeInformation(25, 10);
         
-        calamityTimer = new CalamityTimer(suffix, super.getTimeLeft(), super.getTimeEnd());
+        calamityTimer = new CalamityTimer(suffix, super.getTimeLeft(), super.getTimeEnd(), calamityTypeVal);
         getWorld().addObject(calamityTimer, 130, Controlecentrum.getNextTimerPosition());
     }
     

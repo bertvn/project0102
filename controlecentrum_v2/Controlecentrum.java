@@ -19,6 +19,11 @@ public class Controlecentrum extends World{
     public EnfFirefighter fireTruck;
     public EnfPolice policeCar;    
     public EnfAmbulance ambulanceCar;
+    
+    // Clicked items
+    private int clickedItems;
+    private CalamityTimer clickedCalamity;
+    private Enforcements clickedEnforcement;
 
     public Controlecentrum(){    
         // Create a new world with 640x640 cells with a cell size of 1x1 pixels.
@@ -39,6 +44,10 @@ public class Controlecentrum extends World{
         };
         
         nextTimerPosition = 500;
+        
+        clickedItems = 0;
+        clickedCalamity = null;
+        clickedEnforcement = null;
     }
     
     public void populate(){
@@ -52,6 +61,7 @@ public class Controlecentrum extends World{
         
         // Adding enforcements to the world.
         fireTruck = new EnfFirefighter();
+        
         addObject(fireTruck, 375, 550);
         
         policeCar = new EnfPolice();
@@ -123,6 +133,44 @@ public class Controlecentrum extends World{
     }
     
     public void mouseInteraction(){
-        // Method for mouse interaction.
+        if(Greenfoot.mouseClicked(null)) { // when mouse button is pressed
+            MouseInfo mouse = Greenfoot.getMouseInfo(); // get mouse info
+            List<CalamityTimer> calTimer = getObjectsAt(mouse.getX(), mouse.getY(), CalamityTimer.class);
+            List<Enforcements> enfItems = getObjectsAt(mouse.getX(), mouse.getY(), Enforcements.class);
+
+            if(!calTimer.isEmpty()){
+                if(clickedCalamity == null){
+                    clickedItems++;
+                }
+                clickedCalamity = calTimer.get(0);
+            }
+            
+            if(!enfItems.isEmpty()){
+                if(clickedEnforcement == null){
+                    clickedItems++;
+                }
+                clickedEnforcement = enfItems.get(0);
+            }
+            
+            if(clickedItems == 2){
+                checkForCombinations();
+            }
+        }
+    }
+    
+    public void checkForCombinations(){
+        if(clickedCalamity.getCalamityType() == clickedEnforcement.getEnfType()){
+            clickedCalamity.removeCalamityTimer();
+            System.out.println(clickedCalamity);
+            clickedEnforcement.isNowBusy(true);
+        }else{
+            System.out.println("false");
+        }
     }
 }
+
+
+
+
+
+

@@ -38,7 +38,7 @@ public class CalStreetFlooding extends Calamities{
         // Creating a new timer in the first act (this can't be done in constructor
         // because the object does not exist yet).
         if(firstAct == true){
-            createTimer("Flooded street open: ");
+            createTimer("Flooded street open: ", "EnfPolice");
             firstAct = false;
         }
 
@@ -76,10 +76,14 @@ public class CalStreetFlooding extends Calamities{
                 hasCarCrash = true;
             }
         }else if(hasCarCrash){ // if we have a car crash
+            System.out.println("We have a car crash");
             if(!carCrash.getFirstAct() && carCrash.getCalamityTimer() == null){
+                System.out.println("True");
                 // If true it means the timer has reached beyond 0 and is therefor removed.
                 getWorld().removeObject(carCrash);
                 resetHasCarCrash();
+            }else{
+                System.out.println("False!");
             }
         }
     }

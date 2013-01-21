@@ -1,9 +1,13 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  
 public class CalamityTimer extends Timers{
+    
+    private String calamityType;
 
-    public CalamityTimer(String prefix, long timeLeft, long timeEnd){//, int streetFloodingRefNr){
+    public CalamityTimer(String prefix, long timeLeft, long timeEnd, String calamityTypeVal){//, int streetFloodingRefNr){
         super(prefix, timeLeft, timeEnd);
+        
+        calamityType = calamityTypeVal;
     }
     
     // Method to move the timer below upwards.
@@ -19,5 +23,13 @@ public class CalamityTimer extends Timers{
             // Move timer upwards.
             timer.setLocation(getX(), getY());
         }
+    }
+    
+    public String getCalamityType(){
+        return calamityType;
+    }
+    
+    public void removeCalamityTimer(){
+        getWorld().removeObject(this);
     }
 }

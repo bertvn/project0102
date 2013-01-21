@@ -3,14 +3,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class EnfPolice extends Enforcements {
     
     public EnfPolice(){
-        super();
-        setImage("policeCar.png");
+        super("EnfPolice");
+        setImage("EnfPolice.png");
     }
     
     // Change status to input.
     public void setIsBusy(boolean status){
-        setIsBusy("policeCar", status);
-        createTimer(497);
+        isNowBusy(status);
     }
     
     // Update the timer and start removing procedure if it reached 0.
@@ -19,7 +18,7 @@ public class EnfPolice extends Enforcements {
             long currentTimeLeft = super.getTimeLeft();
             if(currentTimeLeft <= 0){
                 removeEnforcementTimer();
-                setIsBusy("policeCar", false); // reset status to available
+                setIsBusy(false); // reset status to available
             }else{
                 enforcementTimer.setCurrentValue(super.getTimeLeft());
             }
