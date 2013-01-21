@@ -1,9 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+ 
 public class Calamities extends TimeInformation{
     
     private CalamityTimer calamityTimer;
-
+    
+    // Update the timer and start removing procedure if it reached 0.
     public void act(){
         if(calamityTimer != null){
             long currentTimeLeft = super.getTimeLeft();
@@ -15,20 +16,26 @@ public class Calamities extends TimeInformation{
         }
     }
     
-    public void createTimer(){
+    // Method for creating a new timer with given prefix.
+    public void createTimer(String suffix, String calamityTypeVal, Calamities classVal){
         createTimeInformation(25, 10);
         
-        calamityTimer = new CalamityTimer("Flooded street open: ", super.getTimeLeft(), super.getTimeEnd());
-        
+        calamityTimer = new CalamityTimer(suffix, super.getTimeLeft(), super.getTimeEnd(), calamityTypeVal, classVal);
         getWorld().addObject(calamityTimer, 130, Controlecentrum.getNextTimerPosition());
     }
     
+    // Method for removing the timer and moving all timers beneath up.
+    public void removeCalamityTimer(){
+        calamityTimer.removeCalamityTimer();
+        calamityTimer = null;
+    }
+    
+    // Get information about timer (mostly used for wheter it exists or not).
     public CalamityTimer getCalamityTimer(){
         return calamityTimer;
     }
     
-    public void removeCalamityTimer(){
-        calamityTimer.moveTimerBelow();
-        getWorld().removeObject(calamityTimer);
+    public void setCalamityTimer(CalamityTimer newVal){
+        calamityTimer = newVal;
     }
 }

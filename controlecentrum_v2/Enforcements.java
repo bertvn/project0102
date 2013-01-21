@@ -1,25 +1,62 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+ 
 public class Enforcements extends TimeInformation{
 
-    private boolean fireTruckIsBusy;
-    private boolean policeCarIsBusy;
-    private boolean ambulanceCarIsBusy;
+    private boolean isBusy;
+    
+    EnforcementTimer enforcementTimer;
+    
+    String enfType;
+    
+    public Enforcements(String enfTypeVal){
+        enfType = enfTypeVal;
+    }
+    
+    public void createTimer(int xCoordinate){ // create timer on given xCoordinate
+        createTimeInformation(10, 5); // creating a timer of 10~15s.
+        
+        enforcementTimer = new EnforcementTimer("Busy: ", super.getTimeLeft(), super.getTimeEnd());
+        getWorld().addObject(enforcementTimer, xCoordinate, 585);
+    }
+    
+    // Removing method.
+    public void removeEnforcementTimer(){
+        getWorld().removeObject(enforcementTimer);
+        enforcementTimer = null;
+    }
     
     // Updating the enforcement to the correct image / status.
-    public void setIsBusy(String value, boolean status){
+    public void isNowBusy(boolean status){
         if(status){
-            setImage(value + "Used.png"); // display used image.
+            newStatus(status);
         }else{
-            setImage(value + ".png"); // display normal image.
+            resetStatus(status);
         }
+    }
+
+    public void newStatus(boolean status){
+        setImage(enfType + "Used.png"); // display normal image.
+        isBusy = status;
+        
+        if(enfType == "EnfFirefighter"){
+            createTimer(396);
+        }else if(enfType == "EnfPolice"){
+            createTimer(497);
+        }else if(enfType == "EnfAmbulance"){
+            createTimer(600);
+        }
+    }
+
+    public void resetStatus(boolean status){
+        setImage(enfType + ".png"); // display used image.
+        isBusy = status;
+    }
     
-        if(value == "fireTruck"){ // update fireTruck status.
-            fireTruckIsBusy = status;
-        }else if(value == "policeCar"){ // update fireTruck status.
-            policeCarIsBusy = status; 
-        }else if(value == "ambulanceCar"){ // update fireTruck status.
-            ambulanceCarIsBusy = status;
-        }
+    public String getEnfType(){
+        return enfType;
+    }
+    
+    public boolean getStatus(){
+        return isBusy;
     }
 }
