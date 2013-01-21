@@ -10,11 +10,11 @@ public class Timers extends Actor{
     private static String suffix = "s";
     private int stringLength;
     
-    public Timers(String prefix, long timeLeft, long timeEnd){
+    public Timers(String prefixVal, long timeLeftVal, long timeEndVal){
         // Set the prefix for later use.
-        this.prefix = prefix;
-        this.timeLeft = timeLeft;
-        this.timeEnd = timeEnd;
+        prefix = prefixVal;
+        timeLeft = timeLeftVal;
+        timeEnd = timeEndVal;
         
         // Count the amount of characters in prefix + suffix and multiply by 10.
         stringLength = (this.prefix.length() + suffix.length() + 2) * 10;
@@ -29,8 +29,8 @@ public class Timers extends Actor{
         updateImage();
     }
     
-    public void setCurrentValue(long timeLeft){
-        this.timeLeft = timeLeft;
+    public void setCurrentValue(long timeLeftVal){
+        timeLeft = timeLeftVal;
         updateImage();
     }
     

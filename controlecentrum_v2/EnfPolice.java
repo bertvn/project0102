@@ -13,12 +13,13 @@ public class EnfPolice extends Enforcements {
         createTimer(497);
     }
     
+    // Update the timer and start removing procedure if it reached 0.
     public void act(){
         if(enforcementTimer != null){
             long currentTimeLeft = super.getTimeLeft();
             if(currentTimeLeft <= 0){
                 removeEnforcementTimer();
-                setIsBusy("policeCar", false);
+                setIsBusy("policeCar", false); // reset status to available
             }else{
                 enforcementTimer.setCurrentValue(super.getTimeLeft());
             }

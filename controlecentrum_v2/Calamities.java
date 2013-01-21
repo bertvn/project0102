@@ -4,6 +4,7 @@ public class Calamities extends TimeInformation{
     
     private CalamityTimer calamityTimer;
 
+    // Update the timer and start removing procedure if it reached 0.
     public void act(){
         if(calamityTimer != null){
             long currentTimeLeft = super.getTimeLeft();
@@ -15,6 +16,7 @@ public class Calamities extends TimeInformation{
         }
     }
     
+    // Method for creating a new timer with given prefix.
     public void createTimer(String suffix){
         createTimeInformation(25, 10);
         
@@ -22,14 +24,14 @@ public class Calamities extends TimeInformation{
         getWorld().addObject(calamityTimer, 130, Controlecentrum.getNextTimerPosition());
     }
     
+    // Method for removing the timer and moving all timers beneath up.
     public void removeCalamityTimer(){
-        System.out.print("Trying to remove: ");
-        System.out.println(calamityTimer);
         calamityTimer.moveTimerBelow();
         getWorld().removeObject(calamityTimer);
         calamityTimer = null;
     }
     
+    // Get information about timer (mostly used for wheter it exists or not).
     public CalamityTimer getCalamityTimer(){
         return calamityTimer;
     }

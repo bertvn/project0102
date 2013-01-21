@@ -59,7 +59,6 @@ public class Controlecentrum extends World{
         
         ambulanceCar = new EnfAmbulance();
         addObject(ambulanceCar, 585, 550);
-
     }
     
     public void act(){
@@ -77,7 +76,10 @@ public class Controlecentrum extends World{
                 addObject(new CalStreetFlooding(currentNewSpot), newSpotX, newSpotY);
             }
         }
-        updateNextTimerPosition();
+        
+        updateNextTimerPosition(); // update positions.
+        
+        mouseInteraction(); // run checks for mouse input.
     }
     
     public boolean createNewFlood(){
@@ -118,5 +120,9 @@ public class Controlecentrum extends World{
     
     public static int getNextTimerPosition(){
         return nextTimerPosition;
+    }
+    
+    public void mouseInteraction(){
+        // Method for mouse interaction.
     }
 }

@@ -7,14 +7,15 @@ public class Enforcements extends TimeInformation{
     private boolean ambulanceCarIsBusy;
     
     EnforcementTimer enforcementTimer;
- 
-    public void createTimer(int xCoordinate){
-        createTimeInformation(10, 5);
+    
+    public void createTimer(int xCoordinate){ // create timer on given xCoordinate
+        createTimeInformation(10, 5); // creating a timer of 10~15s.
         
         enforcementTimer = new EnforcementTimer("Busy: ", super.getTimeLeft(), super.getTimeEnd());
         getWorld().addObject(enforcementTimer, xCoordinate, 585);
     }
     
+    // Removing method.
     public void removeEnforcementTimer(){
         getWorld().removeObject(enforcementTimer);
         enforcementTimer = null;
@@ -30,9 +31,9 @@ public class Enforcements extends TimeInformation{
     
         if(value == "fireTruck"){ // update fireTruck status.
             fireTruckIsBusy = status;
-        }else if(value == "policeCar"){ // update fireTruck status.
+        }else if(value == "policeCar"){ // update policeCar status.
             policeCarIsBusy = status; 
-        }else if(value == "ambulanceCar"){ // update fireTruck status.
+        }else if(value == "ambulanceCar"){ // update ambulanceCar status.
             ambulanceCarIsBusy = status;
         }
     }
