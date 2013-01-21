@@ -26,8 +26,7 @@ public class Calamities extends TimeInformation{
     
     // Method for removing the timer and moving all timers beneath up.
     public void removeCalamityTimer(){
-        calamityTimer.moveTimerBelow();
-        getWorld().removeObject(calamityTimer);
+        calamityTimer.removeCalamityTimer();
         calamityTimer = null;
     }
     

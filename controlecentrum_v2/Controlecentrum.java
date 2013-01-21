@@ -173,7 +173,7 @@ public class Controlecentrum extends World{
     }
     
     public void checkForCombinations(){
-        if(clickedCalamity.getCalamityType() == null){
+        if(clickedCalamity.getBelongsTo().getCalamityTimer() == null){
             System.out.println("Is nu leeg");
             clickedCalamity = null;
             clickedItems--;
