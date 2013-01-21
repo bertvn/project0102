@@ -69,19 +69,24 @@ public class Materials extends Actor{
         Dijkdoorbraak.score -= scoreDecrease;
     }
     
-    //abstract maken?
-    
     public void select(){
+        imageCreater(2, 501);
     }
     
+    //next 2 methods do the same?
     public void deselect(){
+        imageCreater(0, 409);
     }
     
     public void selectable(){
-    
+        imageCreater(0, getY());
     }
     
     public void unselectable(){
+        imageCreater(1, 501);
+    }
+    
+    public void imageCreater(int x, int location){
     
     }
 }

@@ -113,6 +113,16 @@ public class Dijkdoorbraak extends World{
                 addObject(new ScoreDisplayer(),579,25);
             }
         }
+        
+        //reset choice
+        if(Greenfoot.isKeyDown("space")){
+            if(selectedActor != null){
+                selectedActor.deselect();
+            }
+            selectedActor = null;
+            selectedMaterials = null;
+            resetSelectable();
+        }
     }
     
     // This method will populate our world with objects.

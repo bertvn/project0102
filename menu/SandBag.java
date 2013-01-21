@@ -15,23 +15,6 @@ public class SandBag extends Materials{
     public void act(){
         
     }
-    
-    public void select(){
-        imageCreater(2, 501);
-    }
-    
-    //next 2 methods do the same?
-    public void deselect(){
-        imageCreater(0, 409);
-    }
-    
-    public void selectable(){
-        imageCreater(0, getY());
-    }
-    
-    public void unselectable(){
-        imageCreater(1, 501);
-    }
      
     public void imageCreater(int x, int location){
         GreenfootImage creation;
@@ -54,7 +37,7 @@ public class SandBag extends Materials{
             font = font.deriveFont(20.0f);
             creation.setFont(font);
             creation.setColor(fontColor);
-            creation.drawString("" + Dijkdoorbraak.getItemsLeft(2),20,37);
+            creation.drawString("" + Dijkdoorbraak.getItemsLeft(2),19,42);
         }
         setImage(creation);
     }

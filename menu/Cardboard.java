@@ -16,23 +16,6 @@ public class Cardboard extends Materials{
         
     }
     
-    public void select(){
-        imageCreater(2, 501);
-    }
-    
-    //next 2 methods do the same?
-    public void deselect(){
-        imageCreater(0, 409);
-    }
-    
-    public void selectable(){
-        imageCreater(0, getY());
-    }
-    
-    public void unselectable(){
-        imageCreater(1, 501);
-    }
-    
     public void imageCreater(int x, int location){
         GreenfootImage creation;
         //selects image
@@ -54,7 +37,7 @@ public class Cardboard extends Materials{
             font = font.deriveFont(20.0f);
             creation.setFont(font);
             creation.setColor(fontColor);
-            creation.drawString("" + Dijkdoorbraak.getItemsLeft(3),20,30);
+            creation.drawString("" + Dijkdoorbraak.getItemsLeft(3),19,35);
         }
         setImage(creation);
     }
