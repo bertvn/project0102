@@ -147,7 +147,7 @@ public class Dijkdoorbraak extends World{
         theMessage = new TextDisplay();
         theMessage.setBackgroundColor(255, 255, 255, 160);
         theMessage.setBorderColor(0, 0, 0, 160);
-        theMessage.setField(150, 480);
+        theMessage.setField(480, 150);
         theMessage.setFontSize(30.0f);
         theMessage.setBorder(5, 5);
         theMessage.setDrawString(50, 90);

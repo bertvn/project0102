@@ -51,7 +51,7 @@ public class TextDisplay extends Actor{
     
     // backgroundColor has to be a pre-defined color here. Ie: Color.BLACK or Color.White
     // Use setBackgroundColor to create a specific border color.
-    public void setField(int fieldHeight, int fieldWidth){
+    public void setField(int fieldWidth, int fieldHeight){
         this.fieldWidth = fieldWidth;
         this.fieldHeight = fieldHeight;
     }
@@ -150,7 +150,7 @@ public class TextDisplay extends Actor{
           
         // Draw the string in the image with the input, on the given coordinates.
         image.drawString(input, drawStringX, drawStringY);
-        
+
         // This places the image
         setImage(image);
     }
