@@ -16,7 +16,7 @@ public class CalLooters extends Calamities{
         // Creating a new timer in the first act (this can't be done in constructor
         // because the object does not exist yet).
         if(firstAct == true){
-            createTimer("Looters in building: ", "EnfPolice", this); // Creating new timer.
+            createTimer(25, "Looters in building: ", "EnfPolice", this); // Creating new timer.
             firstAct = false;
         }
     }

@@ -1,5 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.*;
+import java.awt.Color;
+import java.awt.Font;
 
 public class Controlecentrum extends World{
     
@@ -12,9 +14,6 @@ public class Controlecentrum extends World{
     private int newSpotX;
     private int newSpotY;
     
-    // Creating a var to contain the x coordinate for the next timer.
-    private static int nextTimerPosition;
-    
     // Enforcements
     public EnfFirefighter fireTruck;
     public EnfPolice policeCar;    
@@ -25,14 +24,18 @@ public class Controlecentrum extends World{
     private CalamityTimer clickedCalamity;
     private Enforcements clickedEnforcement;
     
-    // Maximum number of timers.
+    // Timer controls
+    private static int nextTimerPosition;
     public static boolean maxTimersReached;
+    public static int calamitiesRemoved;
+    
+    // Score
+    private int scoreControl;
 
     public Controlecentrum(){    
         // Create a new world with 640x640 cells with a cell size of 1x1 pixels.
         super(640, 640, 1);
         populate();
-        
         
         totalStreetFloodings = 0; //Initial street floodings to 0
         streetFloodingSpots = new int[]{ // Filling array with possible spots.
@@ -51,6 +54,8 @@ public class Controlecentrum extends World{
         clickedItems = 0;
         clickedCalamity = null;
         clickedEnforcement = null;
+        
+        calamitiesRemoved = 0;
     }
     
     public void populate(){
@@ -75,24 +80,31 @@ public class Controlecentrum extends World{
     }
     
     public void act(){
-        if(totalStreetFloodings == 0){ // Spawn first flooding directly.
-            while(totalStreetFloodings == 0){ // Keep searching until we found 1.
-                createNewFlood(); // Searches for a spot and then adds 1 to total floodings.
-            }
-            
-            // Adding the new flood to the world.
-            addObject(new CalStreetFlooding(currentNewSpot), newSpotX, newSpotY);
-        }else{ // If we already have 1 flooding.
-            // Checks wheter we can create a new flooding (true = 1/600th chance).
-            if(createNewFlood()){
+        if(calamitiesRemoved < 25){
+            if(totalStreetFloodings == 0){ // Spawn first flooding directly.
+                while(totalStreetFloodings == 0){ // Keep searching until we found 1.
+                    createNewFlood(); // Searches for a spot and then adds 1 to total floodings.
+                }
+                
                 // Adding the new flood to the world.
                 addObject(new CalStreetFlooding(currentNewSpot), newSpotX, newSpotY);
+            }else{ // If we already have 1 flooding.
+                // Checks wheter we can create a new flooding (true = 1/600th chance).
+                if(createNewFlood()){
+                    // Adding the new flood to the world.
+                    addObject(new CalStreetFlooding(currentNewSpot), newSpotX, newSpotY);
+                }
             }
+            
+            updateNextTimerPosition(); // update positions.
+            
+            mouseInteraction(); // run checks for mouse input.
+            
+            showScore();
+        }else{
+            System.out.println("Ending game");
+            // Endgame here
         }
-        
-        updateNextTimerPosition(); // update positions.
-        
-        mouseInteraction(); // run checks for mouse input.
     }
     
     public boolean createNewFlood(){
@@ -174,12 +186,9 @@ public class Controlecentrum extends World{
     
     public void checkForCombinations(){
         if(clickedCalamity.getBelongsTo().getCalamityTimer() == null){
-            System.out.println("Is nu leeg");
             clickedCalamity = null;
             clickedItems--;
         }else if(clickedCalamity.getCalamityType() == clickedEnforcement.getEnfType()){
-            System.out.println("Ziet het niet als leeg");
-            System.out.println(clickedCalamity.getBelongsTo().getClass());
             if(clickedCalamity.getBelongsTo().getClass() != CalStreetFlooding.class){
                 removeObject(clickedCalamity.getBelongsTo());
                 clickedCalamity.removeCalamityTimer();
@@ -194,6 +203,20 @@ public class Controlecentrum extends World{
             clickedEnforcement = null;
             clickedItems = 0;
         }
+    }
+    
+    public void showScore(){
+        GreenfootImage image = new GreenfootImage(120,24);  // place background image
+        Font font = image.getFont();  // get current font
+        font = font.deriveFont(20.0F);  // set font size
+        image.setFont(font);  // set font
+        image.setColor(Color.BLACK);  // set font color
+        image.drawString("score: " + scoreControl, 10, 17);   // place score
+        //setImage(image);  
+    }
+    
+    public void addScore(int amount){
+        scoreControl += amount;
     }
 }
 

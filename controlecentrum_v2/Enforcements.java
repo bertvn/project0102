@@ -12,8 +12,8 @@ public class Enforcements extends TimeInformation{
         enfType = enfTypeVal;
     }
     
-    public void createTimer(int xCoordinate){ // create timer on given xCoordinate
-        createTimeInformation(10, 5); // creating a timer of 10~15s.
+    public void createTimer(int xCoordinate, int minimumTime){ // create timer on given xCoordinate
+        createTimeInformation(minimumTime, 5);
         
         enforcementTimer = new EnforcementTimer("Busy: ", super.getTimeLeft(), super.getTimeEnd());
         getWorld().addObject(enforcementTimer, xCoordinate, 585);
@@ -39,11 +39,11 @@ public class Enforcements extends TimeInformation{
         isBusy = status;
         
         if(enfType == "EnfFirefighter"){
-            createTimer(396);
+            createTimer(396, 15);
         }else if(enfType == "EnfPolice"){
-            createTimer(497);
+            createTimer(497, 8);
         }else if(enfType == "EnfAmbulance"){
-            createTimer(600);
+            createTimer(600, 15);
         }
     }
 
