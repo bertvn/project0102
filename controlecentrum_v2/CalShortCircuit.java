@@ -19,7 +19,7 @@ public class CalShortCircuit extends Calamities{
         // Creating a new timer in the first act (this can't be done in constructor
         // because the object does not exist yet).
         if(firstAct == true){
-            createTimer(25, "Short circuit, fire: ", "EnfFirefighter", this);
+            createTimer(32, "Short circuit, fire: ", "EnfFirefighter", this);
             firstAct = false;
         }
         

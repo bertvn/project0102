@@ -86,7 +86,7 @@ public class Controlecentrum extends World{
         addObject(ambulanceCar, 585, 550);
         
         theMessage = new TheMessage("Get ready! Click to start..");
-        addObject(theMessage, 320, 320);
+        addObject(theMessage, 320, 225);
         gameIsRunning = false;
     }
     
@@ -114,7 +114,7 @@ public class Controlecentrum extends World{
             
             }else{
                 theMessage = new TheMessage("You've completed the game!");
-                addObject(theMessage, 320, 320);
+                addObject(theMessage, 320, 225);
                         
                 removeAllGameObjects();
                 
@@ -248,7 +248,7 @@ public class Controlecentrum extends World{
     }
     
     public void addScore(Calamities clickedCalamity){
-        int pointIncrease = (int) (Math.random() * 13) + 49 + clickedCalamity.getDuration();
+        int pointIncrease = (int) (Math.random() * 13) + 49 + ((int) (clickedCalamity.getDuration() / 1.25));
         scoreControl += pointIncrease;
     }
     

@@ -28,9 +28,9 @@ public class CalStreetFlooding extends Calamities{
         streetIsOpen = true;
         
         // Default time for waiting with a new Short Circuit is about 10s.
-        waitForShortCircuit = 600;
-        waitForCarCrash = 300;
-        waitForLooters = 300;
+        waitForShortCircuit = 750;
+        waitForCarCrash = 438;
+        waitForLooters = 500;
         hasShortCircuit = false;
         hasCarCrash = false;
         hasLooters = false;
@@ -42,7 +42,7 @@ public class CalStreetFlooding extends Calamities{
         // Creating a new timer in the first act (this can't be done in constructor
         // because the object does not exist yet).
         if(firstAct == true){
-            createTimer(60, "Flooded street open: ", "EnfPolice", this);
+            createTimer(75, "Flooded street open: ", "EnfPolice", this);
             firstAct = false;
         }
         
@@ -61,7 +61,7 @@ public class CalStreetFlooding extends Calamities{
         // If the waiting time has reached zero and we do not yet have a short circuit
         if(waitForShortCircuit == 0 && !hasShortCircuit){
             if(!Controlecentrum.maxTimersReached){
-                if((int) (Math.random() * 600) == 0){ // 1/500th chance on new calamity
+                if((int) (Math.random() * 750) == 0){ // 1/500th chance on new calamity
                     shortCircuit = new CalShortCircuit();
                     getWorld().addObject(shortCircuit, getX()+9, getY()-21);
                     hasShortCircuit = true;
@@ -84,7 +84,7 @@ public class CalStreetFlooding extends Calamities{
         if(streetIsOpen){
             if(waitForCarCrash == 0 && !hasCarCrash){
                 if(!Controlecentrum.maxTimersReached){
-                    if((int) (Math.random() * 1000) == 0){ // spawn 1 with a 1/1200th chance.
+                    if((int) (Math.random() * 1250) == 0){ // spawn 1 with a 1/1200th chance.
                         carCrash = new CalCarCrash();
                         getWorld().addObject(carCrash, getX()+26, getY()+8);
                         hasCarCrash = true;
@@ -108,7 +108,7 @@ public class CalStreetFlooding extends Calamities{
         if(!streetIsOpen){
             if(waitForLooters == 0 && !hasLooters){
                 if(!Controlecentrum.maxTimersReached){
-                    if((int) (Math.random() * 1100) == 0){ // spawn 1 with a 1/1200th chance.
+                    if((int) (Math.random() * 1375) == 0){ // spawn 1 with a 1/1200th chance.
                         looters = new CalLooters();
                         getWorld().addObject(looters, getX()-8, getY()+8);
                         hasLooters = true;
@@ -132,17 +132,17 @@ public class CalStreetFlooding extends Calamities{
     
     public void resetHasCarCrash(){
         hasCarCrash = false;
-        waitForCarCrash = 350; // Create waiting time of about 5s.
+        waitForCarCrash = 438; // Create waiting time of about 5s.
     }
     
     public void resetHasShortCircuit(){
         hasShortCircuit = false;
-        waitForShortCircuit = 400; // Create waiting time of about 5s.
+        waitForShortCircuit = 500; // Create waiting time of about 5s.
     }
     
     public void resetHasLooters(){
         hasLooters = false;
-        waitForLooters = 400; // Create waiting time of about 5s.
+        waitForLooters = 500; // Create waiting time of about 5s.
     }
     
     public void removeAllObjects(){
