@@ -97,7 +97,14 @@ public class Instructions extends Actor
     }
     
     private void getPages() {
-         
+         pages[0] = "Rotterdam verkeerd in zwaar weer met veel regen en \n " +
+                    "een harde wind. Het water stijgt snel en niets lijkt \n "+
+                    "het water te kunnen stoppen voor het rotterdam in stroomd. \n\n" +
+                    "Het spel bestaat uit 5 dagen. In deze 5 dagen is het de bedoeling  \n" +
+                    "dat je calamiteiten oplost door elke dag 1 tot 3 minigames  \n" +
+                    "te voltooien. \n\n" +
+                    "Druk op een icoontje op de kaart om het spel te starten.\n" +
+                    "Elk spel draait om 1 onderwerp: voorkom slachtoffers! ";
         
     } 
 }

@@ -38,7 +38,6 @@ public class Menu extends World
     
     /* the current day and init amount of games played */
     public static int DAY = 0;
-    public int minigamesPlayed;
     
     
     
@@ -72,7 +71,7 @@ public class Menu extends World
         // add scoreField
         displayScoreField(515, 495);
         // add doneTextField
-        displayDoneField(515, 560, minigamesPlayed);
+        displayDoneField(515, 560, MiniGameMemory.minigamesPlayed);
         // add highscores button
         addObject(new HighscoresButton(), 520, 610);
         // add instructions button

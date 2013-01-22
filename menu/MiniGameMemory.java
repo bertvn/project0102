@@ -16,6 +16,7 @@ public class MiniGameMemory
     
     public static boolean readyNextDay = true; // check if day is complete
     public static String background = "overstroming00";
+    public static int minigamesPlayed = 0;
 
     public static void setCurrentGame(int valX, int valY) {
         currentGameX = valX;
@@ -46,7 +47,7 @@ public class MiniGameMemory
         }
         
         if(position < 99) { // if an index was found
-            gameTypes[position] = 0; // set the index of the game to zero, removing the game
+            gameTypes[position] = 99; // set the index of the game to zero, removing the game
         }
         
         amountOfGames -= 1; // decrease amount of games
@@ -56,5 +57,7 @@ public class MiniGameMemory
         } else {
             readyNextDay = false;
         }
+        
+        minigamesPlayed++; // add 1 to finished minigames
     }
 }
