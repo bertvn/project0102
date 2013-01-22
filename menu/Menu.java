@@ -108,8 +108,7 @@ public class Menu extends World
                         //Greenfoot.setWorld(new Doolhof());
                         System.out.println("Fapman plays doolhof");
                     } else if (iconItem.getClass().equals(OntwijkenIcon.class)) {
-                        //Greenfoot.setWorld(new Ontwijken());
-                        System.out.println("Fapman plays ontwijken");
+                        Greenfoot.setWorld(new Ontwijken());
                     }
                     
                 }
@@ -141,11 +140,11 @@ public class Menu extends World
         
         for(int i = 0; i < MiniGameMemory.gameTypes.length; i++) {
             
-            int gameNumber = MiniGameMemory.gameTypes[i];
+            int gameNumber = MiniGameMemory.gameTypes[i]; // get the game type
             
             switch(gameNumber) { /* random geselecteerde game plaatsen 
-                                      * op random positie op X en Y as 
-                                      */
+                                  * op random positie op X en Y as 
+                                  */
                     case 0: 
                         addObject(new CalamiteitenIcon(), MiniGameMemory.gamesX[i], MiniGameMemory.gamesY[i]); 
                     break;

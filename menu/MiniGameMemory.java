@@ -24,7 +24,7 @@ public class MiniGameMemory
     }
     
     public static void setBackground(String name) {
-        background = name;
+        background = name; // store background image name
     }
     
     public static void setMiniGames(int amount, int[] gameType, int[] placedX, int[] placedY)

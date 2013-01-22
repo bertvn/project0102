@@ -97,6 +97,7 @@ public class Instructions extends Actor
     }
     
     private void getPages() {
+         // first page tekst
          pages[0] = "Rotterdam verkeerd in zwaar weer met veel regen en \n " +
                     "een harde wind. Het water stijgt snel en niets lijkt \n "+
                     "het water te kunnen stoppen voor het rotterdam in stroomd. \n\n" +

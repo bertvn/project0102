@@ -23,7 +23,7 @@ public class TextDisplay extends Actor{
     
     
     public TextDisplay(){
-        // Default values for all TextDisplays
+        // Default values for all TextDisplays 
         fontSize = 20.0f;
         fontColor = new Color(0, 0, 0);
         fieldWidth = 100;
