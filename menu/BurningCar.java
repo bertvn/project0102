@@ -8,10 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class BurningCar extends Actor
 {
-    /**
-     * Act - do whatever the BurningCar wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    private boolean done = false;
+    private TextDisplay theMessage;
     
     public BurningCar(){
         setImage("ontwijken/burningCar.png");
@@ -20,7 +18,7 @@ public class BurningCar extends Actor
     public void act() 
     {
         // Add your action code here.
-        if(getY() >= 320){
+        if(getY() >= 320 && !done){
             Ontwijken.music.stop();
             endGame();
         } else{
@@ -33,16 +31,17 @@ public class BurningCar extends Actor
     }
     
     public void endGame(){
-        Ontwijken.speed = 0;
+        Ontwijken.go = false;
+        done = true;
         createMessage(320, 320, "You won! Click to continue..");
+        Ontwijken.score += ((TimerDisplay.currentValue/60) * 39.1);
         Score.addScore(Ontwijken.score);
         MiniGameMemory.gameFinished();
         
-        System.out.println("Ended");
     }
     
     public void createMessage(int xCoord, int yCoord, String message){
-        TextDisplay theMessage = new TextDisplay();
+        theMessage = new TextDisplay();
         theMessage.setBackgroundColor(255, 255, 255, 160);
         theMessage.setBorderColor(0, 0, 0, 160);
         theMessage.setField(480, 150);

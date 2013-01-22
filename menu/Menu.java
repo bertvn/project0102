@@ -125,7 +125,7 @@ public class Menu extends World
             }
             
             if(!iconIns.isEmpty()) { // if there is an object hit (if pressed on instructions button
-                addObject(new Instructions(), 312, 246);
+                addObject(new Instructions(0), 312, 246);
             }
             
             if(!instructionsPanel.isEmpty()) { // if there is an object hit (if pressed on instructions panel

@@ -30,7 +30,7 @@ public class Instructions extends Actor
    
     /* <---- */
     
-    public Instructions() {
+    public Instructions(int page) {
         
         /* prepare highscores */
         getPages();
@@ -58,7 +58,7 @@ public class Instructions extends Actor
         text = text + "\n\n"; // go to next line
 
         // placing the text of the current page
-        text = text + pages[0];        
+        text = text + pages[page];        
         
         text = text + "\n\n"; // skip 2 lines
         for(int i = 0; i < lineLength; i++) {
@@ -97,7 +97,7 @@ public class Instructions extends Actor
     }
     
     private void getPages() {
-         // first page tekst
+         // first page text
          pages[0] = "Rotterdam verkeerd in zwaar weer met veel regen en \n " +
                     "een harde wind. Het water stijgt snel en niets lijkt \n "+
                     "het water te kunnen stoppen voor het rotterdam in stroomd. \n\n" +
@@ -106,6 +106,16 @@ public class Instructions extends Actor
                     "te voltooien. \n\n" +
                     "Druk op een icoontje op de kaart om het spel te starten.\n" +
                     "Elk spel draait om 1 onderwerp: voorkom slachtoffers! ";
+         
+         //third page text            
+         pages[2] = "Op de weg is een ongeluk gebeurd.\n" +  
+                    "Aan jou de taak om zo snel mogelijk bij het ongeluk te komen\n" +  
+                    "om hulp te bieden.\n" + 
+                    "\n" +
+                    "Gebruik de linker en rechter pijltjes toetsen om de\n" +
+                    "auto's op en de scheuren in de weg te ontwijken.\n" + 
+                    "onder in het scherm wordt de voortgang getoond. \n" + 
+                    "Blijf op de weg en ontwijk de obstakels";
         
     } 
 }

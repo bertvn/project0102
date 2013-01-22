@@ -9,6 +9,7 @@ public class Timer extends Actor{
     private static String suffix = " second(s)";
     private int stringLength;
     
+    
     // Constructor of the class Timer.
     public Timer(String prefix){
         // Set the prefix for later use.
@@ -79,4 +80,5 @@ public class Timer extends Actor{
     public void changeWorld(){
         Greenfoot.setWorld(new Menu());
     }
+    
 }

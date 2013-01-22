@@ -7,6 +7,8 @@ public class TimerDisplay extends Actor{
     private int targetValue = 0;
     private GreenfootImage image;
     private Font font;
+    private boolean start = false;
+    private boolean done = false;
     
     private final float FONT_SIZE = 20.0f;
     
@@ -20,16 +22,17 @@ public class TimerDisplay extends Actor{
     
     // This method will be called every act.
     public void act(){
-        if(endGame()){ // Check if the timer has reached 0.
+        if(endGame() && !done){ // Check if the timer has reached 0.
             Ontwijken.speed = 0;
             createMessage(320, 320, "You ran out of time! Click to continue..");
             MiniGameMemory.gameFinished();
-            
-            System.out.println("Ended");
+            done = true;
         }else{
-            currentValue--;
-            if((currentValue % 60) == 0){
-                updateImage();
+            if(start){
+                currentValue--;
+                if((currentValue % 60) == 0){
+                    updateImage();
+                }
             }
         }
     }
@@ -82,5 +85,13 @@ public class TimerDisplay extends Actor{
     // This method updates the timer to the 
     public int getCurrentValue(){
         return currentValue;
+    }
+    
+    public void startTimer(){
+        start = true;
+    }
+    
+    public void stopTimer(){
+        start = false;
     }
 }

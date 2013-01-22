@@ -1,5 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Color;
+import java.util.List;
 
 /**
  * Write a description of class WorldWorde here.
@@ -12,6 +13,9 @@ public class Ontwijken extends World
 
     public static int speed; // set speed as global variable
     public static int distance; //distance to goal
+    
+    private TimerDisplay td;
+    private TextDisplay theMessage;
 
     private int speedTimer = 0;
     private int spawnTimer = 0;
@@ -19,6 +23,8 @@ public class Ontwijken extends World
     private boolean placed = false; //true if finish is placed
     public static GreenfootSound music;
     public static int random;
+    
+    public static boolean go;
     
     /**
      * Constructor for objects of class WorldWorde.
@@ -36,18 +42,46 @@ public class Ontwijken extends World
         populate();
         
         //sets order in which objects are drawn
-        setPaintOrder(ProgressIndicator.class,ProgressBar.class,BAM.class,Car.class,BurningCar.class,ScoreDisplay.class,TimerDisplay.class,ObsCar.class,Cracks.class,RoadMarking.class,Trees.class,Road.class,Grass.class);
+        setPaintOrder(Instructions.class,TextDisplay.class,ProgressIndicator.class,ProgressBar.class,BAM.class,Car.class,BurningCar.class,ScoreDisplay.class,TimerDisplay.class,ObsCar.class,Cracks.class,RoadMarking.class,Trees.class,Road.class,Grass.class);
         
         //play music
         music = new GreenfootSound("Breakdown.mp3");
         
+        //set starter
+        go = false;
     }
     
     public void act(){
-        speedUp(); // call the speed up function
-        spawnRate(); // call the spawn function
-        decreaseDistance(); //decreases distance to finish
-        music.play(); //starts music
+        if(Greenfoot.mouseClicked(null)) {//when mouse button is pressed
+            MouseInfo mouse = Greenfoot.getMouseInfo(); // get mouse info
+            int x = mouse.getX();
+            int y = mouse.getY();
+            //zet hier nog de lose win text ding geval
+            List<Instructions> instructionsPanel = getObjectsAt(x, y, Instructions.class); // get the object that hits mouse of highscore (panel)
+            if(!instructionsPanel.isEmpty()) { // if there is an object hit (if pressed on instructions panel
+                removeObject(instructionsPanel.get(0));
+                td.startTimer();
+                go = true;
+                speed = 1;
+            }
+            List<TextDisplay> textPanel = getObjectsAt(x, y, TextDisplay.class); // get the object that hits mouse of highscore (panel)
+            if(!textPanel.isEmpty()) { // if there is an object hit (if pressed on TextDisplay panel
+                //got back to menu
+                Greenfoot.setWorld(new Menu());
+            }
+        }
+        if(go){
+            speedUp(); // call the speed up function
+            spawnRate(); // call the spawn function
+            decreaseDistance(); //decreases distance to finish
+            music.play(); //starts music
+        }
+        else{
+            music.stop();//stops music
+            speed = 0;
+            td.stopTimer();
+        }
+        
     }
     //return speed
     public int getSpeed(){
@@ -135,13 +169,14 @@ public class Ontwijken extends World
         addObject(new ScoreDisplay(), 580, 34);
         
         //choose speed
-        speed = 1;
+        speed = 0;
         
         //set distance
         distance = 40000;
 
         //set Timer
-        addObject(new TimerDisplay(),60,34);
+        td = new TimerDisplay();
+        addObject(td,60,34);
         
         //add RoadMarkings
         addObject(new RoadMarking(),320,0);
@@ -172,7 +207,24 @@ public class Ontwijken extends World
         addObject(new ProgressBar(),320,542);
         addObject(new ProgressIndicator(),28,625);
         
+        addObject(new Instructions(2),320,320);
+        
         randomSpawner(); // call random spawner 
+    }
+    
+    public void createMessage(int xCoord, int yCoord, String message){
+        theMessage = new TextDisplay();
+        theMessage.setBackgroundColor(255, 255, 255, 160);
+        theMessage.setBorderColor(0, 0, 0, 160);
+        theMessage.setField(480, 150);
+        theMessage.setFontSize(30.0f);
+        theMessage.setBorder(5, 5);
+        theMessage.setDrawString(50, 90);
+        theMessage.setInput(message);
+        theMessage.setHasBackground(true);
+        
+        theMessage.createTextBox();
+        addObject(theMessage, xCoord, yCoord);
     }
 
 }
