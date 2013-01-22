@@ -29,7 +29,6 @@ public class TimeInformation extends Actor{
     
     // Get the ending time.
     public int getDuration(){
-        System.out.println("Duration was: " + duration);
         return duration;
     }
 }

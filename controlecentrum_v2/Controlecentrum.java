@@ -248,7 +248,7 @@ public class Controlecentrum extends World{
     }
     
     public void addScore(Calamities clickedCalamity){
-        int pointIncrease = (int) (Math.random() * 10) + 40 + clickedCalamity.getDuration();
+        int pointIncrease = (int) (Math.random() * 13) + 49 + clickedCalamity.getDuration();
         scoreControl += pointIncrease;
     }
     
