@@ -39,11 +39,11 @@ public class Enforcements extends TimeInformation{
         isBusy = status;
         
         if(enfType == "EnfFirefighter"){
-            createTimer(396, 15);
+            createTimer(396, 12);
         }else if(enfType == "EnfPolice"){
-            createTimer(497, 8);
+            createTimer(497, 7);
         }else if(enfType == "EnfAmbulance"){
-            createTimer(600, 15);
+            createTimer(600, 12);
         }
     }
 

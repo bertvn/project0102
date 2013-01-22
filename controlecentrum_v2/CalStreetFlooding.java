@@ -42,7 +42,7 @@ public class CalStreetFlooding extends Calamities{
         // Creating a new timer in the first act (this can't be done in constructor
         // because the object does not exist yet).
         if(firstAct == true){
-            createTimer(40, "Flooded street open: ", "EnfPolice", this);
+            createTimer(60, "Flooded street open: ", "EnfPolice", this);
             firstAct = false;
         }
         
@@ -108,7 +108,7 @@ public class CalStreetFlooding extends Calamities{
         if(!streetIsOpen){
             if(waitForLooters == 0 && !hasLooters){
                 if(!Controlecentrum.maxTimersReached){
-                    if((int) (Math.random() * 1300) == 0){ // spawn 1 with a 1/1200th chance.
+                    if((int) (Math.random() * 1100) == 0){ // spawn 1 with a 1/1200th chance.
                         looters = new CalLooters();
                         getWorld().addObject(looters, getX()-8, getY()+8);
                         hasLooters = true;
@@ -143,5 +143,35 @@ public class CalStreetFlooding extends Calamities{
     public void resetHasLooters(){
         hasLooters = false;
         waitForLooters = 300; // Create waiting time of about 5s.
+    }
+    
+    public void removeAllObjects(){
+        if(looters != null){
+            if(looters.getCalamityTimer() != null){
+                getWorld().removeObject(looters.getCalamityTimer());
+            }
+            
+            getWorld().removeObject(looters);
+        }
+        
+        if(carCrash != null){
+            if(carCrash.getCalamityTimer() != null){
+                getWorld().removeObject(carCrash.getCalamityTimer());
+            }
+            
+            getWorld().removeObject(carCrash);
+        }
+        
+        if(shortCircuit != null){
+            if(shortCircuit.getCalamityTimer() != null){
+                getWorld().removeObject(shortCircuit.getCalamityTimer());
+            }
+            
+            getWorld().removeObject(shortCircuit);
+        }
+        
+        if(getCalamityTimer() != null){
+            getWorld().removeObject(getCalamityTimer());
+        }
     }
 }

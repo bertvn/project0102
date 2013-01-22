@@ -9,6 +9,8 @@ public class Calamities extends TimeInformation{
         if(calamityTimer != null){
             long currentTimeLeft = super.getTimeLeft();
             if(currentTimeLeft <= 0){
+                int pointReduction = (int) ((Math.random() * 10) + 40 + super.getDuration());
+                Controlecentrum.scoreControl -= pointReduction;
                 removeCalamityTimer();
             }else{
                 calamityTimer.setCurrentValue(super.getTimeLeft());

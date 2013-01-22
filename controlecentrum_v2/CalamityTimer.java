@@ -39,6 +39,5 @@ public class CalamityTimer extends Timers{
         moveTimerBelow();
         getWorld().removeObject(this);
         Controlecentrum.calamitiesRemoved++;
-        System.out.println("Amount of calamities removed: " + Controlecentrum.calamitiesRemoved);
     }
 }
