@@ -17,10 +17,11 @@ public class Car extends Actor
     private GreenfootSound crash;
     
     public Car() {       
-        // prepare image
-        GreenfootImage img = new GreenfootImage("car.png");
+        // choice image
+        GreenfootImage img = new GreenfootImage("car" + WorldWorker.random + ".png");
         setImage(img); // set image
         setRotation(0);
+        //set crash sound
         crash = new GreenfootSound("crash.mp3");
     }
     

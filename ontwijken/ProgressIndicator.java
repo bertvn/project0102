@@ -12,7 +12,7 @@ public class ProgressIndicator extends Actor
     private int counter = 0;
 
     public ProgressIndicator(){
-        setImage("progressCar.png");
+        setImage("progressCar" + WorldWorker.random + ".png");
     }
     /**
      * Act - do whatever the ProgressIndicator wants to do. This method is called whenever

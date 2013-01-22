@@ -33,10 +33,10 @@ public class BurningCar extends Actor
     }
     
     public void endGame(){
-        WorldWorker.score += 500;
-        
+        //adding timeleft to score
+        WorldWorker.score += ((TimerDisplay.currentValue/60)*39.1); 
         //code to send score to menu here
-        
+        System.out.println(WorldWorker.score);
         //return to menu here
         
         Greenfoot.stop();

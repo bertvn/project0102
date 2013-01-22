@@ -18,6 +18,7 @@ public class WorldWorker extends World
     public static int score = 0;
     private boolean placed = false; //true if finish is placed
     public static GreenfootSound music;
+    public static int random;
     
     /**
      * Constructor for objects of class WorldWorde.
@@ -27,6 +28,9 @@ public class WorldWorker extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(640, 640, 1); 
+        
+        //choice game images
+        random = (int) Math.round(Math.random()*2)+1;
         
         //populate world
         populate();

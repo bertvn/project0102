@@ -16,7 +16,7 @@ public class Dijkdoorbraak extends World{
     private SandBag sandBag;
     private Cardboard cardboard;
     private Paper paper;
-    private int[] itemsLeft;
+    private static int[] itemsLeft;
 
     private Helpers selectedActor = null;
     private Materials selectedMaterials = null;
@@ -42,12 +42,13 @@ public class Dijkdoorbraak extends World{
         
         // Fill the world with objects.
         setBackground("dijkdoorbraak/background.png");
+        createItemsLeft();
         startPopulating();
         createSpots();
         breakThroughPart = 0;
         waitWithDikeSpawns = 0;
         spotsLeft = 9;
-        createItemsLeft();
+        
         setPaintOrder(TextDisplay.class,ScoreDisplayer.class,Civilian.class,Soldier.class,Policeman.class,CementBag.class,SandBag.class,GravelBag.class,Cardboard.class,Paper.class,Dike.class);
         score = 3500;
     }
@@ -111,6 +112,16 @@ public class Dijkdoorbraak extends World{
                 addObject(gameTimer, 320, 25);
                 addObject(new ScoreDisplayer(),579,25);
             }
+        }
+        
+        //reset choice
+        if(Greenfoot.isKeyDown("space")){
+            if(selectedActor != null){
+                selectedActor.deselect();
+            }
+            selectedActor = null;
+            selectedMaterials = null;
+            resetSelectable();
         }
     }
     
@@ -200,7 +211,7 @@ public class Dijkdoorbraak extends World{
         }
     }
     
-    public int getItemsLeft(int arrayKey){
+    public static int getItemsLeft(int arrayKey){
         // get the itemsleft for certain time of material.
         if(arrayKey < 5 && arrayKey >= 0){
             return itemsLeft[arrayKey];
