@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  
-public class EnfFirefighter extends Enforcements {
+public class EnfAmbulance extends Enforcements {
     
-    public EnfFirefighter(){
-        super("EnfFirefighter");
-        setImage("EnfFirefighter.png");
+    public EnfAmbulance(){
+        super("EnfAmbulance");
+        setImage("EnfAmbulance.png");
     }
     
     // Change status to input.

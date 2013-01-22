@@ -14,10 +14,13 @@ public class Menu extends World
      * Constructor for objects of class Map.
      * 
      */
+    /* standard variables */
     private int flooded; // how far the flood has come, according to the day
     private final int FLOODSTAGES; // amount of floodstages the game has
+    
     private GreenfootImage backGround; // background of menu
     
+    /* variables for processing the initiation of minigames */
     private int amountOfGames; // amount of games in the day
     private int amountPlaced; // amount of games placed on the map (ensurance that initialised games are placed)
     
@@ -35,7 +38,6 @@ public class Menu extends World
     
     /* the current day and init amount of games played */
     public static int DAY = 0;
-    public int minigamesPlayed;
     
     
     
@@ -44,14 +46,17 @@ public class Menu extends World
     {    
         
         // Create a new world with 640x640 cells with a cell size of 1x1 pixels;
-        super(640, 640, 1);   
-        
-        //Greenfoot.setWorld(new test());
+        super(640, 640, 1); 
         
         amountPlaced = 0; // start with no icons placed
         flooded = 0; // start with no flood at all;
         FLOODSTAGES = 9; // amount of floods, starting with 0 (so there's 10);
         
+        populate();       
+    }
+    
+    public void populate() {
+
         backGround = new GreenfootImage("overstromingen/"+MiniGameMemory.background+".jpg"); // prepare the background;
         setBackground(backGround); // set the background;  
         
@@ -66,16 +71,17 @@ public class Menu extends World
         // add scoreField
         displayScoreField(515, 495);
         // add doneTextField
-        displayDoneField(515, 560, minigamesPlayed);
+        displayDoneField(515, 560, MiniGameMemory.minigamesPlayed);
         // add highscores button
         addObject(new HighscoresButton(), 520, 610);
+        // add instructions button
+        addObject(new InstructionsButton(), 94, 610);
         
         if(MiniGameMemory.readyNextDay == true) { // if ready for the next day
             goToNextDay(); // go to the next day
         } else {
             placeGamesMemory(); // place the minigames
         }
-        
     }
     
     public void act() {
@@ -83,13 +89,16 @@ public class Menu extends World
             MouseInfo mouse = Greenfoot.getMouseInfo(); // get mouse info
             int x = mouse.getX();
             int y = mouse.getY();
-            List<Icons> icon = getObjectsAt(x, y, Icons.class); // get the object that hits mouse
-        
-            if(icon != null) { // if there is an object (are objects)
+            List<Icons> icon = getObjectsAt(x, y, Icons.class); // get the object that hits mouse of icons
+            List<HighscoresButton> iconHigh = getObjectsAt(x, y, HighscoresButton.class); // get the object that hits mouse of highscorebutton
+            List<Highscore> highscorePanel = getObjectsAt(x, y, Highscore.class); // get the object that hits mouse of highscore (panel)
+            List<InstructionsButton> iconIns = getObjectsAt(x, y, InstructionsButton.class); // get the object that hits mouse of highscorebutton
+            List<Instructions> instructionsPanel = getObjectsAt(x, y, Instructions.class); // get the object that hits mouse of highscore (panel)
+            
+            if(!icon.isEmpty()) { // if there is an object (are objects)
                 for(Icons iconItem : icon) { // for every object
 
                     if(iconItem.getClass().equals(DijkdoorbraakIcon.class)) { // retrieve class and chose proper map
-                        
                         Greenfoot.setWorld(new Dijkdoorbraak());
                         //System.out.println("Fapman plays dijkdoorbraak");
                     } else if (iconItem.getClass().equals(CalamiteitenIcon.class)) {
@@ -106,6 +115,22 @@ public class Menu extends World
                 }
                 
                 MiniGameMemory.setCurrentGame(x,y);
+            }
+            
+            if(!iconHigh.isEmpty()) { // if there is an object hit (if pressed on highscores button
+                addObject(new Highscore(), 312, 246);
+            }
+            
+            if(!highscorePanel.isEmpty()) { // if there is an object hit (if pressed on highscores panel
+                removeObject(highscorePanel.get(0));
+            }
+            
+            if(!iconIns.isEmpty()) { // if there is an object hit (if pressed on instructions button
+                addObject(new Instructions(), 312, 246);
+            }
+            
+            if(!instructionsPanel.isEmpty()) { // if there is an object hit (if pressed on instructions panel
+                removeObject(instructionsPanel.get(0));
             }
             
             List<TextDisplay> highScore = getObjectsAt(x, y, TextDisplay.class); // get the object that hits mouse
@@ -240,14 +265,6 @@ public class Menu extends World
         setDay(DAY+1); // add 1 day
         
         displayTopPanel(320, 26); // resetToppanel
-        /* remove top panel
-        List<TopPanel> tp = getObjects(TopPanel.class);
-        for(Actor tpi : tp) {
-            removeObject(tpi);
-        }
-        // add top panel
-        addObject(new TopPanel(), 320, 26);
-        */
         
         changeImage(); // go to next flooding
         
@@ -266,6 +283,7 @@ public class Menu extends World
         MiniGameMemory.setBackground("overstroming0"+flooded);
         setBackground(backGround);
     }
+
     
     public void displayTopPanel(int xCoord, int yCoord){
         TextDisplay topPanel = new TextDisplay(); // create new text display
@@ -299,7 +317,7 @@ public class Menu extends World
         TextDisplay doneText = new TextDisplay();
         doneText.setFontColor(255, 255, 255, 0);
         doneText.setInput("Voltooide calamiteiten:");
-        doneText.setField(30, 200);
+        doneText.setField(200, 30);
        
         doneText.createTextBox();
         addObject(doneText, xCoord, yCoord);
@@ -310,7 +328,7 @@ public class Menu extends World
         scoreField.setFontColor(0, 0, 0, 0);
         scoreField.setBackgroundColor(255, 255, 255, 255);
         scoreField.setBorderColor(176, 176, 176, 255);
-        scoreField.setField(30, 220);
+        scoreField.setField(220, 30);
         scoreField.setBorder(2, 2);
         scoreField.setDrawString(6, 22);
         scoreField.setInput(String.valueOf(new Integer(Score.score)));
@@ -325,7 +343,7 @@ public class Menu extends World
         doneField.setFontColor(0, 0, 0, 0);
         doneField.setBackgroundColor(255, 255, 255, 255);
         doneField.setBorderColor(176, 176, 176, 255);
-        doneField.setField(30, 220);
+        doneField.setField(220, 30);
         doneField.setBorder(2, 2);
         doneField.setDrawString(6, 22);
         doneField.setInput(String.valueOf(new Integer(minigamesPlayed)));

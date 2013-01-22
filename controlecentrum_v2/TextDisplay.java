@@ -2,7 +2,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Color;
 import java.awt.Font;
 import java.util.Calendar;
-
+ 
 public class TextDisplay extends Actor{
     
     private GreenfootImage image;

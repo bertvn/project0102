@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class HighscoresButton extends Actor
+public class InstructionsButton extends Actor
 {
     /**
      * Act - do whatever the TopPanel wants to do. This method is called whenever
@@ -14,9 +14,9 @@ public class HighscoresButton extends Actor
      */
     private GreenfootImage backGround;
     
-    public HighscoresButton() {
+    public InstructionsButton() {
         
-        backGround = new GreenfootImage("opmaak/highscoresButton.png"); // prepare background image
+        backGround = new GreenfootImage("opmaak/instructionsButton.png"); // prepare background image
         setImage(backGround); // set background image
     }
 }
