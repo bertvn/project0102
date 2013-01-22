@@ -317,6 +317,7 @@ public class Dijkdoorbraak extends World{
             selectedMaterials.deselect();
             selectedActor = null;
             selectedMaterials = null;
+            resetSelectable();
             return;
         }else{
             //if no material is selected
@@ -342,9 +343,29 @@ public class Dijkdoorbraak extends World{
                     //select 1
                     selectedActor = hlp.get(0);
                     selectedActor.select();
+                    selectable(selectedActor.getPower());
                 }
             }
         }
+    }
+    
+    public void selectable(int weight){
+        List<Materials> mat = getObjects(Materials.class);
+        for(Materials mater : mat){
+            if(mater.getWeight() <= weight){
+                mater.selectable();
+            }
+        }
+    }
+    
+    //removed object zorgt hier voor problemen
+    public void resetSelectable(){
+       List<Materials> mat = getObjects(Materials.class);
+        for(Materials mater : mat){
+            if(mater.getY() > 500){
+                mater.unselectable();
+            }
+        } 
     }
     
 }
