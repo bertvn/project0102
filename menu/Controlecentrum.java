@@ -58,6 +58,7 @@ public class Controlecentrum extends World{
         clickedEnforcement = null;
         
         calamitiesRemoved = 0;
+        scoreControl = 0;
     }
     
     public void populate(){
@@ -140,7 +141,7 @@ public class Controlecentrum extends World{
         }
     }
     
-    public boolean createNewFlood(){
+    private boolean createNewFlood(){
         if(maxTimersReached){
             return false;
         }else if(totalStreetFloodings >= 8){
@@ -173,7 +174,7 @@ public class Controlecentrum extends World{
         }
     }
     
-    public void updateNextTimerPosition(){
+    private void updateNextTimerPosition(){
         int counter = getObjects(CalamityTimer.class).size(); // Amount of timers 
         if(counter < 9){
             maxTimersReached = false;
@@ -191,7 +192,7 @@ public class Controlecentrum extends World{
         return nextTimerPosition;
     }
     
-    public void mouseInteraction(){
+    private void mouseInteraction(){
         if(Greenfoot.mouseClicked(null)) { // when mouse button is pressed
             MouseInfo mouse = Greenfoot.getMouseInfo(); // get mouse info
             List<CalamityTimer> calTimer = getObjectsAt(mouse.getX(), mouse.getY(), CalamityTimer.class);
@@ -223,7 +224,7 @@ public class Controlecentrum extends World{
         }
     }
     
-    public void checkForCombinations(){
+    private void checkForCombinations(){
         if(clickedCalamity.getBelongsTo().getCalamityTimer() == null){
             clickedCalamity = null;
             clickedItems--;
@@ -245,16 +246,16 @@ public class Controlecentrum extends World{
         }
     }
     
-    public int getScoreControl(){
+    private int getScoreControl(){
         return scoreControl;
     }
     
-    public void addScore(Calamities clickedCalamity){
+    private void addScore(Calamities clickedCalamity){
         int pointIncrease = (int) (Math.random() * 13) + 49 + ((int) (clickedCalamity.getDuration() / 1.25));
         scoreControl += pointIncrease;
     }
     
-    public void removeAllGameObjects(){                // Removing CalStreetFloodings
+    private void removeAllGameObjects(){                // Removing CalStreetFloodings
         List<CalStreetFlooding> floodings = getObjects(CalStreetFlooding.class);
         for(CalStreetFlooding csf : floodings){
            csf.removeAllObjects();

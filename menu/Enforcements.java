@@ -32,7 +32,7 @@ public class Enforcements extends TimeInformation{
         }
     }
 
-    public void newStatus(boolean status){
+    private void newStatus(boolean status){
         setImage("controlecentrum/" + enfType + "Used.png"); // display normal image.
         isBusy = status;
         
@@ -45,7 +45,7 @@ public class Enforcements extends TimeInformation{
         }
     }
 
-    public void resetStatus(boolean status){
+    private void resetStatus(boolean status){
         setImage("controlecentrum/" + enfType + ".png"); // display used image.
         isBusy = status;
     }

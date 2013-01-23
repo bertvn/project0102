@@ -51,7 +51,7 @@ public class CalStreetFlooding extends Calamities{
         lootersAct(); // Update things that have something to do with the looters calamity.
     }
     
-    public void shortCircuitAct(){
+    private void shortCircuitAct(){
         // If the waiting time has reached zero and we do not yet have a short circuit
         if(waitForShortCircuit == 0){
             if(!Controlecentrum.maxTimersReached){
@@ -66,7 +66,7 @@ public class CalStreetFlooding extends Calamities{
         }
     }
     
-    public void carCrashAct(){
+    private void carCrashAct(){
         // If the street is open and we do not yet have a car crash.
         if(streetIsOpen){
             if(waitForCarCrash == 0){
@@ -83,7 +83,7 @@ public class CalStreetFlooding extends Calamities{
         }
     }
     
-    public void lootersAct(){
+    private void lootersAct(){
         // If the street is closed and we do not yet have a car crash.
         if(!streetIsOpen){
             if(waitForLooters == 0){
@@ -100,7 +100,7 @@ public class CalStreetFlooding extends Calamities{
         }
     }
     
-    public void closeStreet(){
+    private void closeStreet(){
         streetIsOpen = false;
     }
     

@@ -8,7 +8,7 @@ public class EnfPolice extends Enforcements {
     }
     
     // Change status to input.
-    public void setIsBusy(boolean status){
+    private void setIsBusy(boolean status){
         isNowBusy(status);
     }
     
