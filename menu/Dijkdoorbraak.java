@@ -49,7 +49,7 @@ public class Dijkdoorbraak extends World{
         waitWithDikeSpawns = 0;
         spotsLeft = 9;
         
-        setPaintOrder(TextDisplay.class,ScoreDisplayer.class,Civilian.class,Soldier.class,Policeman.class,CementBag.class,SandBag.class,GravelBag.class,Cardboard.class,Paper.class,Dike.class);
+        setPaintOrder(Instructions.class,TextDisplay.class,ScoreDisplayer.class,Civilian.class,Soldier.class,Policeman.class,CementBag.class,SandBag.class,GravelBag.class,Cardboard.class,Paper.class,Dike.class);
         score = 3500;
     }
     
@@ -100,9 +100,9 @@ public class Dijkdoorbraak extends World{
         
         if(Greenfoot.mouseClicked(null)){
             MouseInfo mouse = Greenfoot.getMouseInfo();
-            List<TextDisplay> textDisplays = getObjectsAt(mouse.getX(), mouse.getY(), TextDisplay.class);
-            if(!textDisplays.isEmpty()){
-                removeObject(theMessage);
+            List<Instructions> instr = getObjectsAt(mouse.getX(), mouse.getY(), Instructions.class);
+            if(!instr.isEmpty()){
+                removeObject(instr.get(0));
                 gameIsRunning = true;
                 
                 gameTimer = new Timer("Time left: ");
@@ -111,6 +111,10 @@ public class Dijkdoorbraak extends World{
                 gameTimer.setCurrentValue(90);
                 addObject(gameTimer, 320, 25);
                 addObject(new ScoreDisplayer(),579,25);
+            }
+            List<TextDisplay> textDisplays = getObjectsAt(mouse.getX(), mouse.getY(), TextDisplay.class);
+            if(!textDisplays.isEmpty()){
+                Greenfoot.setWorld(new Menu());
             }
         }
         
@@ -151,7 +155,8 @@ public class Dijkdoorbraak extends World{
         paper = new Paper();
         addObject(paper, 265, 609);
         
-        createMessage(320, 320, "Get ready! Click to start..");
+        //createMessage(320, 320, "Get ready! Click to start..");
+        addObject(new Instructions(1),320,320);
     }
     
     public void createMessage(int xCoord, int yCoord, String message){

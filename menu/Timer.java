@@ -31,10 +31,8 @@ public class Timer extends Actor{
     // This method will be called every act.
     public void act(){
         if(endGame()){ // Check if the timer has reached 0.
-            TextDisplay win = new TextDisplay();
-            win.setInput("Win");
+            createMessage(320, 320, "You won! Click to continue..");
             
-            getWorld().addObject(win, 320, 320);
             Score.addScore(Dijkdoorbraak.score);
             changeWorld();
         }else{
@@ -79,6 +77,21 @@ public class Timer extends Actor{
     
     public void changeWorld(){
         Greenfoot.setWorld(new Menu());
+    }
+    
+     public void createMessage(int xCoord, int yCoord, String message){
+        TextDisplay theMessage = new TextDisplay();
+        theMessage.setBackgroundColor(255, 255, 255, 160);
+        theMessage.setBorderColor(0, 0, 0, 160);
+        theMessage.setField(480, 150);
+        theMessage.setFontSize(30.0f);
+        theMessage.setBorder(5, 5);
+        theMessage.setDrawString(50, 90);
+        theMessage.setInput(message);
+        theMessage.setHasBackground(true);
+        
+        theMessage.createTextBox();
+        getWorld().addObject(theMessage, xCoord, yCoord);
     }
     
 }
