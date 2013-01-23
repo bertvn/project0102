@@ -38,7 +38,7 @@ public class CementBag extends Materials{
             font = font.deriveFont(20.0f);
             creation.setFont(font);
             creation.setColor(fontColor);
-            creation.drawString("" + Dijkdoorbraak.getItemsLeft(1),19,42);
+            creation.drawString("" + Dijkdoorbraak.getItemsLeft(0),19,42);
         }
         setImage(creation);
     }

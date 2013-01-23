@@ -24,6 +24,7 @@ public class TimerDisplay extends Actor{
     public void act(){
         if(endGame() && !done){ // Check if the timer has reached 0.
             Ontwijken.speed = 0;
+            Ontwijken.go = false;
             createMessage(320, 320, "You ran out of time! Click to continue..");
             MiniGameMemory.gameFinished();
             Score.addScore(-500);
