@@ -3,6 +3,10 @@ import java.awt.Color;
 import java.awt.Font;
 
 public class Cardboard extends Materials{
+
+    /**
+     * constructor, it sets all info about the material in it's parent class
+     */
     public Cardboard(){
         super.setDissolveRate(4);
         super.setSpeedReducement(1);
@@ -17,6 +21,11 @@ public class Cardboard extends Materials{
         
     }
     
+    /**
+     * sets image
+     * @param x this decides which image is used
+     * @param location this decides wheter or not the amount is printed on the image.
+     */
     public void imageCreater(int x, int location){
         GreenfootImage creation;
         //selects image

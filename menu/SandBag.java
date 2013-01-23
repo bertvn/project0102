@@ -3,6 +3,10 @@ import java.awt.Color;
 import java.awt.Font;
 
 public class SandBag extends Materials{
+    
+    /**
+     * constructor, it sets all info about the material in it's parent class
+     */
     public SandBag(){
         super.setDissolveRate(3);
         super.setSpeedReducement(2);
@@ -18,6 +22,11 @@ public class SandBag extends Materials{
         
     }
     
+    /**
+     * sets image
+     * @param x this decides which image is used
+     * @param location this decides wheter or not the amount is printed on the image.
+     */
     public void imageCreater(int x, int location){
         GreenfootImage creation;
         //selects image

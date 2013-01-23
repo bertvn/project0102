@@ -34,7 +34,9 @@ public class Dijkdoorbraak extends World{
     private static int breakThroughPart;
     public static int score;
 
-    // Constructor of the class WorldSpawner.
+    /**
+     * Constructor of the class WorldSpawner.
+     */
     public Dijkdoorbraak(){    
         // Create a new world with 640x640 cells with a cell size of 1x1 pixels.
         super(640, 640, 1);
@@ -53,12 +55,14 @@ public class Dijkdoorbraak extends World{
         score = 3500;
     }
     
-    // This method will be called every act.
+    /**
+     * method that is run every act, this is contains everything that makes the class do what it does
+     */
     public void act(){
         if(gameIsRunning == true){
             if(waitWithDikeSpawns <= 0){
                 if(createDikeObject()){
-                    if(anySpotsLeft()){
+                    if(anySpotsLeft() && !Timer.done){
                         createNewDike();
                     }else{
                         // Set the waitWithDikeSpawns till after the game, there are no spots left.
@@ -82,6 +86,7 @@ public class Dijkdoorbraak extends World{
                     Score.addScore(-500);
                     removeObject(gameTimer);
                     MiniGameMemory.gameFinished();
+                    Timer.done = true;
                     gameIsRunning = false;
                 }
                 
@@ -117,20 +122,12 @@ public class Dijkdoorbraak extends World{
                 Greenfoot.setWorld(new Menu());
             }
         }
-        
-        //reset choice
-        if(Greenfoot.isKeyDown("space")){
-            if(selectedActor != null){
-                selectedActor.deselect();
-            }
-            selectedActor = null;
-            selectedMaterials = null;
-            resetSelectable();
-        }
     }
     
-    // This method will populate our world with objects.
-    public void startPopulating(){
+    /**
+     * This method will populate our world with objects.
+     */ 
+    private void startPopulating(){
         civilian = new Civilian();
         addObject(civilian, 80, 510);
        
@@ -159,7 +156,13 @@ public class Dijkdoorbraak extends World{
         addObject(new Instructions(1),320,320);
     }
     
-    public void createMessage(int xCoord, int yCoord, String message){
+    /**
+     * creates message image
+     * @param xCoord The x coord of where the image will spawn
+     * @param yCoord The y coord of where the image will spawn
+     * @param message The message that will be shown
+     */
+    private void createMessage(int xCoord, int yCoord, String message){
         theMessage = new TextDisplay();
         theMessage.setBackgroundColor(255, 255, 255, 160);
         theMessage.setBorderColor(0, 0, 0, 160);
@@ -174,15 +177,10 @@ public class Dijkdoorbraak extends World{
         addObject(theMessage, xCoord, yCoord);
     }
     
-    public boolean textDisplayClicked(){
-        if(getObjects(TextDisplay.class).isEmpty()){
-            return true;
-        }else{
-            return false;
-        }
-    }
-    
-    public void createSpots(){
+    /**
+     * creates spots for Dike objects to spawn
+     */
+    private void createSpots(){
         // breakingSpots: # of dike, x-Coordinate, y-Coordinate
         breakingSpots = new int[]{
             1, 40, 366,
@@ -202,11 +200,24 @@ public class Dijkdoorbraak extends World{
         };
     }
     
+    /**
+     * creates amount of items left
+     */
     public void createItemsLeft(){
         // Items left by default: cementbags, gravelbags, sandbags, cardboxes and papers.
         itemsLeft = new int[]{2, 4, 7, 10, 15};
     }
     
+    /**
+     * sets the itemsleft for a certain material.
+     * @param arrayKey this represents the material: 
+     * 0 = cementbags 
+     * 1 = gravelbags
+     * 2 = sandbags
+     * 3 = cardboard
+     * 4 = paper
+     * @param value sets amount of material arrayKey that is available
+     */
     public void setItemsLeft(int arrayKey, int value){
         // set the itemsleft for certain time of material.
         if(arrayKey < 5 && arrayKey >= 0){
@@ -216,8 +227,18 @@ public class Dijkdoorbraak extends World{
         }
     }
     
+    /**
+     * get the itemsleft for a certain material.
+     * @param arrayKey this represents the material: 
+     * 0 = cementbags 
+     * 1 = gravelbags
+     * 2 = sandbags
+     * 3 = cardboard
+     * 4 = paper
+     * @return the amount of the specified material that is left
+     */
     public static int getItemsLeft(int arrayKey){
-        // get the itemsleft for certain time of material.
+        // 
         if(arrayKey < 5 && arrayKey >= 0){
             return itemsLeft[arrayKey];
         }else{
@@ -226,8 +247,11 @@ public class Dijkdoorbraak extends World{
         }
     }
     
-    // This will return wheter we will create a dike or not.
-    public boolean createDikeObject(){
+    
+    /**
+     * This will return wheter we will create a dike or not.
+     */
+    private boolean createDikeObject(){
         if((int) (Math.random()*500)+1 == 1){
             return true;
         }else{    
@@ -235,8 +259,11 @@ public class Dijkdoorbraak extends World{
         }
     }
 
-    // Checks if there are spots left to spawn a new breaking dike.
-    public boolean anySpotsLeft(){
+    
+    /**
+     * Checks if there are spots left to spawn a new breaking dike.
+     */
+    private boolean anySpotsLeft(){
         if(spotsLeft <= 0){
             return false;
         }else{ // Still spots left.
@@ -246,7 +273,10 @@ public class Dijkdoorbraak extends World{
         }
     }
     
-    public void findANewSpot(){
+    /**
+     * looks for spot to place a new Dike
+     */
+    private void findANewSpot(){
         int randomSpot;
         boolean foundSpot = false;
         do{
@@ -263,110 +293,128 @@ public class Dijkdoorbraak extends World{
         }while(!foundSpot);
     }
     
-    // This method will place a new dike 'random' coordinates.
-    public void createNewDike(){
+    /**
+     * places a new dike at a 'random' coordinate.
+     */
+    private void createNewDike(){
         // Set the amount of acts to wait for new spawn.
         waitWithDikeSpawns = 300;
         
         // Add the dike-object on the newSpot.
         addObject(new Dike(), newSpotX, newSpotY);
     }
-    
+    /**
+     * counts up breakThroughPart
+     */
     public static void endGame(){
         breakThroughPart++;
     }
     
+    /**
+     * character, material and dike selection handeling
+     */
     public void moveCharacters(){
         MouseInfo mouse = Greenfoot.getMouseInfo();
-        // if a material is selected
-        // chose dike, remove material and move actor to dike
-        if(selectedMaterials != null){
-            //select all dike objects on current mouse x and y
-            List<Dike> dk = getObjectsAt(mouse.getX(), mouse.getY(), Dike.class);
-            if(!dk.isEmpty()){
-                //select 1
-                Dike selectedDike = dk.get(0);
-                selectedActor.startMovement(selectedDike.getX(), selectedDike.getY()+40);
-                selectedActor.ScoreDecrease();
-                selectedMaterials.ScoreDecrease();
-                selectedActor.setHolding(selectedMaterials);
-                
-                if(CementBag.class.isInstance(selectedMaterials) && !(getItemsLeft(0) <= 1)){
-                        addObject(new CementBag(), 150, 605);
-                        setItemsLeft(0, -1);
-                }
-                
-                if(GravelBag.class.isInstance(selectedMaterials) && !(getItemsLeft(1) <= 1)){
-                    addObject(new GravelBag(), 110, 605);
-                    setItemsLeft(1, -1);
-                }
-                
-                if(SandBag.class.isInstance(selectedMaterials) && !(getItemsLeft(2) <= 1)){
-                    addObject(new SandBag(), 70, 605);
-                    setItemsLeft(2, -1);
-                }
-
-                if(Cardboard.class.isInstance(selectedMaterials) && !(getItemsLeft(3) <= 1)){
-                    addObject(new Cardboard(), 205, 609);
-                    setItemsLeft(3, -1);
-                }
-                
-                if(Paper.class.isInstance(selectedMaterials) && !(getItemsLeft(4) <= 1)){
-                    addObject(new Paper(), 265, 609);
-                    setItemsLeft(4, -1);
-                }
-                selectedMaterials.deselect();
-                removeObject(selectedMaterials);
+        
+        List<Helpers> hlp = getObjectsAt(mouse.getX(), mouse.getY(), Helpers.class);
+        if(!hlp.isEmpty() && !hlp.get(0).isBusy()){
+            //select 1
+            if(selectedActor != null){
+                selectedActor.deselect();
+                resetSelectable();
             }
+            if(selectedMaterials != null){
+                selectedMaterials.unselectable();
+                resetSelectable();
+            }
+            selectedMaterials = null;
+            selectedActor = hlp.get(0);
+            selectedActor.select();
+            selectable(selectedActor.getPower());
+            return;
+        }
+        List<Materials> mat = getObjectsAt(mouse.getX(),mouse.getY(), Materials.class);
+        if(!mat.isEmpty()&& selectedActor != null){
+            //select 1
+            if(mat.get(0).getWeight() <= selectedActor.getPower() && mat.get(0).getY() > 500){
+                if(selectedMaterials != null){
+                    selectedMaterials.selectable();
+                }
+                selectedMaterials = mat.get(0);
+                selectedMaterials.select();
+                return;
+            }
+        }
+        //select all dike objects on current mouse x and y
+        List<Dike> dk = getObjectsAt(mouse.getX(), mouse.getY(), Dike.class);
+        if(!dk.isEmpty() && selectedMaterials != null){
+            //select 1
+            Dike selectedDike = dk.get(0);
+            selectedActor.startMovement(selectedDike.getX(), selectedDike.getY()+40);
+            selectedActor.ScoreDecrease();
+            selectedMaterials.ScoreDecrease();
+            selectedActor.setHolding(selectedMaterials);
+            
+            if(CementBag.class.isInstance(selectedMaterials) && !(getItemsLeft(0) <= 1)){
+                addObject(new CementBag(), 150, 605);
+                setItemsLeft(0, -1);
+            }
+                
+            if(GravelBag.class.isInstance(selectedMaterials) && !(getItemsLeft(1) <= 1)){
+                addObject(new GravelBag(), 110, 605);
+                setItemsLeft(1, -1);
+            }
+                
+            if(SandBag.class.isInstance(selectedMaterials) && !(getItemsLeft(2) <= 1)){
+                addObject(new SandBag(), 70, 605);
+                setItemsLeft(2, -1);
+            }
+
+            if(Cardboard.class.isInstance(selectedMaterials) && !(getItemsLeft(3) <= 1)){
+                addObject(new Cardboard(), 205, 609);
+                setItemsLeft(3, -1);
+            }
+               
+            if(Paper.class.isInstance(selectedMaterials) && !(getItemsLeft(4) <= 1)){
+                addObject(new Paper(), 265, 609);
+                setItemsLeft(4, -1);
+            }
+            selectedMaterials.deselect();
+            removeObject(selectedMaterials);
+            
             selectedActor.deselect();
             selectedMaterials.deselect();
             selectedActor = null;
             selectedMaterials = null;
             resetSelectable();
             return;
-        }else{
-            //if no material is selected
-            //if actor is selected
-            //chose material
-            if(selectedActor != null){
-                //select all Materials objects on current mouse x and y
-                List<Materials> mat = getObjectsAt(mouse.getX(),mouse.getY(), Materials.class);
-                if(!mat.isEmpty()){
-                    //select 1
-                    if(mat.get(0).getWeight() <= selectedActor.getPower()){
-                        selectedMaterials = mat.get(0);
-                        selectedMaterials.select();
-                    }
-                }
-                return;
-            }else{
-                //if no actor is selected
-                //select actor
-                //select all Helpers objects on current mouse x and y
-                List<Helpers> hlp = getObjectsAt(mouse.getX(), mouse.getY(), Helpers.class);
-                if(!hlp.isEmpty() && !hlp.get(0).isBusy()){
-                    //select 1
-                    selectedActor = hlp.get(0);
-                    selectedActor.select();
-                    selectable(selectedActor.getPower());
-                }
-            }
+        
         }
     }
     
-    public void selectable(int weight){
+    /**
+     * gives all material, that have less of equal weight to int weight, the selectable image
+     * @param weight Max weight the helper can carry
+     */
+    private void selectable(int weight){
         List<Materials> mat = getObjects(Materials.class);
+        //for each material
         for(Materials mater : mat){
+            //that weighs less or equal to weight
             if(mater.getWeight() <= weight){
                 mater.selectable();
             }
         }
     }
     
-    //removed object zorgt hier voor problemen
-    public void resetSelectable(){
+    /**
+     * removes selectable image from all materials
+     */
+    private void resetSelectable(){
        List<Materials> mat = getObjects(Materials.class);
+       //for each material
         for(Materials mater : mat){
+            //that's in the selectable area
             if(mater.getY() > 500){
                 mater.unselectable();
             }
