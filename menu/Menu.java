@@ -7,8 +7,7 @@ import java.util.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Menu extends World
-{
+public class Menu extends World{
 
     /**
      * Constructor for objects of class Map.
@@ -37,14 +36,9 @@ public class Menu extends World
     private int[] gameMemory = new int[3];
     
     /* the current day and init amount of games played */
-    public static int DAY = 0;
+    public static int DAY = 0; 
     
-    
-    
-    
-    public Menu()
-    {    
-        
+    public Menu(){    
         // Create a new world with 640x640 cells with a cell size of 1x1 pixels;
         super(640, 640, 1); 
         
@@ -56,7 +50,6 @@ public class Menu extends World
     }
     
     public void populate() {
-
         backGround = new GreenfootImage("overstromingen/"+MiniGameMemory.background+".jpg"); // prepare the background;
         setBackground(backGround); // set the background;  
         
@@ -100,13 +93,8 @@ public class Menu extends World
 
                     if(iconItem.getClass().equals(DijkdoorbraakIcon.class)) { // retrieve class and chose proper map
                         Greenfoot.setWorld(new Dijkdoorbraak());
-                        //System.out.println("Fapman plays dijkdoorbraak");
                     } else if (iconItem.getClass().equals(CalamiteitenIcon.class)) {
-                        //Greenfoot.setWorld(new Calamiteiten());
-                        System.out.println("Fapman plays calamiteiten");
-                    } else if (iconItem.getClass().equals(DoolhofIcon.class)) {
-                        //Greenfoot.setWorld(new Doolhof());
-                        System.out.println("Fapman plays doolhof");
+                        Greenfoot.setWorld(new Controlecentrum());
                     } else if (iconItem.getClass().equals(OntwijkenIcon.class)) {
                         Greenfoot.setWorld(new Ontwijken());
                     }
@@ -137,7 +125,6 @@ public class Menu extends World
     }
     
     public void placeGamesMemory() {
-        
         for(int i = 0; i < MiniGameMemory.gameTypes.length; i++) {
             
             int gameNumber = MiniGameMemory.gameTypes[i]; // get the game type
@@ -154,16 +141,15 @@ public class Menu extends World
                     case 2: 
                         addObject(new OntwijkenIcon(), MiniGameMemory.gamesX[i], MiniGameMemory.gamesY[i]);
                     break;
-                    case 3: 
-                        // game doesnt exist : addObject(new DoolhofIcon(), posX, posY);
-                    break;
             }
         }
         
     }
     
     public void selectMinigames() {
-        amountOfGames = (int) (Math.random() * 3) + 1; // pick random amount of games
+        // Changed to 2 games per day as default;
+        // amountOfGames = (int) (Math.random() * 3) + 1; // pick random amount of games
+        amountOfGames = 2;
 
         placeMinigames(); // place minigames
     }
@@ -189,10 +175,10 @@ public class Menu extends World
                     addObject(new CalamiteitenIcon(), posX, posY); 
                 break;
                 case 1: 
-                    addObject(new DijkdoorbraakIcon(), posX, posY); 
+                    addObject(new CalamiteitenIcon(), posX, posY); 
                 break;
                 case 2: 
-                    addObject(new OntwijkenIcon(), posX, posY);
+                    addObject(new CalamiteitenIcon(), posX, posY);
                 break;
                 case 3: 
                     // game doesnt exist : addObject(new DoolhofIcon(), posX, posY);

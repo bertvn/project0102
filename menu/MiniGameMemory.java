@@ -27,8 +27,7 @@ public class MiniGameMemory
         background = name; // store background image name
     }
     
-    public static void setMiniGames(int amount, int[] gameType, int[] placedX, int[] placedY)
-    {
+    public static void setMiniGames(int amount, int[] gameType, int[] placedX, int[] placedY){
         readyNextDay = false;
         amountOfGames = amount;
         gameTypes = gameType;
