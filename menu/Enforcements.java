@@ -13,7 +13,7 @@ public class Enforcements extends TimeInformation{
     public void createTimer(int xCoordinate, int minimumTime){ // create timer on given xCoordinate
         createTimeInformation(minimumTime, 5);
         
-        enforcementTimer = new EnforcementTimer("Busy: ", super.getTimeLeft(), super.getTimeEnd());
+        enforcementTimer = new EnforcementTimer("Bezig: ", super.getTimeLeft(), super.getTimeEnd());
         getWorld().addObject(enforcementTimer, xCoordinate, 585);
     }
     

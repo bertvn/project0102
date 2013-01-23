@@ -46,12 +46,10 @@ public class Controlecentrum extends World{
             0, 184, 330, 1, 425, 390,
             2, 366, 165, 3, 40, 369,
             4, 59, 119, 5, 137, 51,
-            6, 545, 162, 7, 457, 128
-        };
+            6, 545, 162, 7, 457, 128 };
         
         usedSpots = new int[]{ // Making array with spots still open.
-            0, 3, 6, 9, 12, 15, 18, 21
-        };
+            0, 3, 6, 9, 12, 15, 18, 21 };
         
         nextTimerPosition = 500;
         
@@ -65,11 +63,9 @@ public class Controlecentrum extends World{
     public void populate(){
         setBackground("controlecentrum/controlecentrum.jpg"); // Setting background image
         
-        // Headertext aanmaken voor kopje Calamiteiten
-        addObject(new HeaderText("Calamities"), 138, 477);
-        
-        // Headertext aanmaken voor kopje Hulpdiensten
-        addObject(new HeaderText("Enforcements"), 593, 477);
+        // Headertext aanmaken voor kopje Calamiteiten / Hulpdiensten
+        addObject(new HeaderText("Calamiteiten"), 138, 477);
+        addObject(new HeaderText("Hulpdiensten"), 593, 477);
         
         // Scoreobject aanmaken
         addObject(new ScoreDisp(), 260, 477);
@@ -82,8 +78,7 @@ public class Controlecentrum extends World{
         addObject(policeCar, 480, 550);
         
         ambulanceCar = new EnfAmbulance();
-        addObject(ambulanceCar, 585, 550);
-        
+        addObject(ambulanceCar, 585, 550);        
         
         // Preparing start message
         addObject(new Instructions(2),320,320);
@@ -112,9 +107,12 @@ public class Controlecentrum extends World{
                 mouseInteraction(); // run checks for mouse input
             
             }else{
-                theMessage = new TheMessage("You've completed the game!");
+                theMessage = new TheMessage("Vandaag zit erop, keer terug.");
                 addObject(theMessage, 320, 225);
-                        
+                
+                MiniGameMemory.gameFinished();
+                Score.addScore(scoreControl);
+                
                 removeAllGameObjects();
                 
                 gameIsRunning = false;
@@ -128,25 +126,17 @@ public class Controlecentrum extends World{
             int y = mouse.getY();
             
             List<Instructions> instructionsPanel = getObjectsAt(x, y, Instructions.class); // get the object that hits mouse of instructions (panel)
-            List<TextDisplay> textPanel = getObjectsAt(x, y, TextDisplay.class); // get the object that hits mouse of instructions (panel)
+            List<TheMessage> theMessage = getObjectsAt(x, y, TheMessage.class); // get the object that hits mouse of instructions (panel)
             
             if(!instructionsPanel.isEmpty()){ // if there is an object hit (if pressed on instructions panel
                 removeObject(instructionsPanel.get(0));
                 gameIsRunning = true;
             }
             
-            if(!textPanel.isEmpty()) { // if there is an object hit (if pressed on TextDisplay panel
+            if(!theMessage.isEmpty()){ // if there is an object hit (if pressed on TextDisplay panel
                 //go back to menu
                 Greenfoot.setWorld(new Menu());
             }
-        }
-    }
-            
-    public boolean textDisplayClicked(){
-        if(getObjects(TextDisplay.class).isEmpty()){
-            return true;
-        }else{
-            return false;
         }
     }
     

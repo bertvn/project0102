@@ -78,7 +78,7 @@ public class Dijkdoorbraak extends World{
                 }
                 
                 if(breakThroughPart == 8){
-                    createMessage(320, 320, "You lost! Click to continue..");
+                    createMessage(320, 320, "Je hebt verloren! Terug naar menu..");
                     Score.addScore(-500);
                     removeObject(gameTimer);
                     MiniGameMemory.gameFinished();
@@ -105,12 +105,12 @@ public class Dijkdoorbraak extends World{
                 removeObject(instr.get(0));
                 gameIsRunning = true;
                 
-                gameTimer = new Timer("Time left: ");
+                gameTimer = new Timer("Tijd over: ");
                 // Player must prevent the dike from breaking for 1 minute and 30 seconds.
                 // Therefor we set the timer to 90 seconds.
                 gameTimer.setCurrentValue(90);
                 addObject(gameTimer, 320, 25);
-                addObject(new ScoreDisplayer(),579,25);
+                addObject(new ScoreDisplayer(), 579, 25);
             }
             List<TextDisplay> textDisplays = getObjectsAt(mouse.getX(), mouse.getY(), TextDisplay.class);
             if(!textDisplays.isEmpty()){
@@ -209,21 +209,14 @@ public class Dijkdoorbraak extends World{
     
     public void setItemsLeft(int arrayKey, int value){
         // set the itemsleft for certain time of material.
-        if(arrayKey < 5 && arrayKey >= 0){
-            itemsLeft[arrayKey] += value;
-        }else{
-            System.out.println("itemsLeft array has only 5 entries: 0 = cementbags, 1 = gravelbags, 2 = sandbags, 3 = cardboxes and 4 = papers.");
-        }
+        // 5 entries: 0 = cement, 1 = gravel, 2 = sand, 3 = cardboxes and 4 = paper
+        itemsLeft[arrayKey] += value;
     }
     
     public static int getItemsLeft(int arrayKey){
         // get the itemsleft for certain time of material.
-        if(arrayKey < 5 && arrayKey >= 0){
-            return itemsLeft[arrayKey];
-        }else{
-            System.out.println("itemsLeft array has only 5 entries: 0 = cementbags, 1 = gravelbags, 2 = sandbags, 3 = cardboxes and 4 = papers.");
-            return 0;
-        }
+        // 5 entries: 0 = cement, 1 = gravel, 2 = sand, 3 = cardboxes and 4 = paper
+        return itemsLeft[arrayKey];
     }
     
     // This will return wheter we will create a dike or not.
@@ -250,11 +243,11 @@ public class Dijkdoorbraak extends World{
         int randomSpot;
         boolean foundSpot = false;
         do{
-            randomSpot = (int) (Math.random()*9);
+            randomSpot = (int) (Math.random() * 9);
             if(usedSpots[randomSpot] != -1){
                 newSpotName = breakingSpots[usedSpots[randomSpot]];
-                newSpotX = breakingSpots[usedSpots[randomSpot]+1];
-                newSpotY = breakingSpots[usedSpots[randomSpot]+2];
+                newSpotX = breakingSpots[usedSpots[randomSpot] + 1];
+                newSpotY = breakingSpots[usedSpots[randomSpot] + 2];
                 
                 usedSpots[randomSpot] = -1;
                 
@@ -372,5 +365,4 @@ public class Dijkdoorbraak extends World{
             }
         } 
     }
-    
 }

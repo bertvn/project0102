@@ -42,7 +42,7 @@ public class CalStreetFlooding extends Calamities{
         // Creating a new timer in the first act (this can't be done in constructor
         // because the object does not exist yet).
         if(firstAct == true){
-            createTimer(75, "Flooded street open: ", "EnfPolice", this);
+            createTimer(75, "Ondergelopen straat: ", "EnfPolice", this);
             firstAct = false;
         }
         

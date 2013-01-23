@@ -49,7 +49,7 @@ public class Instructions extends Actor{
             if(i < 18 || i > 31) {
                 text = text + "\b";
             } else if(i == 19) {
-                text = text + " INSTRUCTIONS ";
+                text = text + " INSTRUCTIES ";
             }
         }
         text = text + "\n\n"; // go to next line
@@ -62,7 +62,7 @@ public class Instructions extends Actor{
             if(i < 17 || i > 34) {
                 text = text + "\b";
             } else if(i == 17) {
-                text = text + " CLICK TO CLOSE ";
+                text = text + " KLIK OM DOOR TE GAAN ";
             }
         }       
                
@@ -103,6 +103,9 @@ public class Instructions extends Actor{
                "te voltooien. \n\n" +
                "Druk op een icoontje op de kaart om het spel te starten.\n" +
                "Elk spel draait om 1 onderwerp: voorkom slachtoffers! ";
+               
+    // Controle centrum
+    pages[1] = "Moeten nog geschreven worden. ";
                 
      // Controle centrum
     pages[2] = "Neem voor een dag plaats in de controlekamer van Rotterdam. \n" +
