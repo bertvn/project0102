@@ -93,7 +93,7 @@ public class Menu extends World{
 
                     if(iconItem.getClass().equals(DijkdoorbraakIcon.class)) { // retrieve class and chose proper map
                         Greenfoot.setWorld(new Dijkdoorbraak());
-                    } else if (iconItem.getClass().equals(CalamiteitenIcon.class)) {
+                    } else if (iconItem.getClass().equals(ControlecentrumIcon.class)) {
                         Greenfoot.setWorld(new Controlecentrum());
                     } else if (iconItem.getClass().equals(OntwijkenIcon.class)) {
                         Greenfoot.setWorld(new Ontwijken());
@@ -133,7 +133,7 @@ public class Menu extends World{
                                   * op random positie op X en Y as 
                                   */
                     case 0: 
-                        addObject(new CalamiteitenIcon(), MiniGameMemory.gamesX[i], MiniGameMemory.gamesY[i]); 
+                        addObject(new ControlecentrumIcon(), MiniGameMemory.gamesX[i], MiniGameMemory.gamesY[i]); 
                     break;
                     case 1: 
                         addObject(new DijkdoorbraakIcon(), MiniGameMemory.gamesX[i], MiniGameMemory.gamesY[i]); 
@@ -147,8 +147,8 @@ public class Menu extends World{
     }
     
     public void selectMinigames() {
-        // Changed to 2 games per day as default;
-        // amountOfGames = (int) (Math.random() * 3) + 1; // pick random amount of games
+        /// Changed to 2 games per day as default;
+        /// amountOfGames = (int) (Math.random() * 3) + 1; // pick random amount of games
         amountOfGames = 2;
 
         placeMinigames(); // place minigames
@@ -172,13 +172,13 @@ public class Menu extends World{
                                   * op random positie op X en Y as 
                                   */
                 case 0: 
-                    addObject(new CalamiteitenIcon(), posX, posY); 
+                    addObject(new ControlecentrumIcon(), posX, posY); 
                 break;
                 case 1: 
-                    addObject(new CalamiteitenIcon(), posX, posY); 
+                    addObject(new DijkdoorbraakIcon(), posX, posY); 
                 break;
                 case 2: 
-                    addObject(new CalamiteitenIcon(), posX, posY);
+                    addObject(new OntwijkenIcon(), posX, posY);
                 break;
                 case 3: 
                     // game doesnt exist : addObject(new DoolhofIcon(), posX, posY);

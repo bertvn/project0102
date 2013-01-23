@@ -8,8 +8,7 @@ import java.util.List;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Ontwijken extends World
-{
+public class Ontwijken extends World{
 
     public static int speed; // set speed as global variable
     public static int distance; //distance to goal
@@ -17,10 +16,10 @@ public class Ontwijken extends World
     private TimerDisplay td;
     private TextDisplay theMessage;
 
-    private int speedTimer = 0;
-    private int spawnTimer = 0;
-    public static int score = 0;
-    private boolean placed = false; //true if finish is placed
+    private int speedTimer;
+    private int spawnTimer;
+    public static int score;
+    private boolean placed;
     public static GreenfootSound music;
     public static int random;
     
@@ -30,33 +29,28 @@ public class Ontwijken extends World
      * Constructor for objects of class WorldWorde.
      * 
      */
-    public Ontwijken()
-    {    
+    public Ontwijken(){    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(640, 640, 1); 
-        
-        //choice game images
-        random = (int) Math.round(Math.random()*2)+1;
-        
-        //populate world
-        populate();
+        random = (int) Math.round(Math.random()*2)+1; //choice game images
+        populate(); //populate world
         
         //sets order in which objects are drawn
-        
-                      /* ----><--------- */
         setPaintOrder(Instructions.class,TextDisplay.class,ProgressIndicator.class,ProgressBar.class,BAM.class,Car.class,BurningCar.class,ScoreDisplay.class,TimerDisplay.class,ObsCar.class,Cracks.class,RoadMarking.class,Trees.class,Road.class,Grass.class);
+        music = new GreenfootSound("Breakdown.mp3"); //play music
         
-        //play music
-        music = new GreenfootSound("Breakdown.mp3");
+        speedTimer = 0;
+        spawnTimer = 0;
+        score = 0;
         
-        //set starter
-        go = false;
+        placed = false; //true if finish is placed
+        go = false; //set the game starter
+        speed = 0; //choose speed
+        distance = 40000; //set distance
     }
     
     
     public void act(){
-        /* -----------------------------------------------------------------------> */
-        
         if(Greenfoot.mouseClicked(null)) {//when mouse button is pressed
             MouseInfo mouse = Greenfoot.getMouseInfo(); // get mouse info
             int x = mouse.getX();
@@ -65,7 +59,7 @@ public class Ontwijken extends World
             List<Instructions> instructionsPanel = getObjectsAt(x, y, Instructions.class); // get the object that hits mouse of instructions (panel)
             List<TextDisplay> textPanel = getObjectsAt(x, y, TextDisplay.class); // get the object that hits mouse of instructions (panel)
             
-            if(!instructionsPanel.isEmpty()) { // if there is an object hit (if pressed on instructions panel
+            if(!instructionsPanel.isEmpty()){ // if there is an object hit (if pressed on instructions panel
                 removeObject(instructionsPanel.get(0));
                 td.startTimer(); // starts the initialezed timer 
                 go = true; // set boolean to start the game to true 
@@ -77,8 +71,6 @@ public class Ontwijken extends World
                 Greenfoot.setWorld(new Menu());
             }
         }
-        
-        /* <----------------------------------------------------------------------- */
         
         if(go){
             speedUp(); // call the speed up function
@@ -93,16 +85,17 @@ public class Ontwijken extends World
         }
         
     }
+    
     //return speed
     public int getSpeed(){
         return speed;
     }
 
     //set speed
-    public void setSpeed(int speed){
-        this.speed = speed;
-
+    public void setSpeed(int speedVal){
+        speed = speedVal;
     }
+    
     //choses when to spawn
     public void spawnRate(){
         spawnTimer++; // add 1 to spawnTimer
@@ -113,6 +106,7 @@ public class Ontwijken extends World
             spawnTimer = 0; // reset spawnTimer
         }
     }
+    
     //increases speed
     public void speedUp(){
         speedTimer++; // add speed to timer
@@ -125,12 +119,13 @@ public class Ontwijken extends World
             speedTimer = 0; // reset speed timer
         }
     }
+    
     //spawns obstacles
     public void randomSpawner(){
 
         int amount = (int) (Math.random()*5); // get random amount of obstakels to place
         for(int i = 0; i < amount; i++){
-            addObject(new ObsCar(), (int) (Math.random() * 408)+118, 0); /* place row of obstakels
+            addObject(new ObsCar(), (int) (Math.random() * 408) + 118, 0); /* place row of obstakels
                                                                           * on random positions
                                                                           * till random amount is 
                                                                           * achieved 
@@ -138,7 +133,7 @@ public class Ontwijken extends World
         }
         
         if(amount == 0){
-            addObject(new Cracks(), (int) (Math.random() * 408)+118, 0);
+            addObject(new Cracks(), (int) (Math.random() * 408) + 118, 0);
         }
     }
     
@@ -149,14 +144,15 @@ public class Ontwijken extends World
     //return score as string
     public String getScoreString(){
         return "" + score;
-   } 
-   //decreases distance to win state
-   public void decreaseDistance(){
+    } 
+    
+    //decreases distance to win state
+    public void decreaseDistance(){
        distance -= speed;
        //if distance is 0 place object in world
        // boolean placed to make sure it is only placed once
        if(distance <= 0 && !placed){
-           addObject(new BurningCar(),320,0);
+           addObject(new BurningCar(), 320, 0);
            placed = true;
         }
     }
@@ -177,47 +173,41 @@ public class Ontwijken extends World
         
         //add scoreDisplay
         addObject(new ScoreDisplay(), 580, 34);
-        
-        //choose speed
-        speed = 0;
-        
-        //set distance
-        distance = 40000;
 
         //set Timer
         td = new TimerDisplay();
-        addObject(td,60,34);
+        addObject(td, 60, 34);
         
         //add RoadMarkings
-        addObject(new RoadMarking(),320,0);
-        addObject(new RoadMarking(),320,320);
+        addObject(new RoadMarking(), 320, 0);
+        addObject(new RoadMarking(), 320, 320);
         
         //add trees
         //right hand side
-        addObject(new Trees(),567,65);
-        addObject(new Trees(),605,143);
-        addObject(new Trees(),564,221);
-        addObject(new Trees(),605,301);
-        addObject(new Trees(),565,404);
-        addObject(new Trees(),614,477);
-        addObject(new Trees(),567,538);
-        addObject(new Trees(),610,608);
+        addObject(new Trees(), 567, 65);
+        addObject(new Trees(), 605, 143);
+        addObject(new Trees(), 564, 221);
+        addObject(new Trees(), 605, 301);
+        addObject(new Trees(), 565, 404);
+        addObject(new Trees(), 614, 477);
+        addObject(new Trees(), 567, 538);
+        addObject(new Trees(), 610, 608);
         
         //left hand side
-        addObject(new Trees(),81,59);
-        addObject(new Trees(),37,128);
-        addObject(new Trees(),79,183);
-        addObject(new Trees(),29,264);
-        addObject(new Trees(),77,364);
-        addObject(new Trees(),27,434);
-        addObject(new Trees(),95,517);
-        addObject(new Trees(),37,620);
+        addObject(new Trees(), 81, 59);
+        addObject(new Trees(), 37, 128);
+        addObject(new Trees(), 79, 183);
+        addObject(new Trees(), 29, 264);
+        addObject(new Trees(), 77, 364);
+        addObject(new Trees(), 27, 434);
+        addObject(new Trees(), 95, 517);
+        addObject(new Trees(), 37, 620);
         
         //add progressbar
-        addObject(new ProgressBar(),320,542);
-        addObject(new ProgressIndicator(),28,625);
+        addObject(new ProgressBar(), 320, 542);
+        addObject(new ProgressIndicator(), 28, 625);
         
-        addObject(new Instructions(3),320,320);
+        addObject(new Instructions(3), 320, 320);
         
         randomSpawner(); // call random spawner 
     }
@@ -236,5 +226,4 @@ public class Ontwijken extends World
         theMessage.createTextBox();
         addObject(theMessage, xCoord, yCoord);
     }
-
 }

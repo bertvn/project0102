@@ -76,7 +76,6 @@ public class Controlecentrum extends World{
         
         // Adding enforcements to the world.
         fireTruck = new EnfFirefighter();
-        
         addObject(fireTruck, 375, 550);
         
         policeCar = new EnfPolice();
@@ -85,9 +84,9 @@ public class Controlecentrum extends World{
         ambulanceCar = new EnfAmbulance();
         addObject(ambulanceCar, 585, 550);
         
-        theMessage = new TheMessage("Get ready! Click to start..");
-        addObject(theMessage, 320, 225);
-        gameIsRunning = false;
+        
+        // Preparing start message
+        addObject(new Instructions(2),320,320);
     }
     
     public void act(){
@@ -123,15 +122,24 @@ public class Controlecentrum extends World{
             
         }
         
-        if(Greenfoot.mouseClicked(null)){
-        MouseInfo mouse = Greenfoot.getMouseInfo();
-        List<TextDisplay> textDisplays = getObjectsAt(mouse.getX(), mouse.getY(), TextDisplay.class);
-        if(!textDisplays.isEmpty()){
-            removeObject(theMessage);
-            gameIsRunning = true;
+        if(Greenfoot.mouseClicked(null)){ //when mouse button is pressed
+            MouseInfo mouse = Greenfoot.getMouseInfo(); // get mouse info
+            int x = mouse.getX();
+            int y = mouse.getY();
+            
+            List<Instructions> instructionsPanel = getObjectsAt(x, y, Instructions.class); // get the object that hits mouse of instructions (panel)
+            List<TextDisplay> textPanel = getObjectsAt(x, y, TextDisplay.class); // get the object that hits mouse of instructions (panel)
+            
+            if(!instructionsPanel.isEmpty()){ // if there is an object hit (if pressed on instructions panel
+                removeObject(instructionsPanel.get(0));
+                gameIsRunning = true;
+            }
+            
+            if(!textPanel.isEmpty()) { // if there is an object hit (if pressed on TextDisplay panel
+                //go back to menu
+                Greenfoot.setWorld(new Menu());
+            }
         }
-    }
-
     }
             
     public boolean textDisplayClicked(){

@@ -158,7 +158,7 @@ public class Highscore extends Actor
         highScoreName[6] = "RU development"; 
         highScoreScore[6] = 6904;
         
-        highScoreName[7] = "RU development"; 
+        highScoreName[7] = "Wendy van IJperen"; 
         highScoreScore[7] = 5807;
         
         highScoreName[8] = "Wendy Kleij"; 

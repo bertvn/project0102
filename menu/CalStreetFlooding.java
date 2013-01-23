@@ -94,7 +94,6 @@ public class CalStreetFlooding extends Calamities{
                 waitForCarCrash--;
             }else{
                 if(!carCrash.getFirstAct() && carCrash.getCalamityTimer() == null){
-                    System.out.println("True");
                     // If true it means the timer has reached beyond 0 and is therefor removed.
                     getWorld().removeObject(carCrash);
                     resetHasCarCrash();
