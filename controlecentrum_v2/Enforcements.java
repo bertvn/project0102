@@ -3,10 +3,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Enforcements extends TimeInformation{
 
     private boolean isBusy;
-    
-    EnforcementTimer enforcementTimer;
-    
-    String enfType;
+    public EnforcementTimer enforcementTimer;
+    private String enfType;
     
     public Enforcements(String enfTypeVal){
         enfType = enfTypeVal;

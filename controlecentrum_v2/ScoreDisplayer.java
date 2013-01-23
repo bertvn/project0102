@@ -7,15 +7,21 @@ public class ScoreDisplayer extends Actor{
     private GreenfootImage image;
     private Font font;
     private Color color;
-    private int scoreOld = 0;
-    private int scoreNew = 0;
+    private int scoreOld;
+    private int scoreNew;
     
-    private final float FONT_SIZE = 18.0F;
-    private final int HEIGHT = 24;
-    private final int WIDTH = 120;
+    private final float FONT_SIZE;
+    private final int HEIGHT;
+    private final int WIDTH;
     
     //place initial score image
     public ScoreDisplayer(){
+        scoreOld = 0;
+        scoreNew = 0;
+        FONT_SIZE = 18.0F;
+        HEIGHT = 24;
+        WIDTH = 120;
+        
         updateScore();
     }
     
@@ -35,7 +41,6 @@ public class ScoreDisplayer extends Actor{
         image.setFont(font);  // set font
         image.setColor(Color.BLACK);  // set font color
         image.drawString("Score: " + scoreNew, 10, 17);   // place score
-        setImage(image); 
-        
+        setImage(image);
     }    
 }
