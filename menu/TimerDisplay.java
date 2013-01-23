@@ -26,6 +26,7 @@ public class TimerDisplay extends Actor{
             Ontwijken.speed = 0;
             createMessage(320, 320, "You ran out of time! Click to continue..");
             MiniGameMemory.gameFinished();
+            Score.addScore(-500);
             done = true;
         }else{
             if(start){
