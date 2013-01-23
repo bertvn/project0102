@@ -20,15 +20,6 @@ public class CalCarCrash extends Calamities{
         }
     }
     
-    // Method to remove the timer and allow CalStreetFlooding to create a new
-    // car crash in this street.
-    public void removeCalamity(){
-        removeCalamityTimer();
-        CalStreetFlooding myStreetFlooding = (CalStreetFlooding) getOneObjectAtOffset(8, 8, CalStreetFlooding.class);
-        myStreetFlooding.resetHasCarCrash();
-        getWorld().removeObject(this);
-    }
-    
     // Method to return wheter this is his first act or not.
     public boolean getFirstAct(){
         return firstAct;

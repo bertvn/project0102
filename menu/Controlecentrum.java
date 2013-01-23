@@ -183,6 +183,10 @@ public class Controlecentrum extends World{
         }
     }
     
+    public static void setNextTimerPosition(){
+        nextTimerPosition += 15;
+    }
+    
     public static int getNextTimerPosition(){
         return nextTimerPosition;
     }
@@ -227,8 +231,8 @@ public class Controlecentrum extends World{
             addScore(clickedCalamity.getBelongsTo());
             
             if(clickedCalamity.getBelongsTo().getClass() != CalStreetFlooding.class){
-                removeObject(clickedCalamity.getBelongsTo());
                 clickedCalamity.removeCalamityTimer();
+                removeObject(clickedCalamity.getBelongsTo());
             }else{
                 clickedCalamity.getBelongsTo().removeCalamityTimer();
             }

@@ -143,7 +143,6 @@ public class Menu extends World{
                     break;
             }
         }
-        
     }
     
     public void selectMinigames() {
@@ -160,6 +159,7 @@ public class Menu extends World{
         
         while(amountOfGames > 0) { // as long not all the games are placed, keep placing
             int gameNumber = (int) (Math.random() * 3); // retrieve a random game number
+            // int gameNumber = 1; //  specific assignment
             
             //while(posX == 0) { // get position X for the game.
                 posX = randomX();

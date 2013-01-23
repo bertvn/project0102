@@ -96,7 +96,7 @@ public class TextDisplay extends Actor{
     // End of all setters
     
     // Checking input to create a new color.
-    public boolean isTheColorInputCorrect(int red, int green, int blue, int alpha){
+    private boolean isTheColorInputCorrect(int red, int green, int blue, int alpha){
         if(red > 255 || green > 255 || blue > 255 || alpha > 255){
             System.out.println("Values should be equal or smaller then 255.");
             return false;
@@ -110,7 +110,7 @@ public class TextDisplay extends Actor{
     
     // First create a rectangle with border color, then a smaller rectangle
     // with the backgroundcolor so it looks like it has some sort of border.
-    public void createAreaWithBorder(int borderWidth, int borderHeight){
+    private void createAreaWithBorder(int borderWidth, int borderHeight){
         image.setColor(borderColor);
         image.fillRect(0, 0, fieldWidth, fieldHeight);
         
@@ -119,7 +119,7 @@ public class TextDisplay extends Actor{
     }
     
     // Create a rectangle with the background color.
-    public void createAreaWithoutBorder(){
+    private void createAreaWithoutBorder(){
         image.setColor(backgroundColor);
         image.fillRect(0, 0, fieldWidth, fieldHeight);
     }

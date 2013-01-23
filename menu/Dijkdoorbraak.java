@@ -78,7 +78,7 @@ public class Dijkdoorbraak extends World{
                 }
                 
                 if(breakThroughPart == 8){
-                    createMessage(320, 320, "Je hebt verloren! Terug naar menu..");
+                    createMessage(320, 320, "Je hebt verloren! Keer terug..");
                     Score.addScore(-500);
                     removeObject(gameTimer);
                     MiniGameMemory.gameFinished();
