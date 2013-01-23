@@ -1,5 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.*;
+import java.awt.Color;
+import java.awt.Font;
 
 public class Controlecentrum extends World{
     
@@ -12,9 +14,6 @@ public class Controlecentrum extends World{
     private int newSpotX;
     private int newSpotY;
     
-    // Creating a var to contain the x coordinate for the next timer.
-    private static int nextTimerPosition;
-    
     // Enforcements
     public EnfFirefighter fireTruck;
     public EnfPolice policeCar;    
@@ -25,14 +24,22 @@ public class Controlecentrum extends World{
     private CalamityTimer clickedCalamity;
     private Enforcements clickedEnforcement;
     
-    // Maximum number of timers.
+    // Timer controls
+    private static int nextTimerPosition;
     public static boolean maxTimersReached;
+    public static int calamitiesRemoved;
+    
+    // Score
+    public static int scoreControl;
 
+    // Startmessage
+    private TheMessage theMessage;
+    private boolean gameIsRunning;
+    
     public Controlecentrum(){    
         // Create a new world with 640x640 cells with a cell size of 1x1 pixels.
         super(640, 640, 1);
         populate();
-        
         
         totalStreetFloodings = 0; //Initial street floodings to 0
         streetFloodingSpots = new int[]{ // Filling array with possible spots.
@@ -51,16 +58,21 @@ public class Controlecentrum extends World{
         clickedItems = 0;
         clickedCalamity = null;
         clickedEnforcement = null;
+        
+        calamitiesRemoved = 0;
     }
     
     public void populate(){
         setBackground("controlecentrum.jpg"); // Setting background image
         
         // Headertext aanmaken voor kopje Calamiteiten
-        addObject(new HeaderText("Calamiteiten"), 175, 476);
+        addObject(new HeaderText("Calamities"), 138, 477);
         
         // Headertext aanmaken voor kopje Hulpdiensten
-        addObject(new HeaderText("Hulpdiensten"), 550, 476);
+        addObject(new HeaderText("Enforcements"), 593, 477);
+        
+        // Scoreobject aanmaken
+        addObject(new ScoreDisplayer(), 260, 477);
         
         // Adding enforcements to the world.
         fireTruck = new EnfFirefighter();
@@ -72,27 +84,62 @@ public class Controlecentrum extends World{
         
         ambulanceCar = new EnfAmbulance();
         addObject(ambulanceCar, 585, 550);
+        
+        theMessage = new TheMessage("Get ready! Click to start..");
+        addObject(theMessage, 320, 225);
+        gameIsRunning = false;
     }
     
     public void act(){
-        if(totalStreetFloodings == 0){ // Spawn first flooding directly.
-            while(totalStreetFloodings == 0){ // Keep searching until we found 1.
-                createNewFlood(); // Searches for a spot and then adds 1 to total floodings.
+        if(gameIsRunning == true){
+            if(calamitiesRemoved < 25){
+                if(totalStreetFloodings == 0){ // Spawn first flooding directly.
+                    while(totalStreetFloodings == 0){ // Keep searching until we found 1.
+                        createNewFlood(); // Searches for a spot and then adds 1 to total floodings.
+                    }
+                    
+                    // Adding the new flood to the world.
+                    addObject(new CalStreetFlooding(currentNewSpot), newSpotX, newSpotY);
+                }else{ // If we already have 1 flooding.
+                    // Checks wheter we can create a new flooding (true = 1/600th chance).
+                    if(createNewFlood()){
+                        // Adding the new flood to the world.
+                        addObject(new CalStreetFlooding(currentNewSpot), newSpotX, newSpotY);
+                    }
+                }
+                
+                updateNextTimerPosition(); // update positions.
+                
+                mouseInteraction(); // run checks for mouse input
+            
+            }else{
+                theMessage = new TheMessage("You've completed the game!");
+                addObject(theMessage, 320, 225);
+                        
+                removeAllGameObjects();
+                
+                gameIsRunning = false;
             }
             
-            // Adding the new flood to the world.
-            addObject(new CalStreetFlooding(currentNewSpot), newSpotX, newSpotY);
-        }else{ // If we already have 1 flooding.
-            // Checks wheter we can create a new flooding (true = 1/600th chance).
-            if(createNewFlood()){
-                // Adding the new flood to the world.
-                addObject(new CalStreetFlooding(currentNewSpot), newSpotX, newSpotY);
-            }
         }
         
-        updateNextTimerPosition(); // update positions.
-        
-        mouseInteraction(); // run checks for mouse input.
+        if(Greenfoot.mouseClicked(null)){
+        MouseInfo mouse = Greenfoot.getMouseInfo();
+        List<TextDisplay> textDisplays = getObjectsAt(mouse.getX(), mouse.getY(), TextDisplay.class);
+        if(!textDisplays.isEmpty()){
+            removeObject(theMessage);
+            gameIsRunning = true;
+        }
+    }
+
+    }
+            
+    public boolean textDisplayClicked(){
+        if(getObjects(TextDisplay.class).isEmpty()){
+            return true;
+        }else{
+            return false;
+        }
     }
     
     public boolean createNewFlood(){
@@ -151,8 +198,12 @@ public class Controlecentrum extends World{
             if(!calTimer.isEmpty()){
                 if(clickedCalamity == null){
                     clickedItems++;
+                }else{
+                    clickedCalamity.setFontBold(false);
                 }
+                
                 clickedCalamity = calTimer.get(0);
+                clickedCalamity.setFontBold(true);
             }
             
             if(!enfItems.isEmpty()){
@@ -161,8 +212,6 @@ public class Controlecentrum extends World{
                         clickedItems++;
                     }
                     clickedEnforcement = enfItems.get(0);
-                }else{
-                    System.out.println("Enforcement is busy");
                 }
             }
             
@@ -174,18 +223,16 @@ public class Controlecentrum extends World{
     
     public void checkForCombinations(){
         if(clickedCalamity.getBelongsTo().getCalamityTimer() == null){
-            System.out.println("Is nu leeg");
             clickedCalamity = null;
             clickedItems--;
         }else if(clickedCalamity.getCalamityType() == clickedEnforcement.getEnfType()){
-            System.out.println("Ziet het niet als leeg");
-            System.out.println(clickedCalamity.getBelongsTo().getClass());
+            addScore(clickedCalamity.getBelongsTo());
+            
             if(clickedCalamity.getBelongsTo().getClass() != CalStreetFlooding.class){
                 removeObject(clickedCalamity.getBelongsTo());
                 clickedCalamity.removeCalamityTimer();
             }else{
                 clickedCalamity.getBelongsTo().removeCalamityTimer();
-                // clickedCalamity.getBelongsTo().setCalamityTimer(null);
             }
 
             clickedEnforcement.isNowBusy(true);
@@ -195,10 +242,27 @@ public class Controlecentrum extends World{
             clickedItems = 0;
         }
     }
+    
+    public int getScoreControl(){
+        return scoreControl;
+    }
+    
+    public void addScore(Calamities clickedCalamity){
+        int pointIncrease = (int) (Math.random() * 13) + 49 + ((int) (clickedCalamity.getDuration() / 1.25));
+        scoreControl += pointIncrease;
+    }
+    
+    public void removeAllGameObjects(){                // Removing CalStreetFloodings
+        List<CalStreetFlooding> floodings = getObjects(CalStreetFlooding.class);
+        for(CalStreetFlooding csf : floodings){
+           csf.removeAllObjects();
+           removeObject(csf);
+        }
+        
+        // Removing EnforcementTimers
+        List<EnforcementTimer> Etimers = getObjects(EnforcementTimer.class);
+        for(EnforcementTimer et : Etimers){
+           removeObject(et);
+        }
+    }
 }
-
-
-
-
-
-

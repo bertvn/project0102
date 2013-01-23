@@ -9,6 +9,8 @@ public class Calamities extends TimeInformation{
         if(calamityTimer != null){
             long currentTimeLeft = super.getTimeLeft();
             if(currentTimeLeft <= 0){
+                int pointReduction = (int) ((Math.random() * 10) + 40 + super.getDuration());
+                Controlecentrum.scoreControl -= pointReduction;
                 removeCalamityTimer();
             }else{
                 calamityTimer.setCurrentValue(super.getTimeLeft());
@@ -17,8 +19,8 @@ public class Calamities extends TimeInformation{
     }
     
     // Method for creating a new timer with given prefix.
-    public void createTimer(String suffix, String calamityTypeVal, Calamities classVal){
-        createTimeInformation(25, 10);
+    public void createTimer(int minimumTime, String suffix, String calamityTypeVal, Calamities classVal){
+        createTimeInformation(minimumTime, 10);
         
         calamityTimer = new CalamityTimer(suffix, super.getTimeLeft(), super.getTimeEnd(), calamityTypeVal, classVal);
         getWorld().addObject(calamityTimer, 130, Controlecentrum.getNextTimerPosition());

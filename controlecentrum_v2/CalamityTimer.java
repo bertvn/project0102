@@ -38,5 +38,6 @@ public class CalamityTimer extends Timers{
     public void removeCalamityTimer(){
         moveTimerBelow();
         getWorld().removeObject(this);
+        Controlecentrum.calamitiesRemoved++;
     }
 }
