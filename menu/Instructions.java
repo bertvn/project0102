@@ -97,7 +97,7 @@ public class Instructions extends Actor
     }
     
     private void getPages() {
-         // first page text
+         // menu 
          pages[0] = "Rotterdam verkeerd in zwaar weer met veel regen en \n " +
                     "een harde wind. Het water stijgt snel en niets lijkt \n "+
                     "het water te kunnen stoppen voor het rotterdam in stroomd. \n\n" +
@@ -106,9 +106,12 @@ public class Instructions extends Actor
                     "te voltooien. \n\n" +
                     "Druk op een icoontje op de kaart om het spel te starten.\n" +
                     "Elk spel draait om 1 onderwerp: voorkom slachtoffers! ";
+         /* -----------------------------------------------------------------------> */
+         pages[2] = "";  
+         /* <----------------------------------------------------------------------- */
          
-         //third page text            
-         pages[2] = "Op de weg is een ongeluk gebeurd.\n" +  
+         // ontwijken            
+         pages[3] = "Op de weg is een ongeluk gebeurd.\n" +  
                     "Aan jou de taak om zo snel mogelijk bij het ongeluk te komen\n" +  
                     "om hulp te bieden.\n" + 
                     "\n" +

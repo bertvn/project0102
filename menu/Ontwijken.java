@@ -42,6 +42,8 @@ public class Ontwijken extends World
         populate();
         
         //sets order in which objects are drawn
+        
+                      /* ----><--------- */
         setPaintOrder(Instructions.class,TextDisplay.class,ProgressIndicator.class,ProgressBar.class,BAM.class,Car.class,BurningCar.class,ScoreDisplay.class,TimerDisplay.class,ObsCar.class,Cracks.class,RoadMarking.class,Trees.class,Road.class,Grass.class);
         
         //play music
@@ -51,25 +53,33 @@ public class Ontwijken extends World
         go = false;
     }
     
+    
     public void act(){
+        /* -----------------------------------------------------------------------> */
+        
         if(Greenfoot.mouseClicked(null)) {//when mouse button is pressed
             MouseInfo mouse = Greenfoot.getMouseInfo(); // get mouse info
             int x = mouse.getX();
             int y = mouse.getY();
             //zet hier nog de lose win text ding geval
-            List<Instructions> instructionsPanel = getObjectsAt(x, y, Instructions.class); // get the object that hits mouse of highscore (panel)
+            List<Instructions> instructionsPanel = getObjectsAt(x, y, Instructions.class); // get the object that hits mouse of instructions (panel)
+            List<TextDisplay> textPanel = getObjectsAt(x, y, TextDisplay.class); // get the object that hits mouse of instructions (panel)
+            
             if(!instructionsPanel.isEmpty()) { // if there is an object hit (if pressed on instructions panel
                 removeObject(instructionsPanel.get(0));
-                td.startTimer();
-                go = true;
-                speed = 1;
+                td.startTimer(); // starts the initialezed timer 
+                go = true; // set boolean to start the game to true 
+                speed = 1; // init speed at 1
             }
-            List<TextDisplay> textPanel = getObjectsAt(x, y, TextDisplay.class); // get the object that hits mouse of highscore (panel)
+            
             if(!textPanel.isEmpty()) { // if there is an object hit (if pressed on TextDisplay panel
-                //got back to menu
+                //go back to menu
                 Greenfoot.setWorld(new Menu());
             }
         }
+        
+        /* <----------------------------------------------------------------------- */
+        
         if(go){
             speedUp(); // call the speed up function
             spawnRate(); // call the spawn function
@@ -207,7 +217,7 @@ public class Ontwijken extends World
         addObject(new ProgressBar(),320,542);
         addObject(new ProgressIndicator(),28,625);
         
-        addObject(new Instructions(2),320,320);
+        addObject(new Instructions(3),320,320);
         
         randomSpawner(); // call random spawner 
     }
