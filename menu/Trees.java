@@ -8,7 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Trees extends SpeedIndicators
 {
-    
+    /**
+     * constructor for the class Trees
+     */
     public Trees(){
         int random = (int) Math.round(Math.random()*2) + 1;
         

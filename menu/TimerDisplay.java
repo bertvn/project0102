@@ -12,7 +12,9 @@ public class TimerDisplay extends Actor{
     
     private final float FONT_SIZE = 20.0f;
     
-    // Constructor of the class Timer.
+    /**
+     * Constructor of the class Timer.
+     */
     public TimerDisplay(){
         //set time
         currentValue = 10800;        
@@ -20,7 +22,9 @@ public class TimerDisplay extends Actor{
         updateImage();
     }
     
-    // This method will be called every act.
+    /**
+     * method that is run every act, this is contains everything that makes the class do what it does
+     */
     public void act(){
         if(endGame() && !done){ // Check if the timer has reached 0.
             Ontwijken.speed = 0;
@@ -38,7 +42,12 @@ public class TimerDisplay extends Actor{
             }
         }
     }
-    
+    /**
+     * creates message image
+     * @param xCoord The x coord of where the image will spawn
+     * @param yCoord The y coord of where the image will spawn
+     * @param message The message that will be shown
+     */
     public void createMessage(int xCoord, int yCoord, String message){
         TextDisplay theMessage = new TextDisplay();
         theMessage.setBackgroundColor(255, 255, 255, 160);
@@ -54,6 +63,9 @@ public class TimerDisplay extends Actor{
         getWorld().addObject(theMessage, xCoord, yCoord);
     }
     
+    /**
+     * checks if game has ended
+     */
     public boolean endGame(){
         if(currentValue <= targetValue){
             return true;
@@ -63,6 +75,9 @@ public class TimerDisplay extends Actor{
     }
     
     // This method updates the timer to the 
+    /**
+     * update the timer image with the new time
+     */
     public void updateImage(){
         // Create an image and add a fontsize to it.
         image = new GreenfootImage("ontwijken/timerDisplay.png"); // place background image
@@ -74,6 +89,10 @@ public class TimerDisplay extends Actor{
         setImage(image);
     }
     
+    /**
+     * sets currentValue 
+     * @param currentValue used to set the current currentValue
+     */
     public void setCurrentValue(int currentValue){
         if(currentValue < 0){
             System.out.println("currentValue must be equal or greater than 0");
@@ -84,15 +103,23 @@ public class TimerDisplay extends Actor{
         }
     }
     
-    // This method updates the timer to the 
+    /**
+     * returns the current time in amount of acts
+     * @return int
+     */
     public int getCurrentValue(){
         return currentValue;
     }
-    
+    /**
+     * starts timer
+     */
     public void startTimer(){
         start = true;
     }
     
+    /**
+     * stops timer
+     */
     public void stopTimer(){
         start = false;
     }

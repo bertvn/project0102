@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class SpeedIndicators extends Actor
+public abstract class SpeedIndicators extends Actor
 {
     /**
      * Act - do whatever the SpeedIndicators wants to do. This method is called whenever

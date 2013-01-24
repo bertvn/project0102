@@ -10,10 +10,6 @@ import java.awt.Color;
  */
 public class ScoreDisplayer extends Actor
 {
-    /**
-     * Act - do whatever the ScoreDisplayer wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     private GreenfootImage image;
     private Font font;
     private Color color;
@@ -24,11 +20,17 @@ public class ScoreDisplayer extends Actor
     private final int HEIGHT = 24;
     private final int WIDTH = 120;
     
-    //place initial score image
+    /**
+     * constructor of the class ScoreDisplayer 
+     */
     public ScoreDisplayer(){
         updateScore();
     }
     
+    /**
+     * Act - do whatever the ScoreDisplayer wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
     public void act() 
     {
         // Add your action code here.
@@ -39,6 +41,9 @@ public class ScoreDisplayer extends Actor
         }
     }    
     
+    /**
+     * updates image with scoreNew
+     */
     public void updateScore(){
         image = new GreenfootImage(WIDTH,HEIGHT);  // place background image
         font = image.getFont();  // get current font

@@ -8,9 +8,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class ProgressIndicator extends Actor
 {
-
     private int counter = 0;
 
+    /**
+     * constructor of the class ProgressIndicator
+     */
     public ProgressIndicator(){
         setImage("ontwijken/progressCar" + Ontwijken.random + ".png");
     }
@@ -20,9 +22,11 @@ public class ProgressIndicator extends Actor
      */
     public void act() 
     {
-        // Add your action code here.
+        //every 70 acts
         if(counter == 70){
+            //move indicator ontwijken.speed pixels to the right
             setLocation(getX()+ Ontwijken.speed,getY());
+            //reset counter
             counter = 0;
         } else{
             counter++;

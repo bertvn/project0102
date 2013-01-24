@@ -11,10 +11,16 @@ public class BurningCar extends Actor
     private boolean done = false;
     private TextDisplay theMessage;
     
+    /**
+     * constructor of the class BurningCar
+     */
     public BurningCar(){
         setImage("ontwijken/burningCar.png");
     }
     
+    /**
+     * method that is run every act, this is contains everything that makes the class do what it does
+     */
     public void act() 
     {
         // Add your action code here.
@@ -26,10 +32,16 @@ public class BurningCar extends Actor
         }
     }
     
+    /**
+     * moves the car Ontwijken.speed pixels 
+     */
     public void move(){
         setLocation(getX(),getY()+ Ontwijken.speed);
     }
     
+    /**
+     * stops the game
+     */
     public void endGame(){
         Ontwijken.go = false;
         done = true;
@@ -40,6 +52,12 @@ public class BurningCar extends Actor
         
     }
     
+    /**
+     * creates message image
+     * @param xCoord The x coord of where the image will spawn
+     * @param yCoord The y coord of where the image will spawn
+     * @param message The message that will be shown
+     */
     public void createMessage(int xCoord, int yCoord, String message){
         theMessage = new TextDisplay();
         theMessage.setBackgroundColor(255, 255, 255, 160);

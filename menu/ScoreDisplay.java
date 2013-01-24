@@ -22,11 +22,16 @@ public class ScoreDisplay extends Actor
     
     private final float FONT_SIZE = 20.0f;
     
-    //place initial score image
+    /**
+     * constructor of class ScoreDisplay
+     */
     public ScoreDisplay(){
         updateScore();
     }
     
+    /**
+     * method that is run every act, this is contains everything that makes the class do what it does
+     */
     public void act() 
     {
         // Add your action code here.
@@ -37,6 +42,9 @@ public class ScoreDisplay extends Actor
         }
     }    
     
+    /**
+     * updates image with scoreNew
+     */
     public void updateScore(){
         image = new GreenfootImage("ontwijken/scoreDisplay.png");  // place background image
         font = image.getFont();  // get current font

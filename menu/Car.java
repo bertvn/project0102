@@ -10,12 +10,11 @@ import java.util.List;
  */
 public class Car extends Actor
 {
-    /**
-     * Act - do whatever the Car wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     private GreenfootSound crash;
     
+    /**
+     * contructor of the class Car
+     */
     public Car() {       
         // choice image
         GreenfootImage img = new GreenfootImage("ontwijken/car" + Ontwijken.random + ".png");
@@ -25,6 +24,10 @@ public class Car extends Actor
         crash = new GreenfootSound("crash.mp3");
     }
     
+    /**
+     * Act - do whatever the Car wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
     public void act() 
     {          
         //checks if car hits something
@@ -42,7 +45,13 @@ public class Car extends Actor
         
         
     }    
-    //moves firecar left or right if button pressed
+    
+    /**
+     * moves car in direction
+     * @param direction decides direction
+     * 0 = to the left
+     * 1 = to the right
+     */
     public void move(int direction) {
         
         switch(direction) {
@@ -60,7 +69,10 @@ public class Car extends Actor
         }
     }
     
-    //checks if car is hit
+    /**
+     * checks if car is hit
+     * if it is hit the score will be decreased
+     */
     public void hitDetection(){
         //make list of all ObsCars with their centre point within 55 pixels of the cars centre
         List<ObsCar> oc = getObjectsInRange(55, ObsCar.class);
