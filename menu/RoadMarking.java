@@ -9,13 +9,16 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class RoadMarking extends SpeedIndicators
 {
     /**
-     * Act - do whatever the RoadMarking wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * constructor for the class RoadMarking
      */
     public RoadMarking(){
         setImage("ontwijken/roadMarking.jpg");
     }
     
+    /**
+     * Act - do whatever the RoadMarking wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
     public void act() 
     {
         // Add your action code here.

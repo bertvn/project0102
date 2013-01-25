@@ -9,8 +9,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class BAM extends Obstacles
 {
 
+    /**
+     * constructor for the class BAM
+     */
     public BAM(){
         setImage("ontwijken/BAM.png");
+        //this class is used as hitindicator, not as obstacle
         setScoreIncrease(0);
     }
     /**

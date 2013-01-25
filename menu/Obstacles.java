@@ -6,7 +6,7 @@ import java.util.List;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Obstacles extends Actor
+public abstract class Obstacles extends Actor
 {
     /**
      * Act - do whatever the Obstacels wants to do. This method is called whenever
@@ -15,7 +15,9 @@ public class Obstacles extends Actor
     
     private int scoreIncrease;
     
-    
+    /**
+     * method that is run every act, this is contains everything that makes the class do what it does
+     */
     public void act() 
     {
         move();
@@ -26,14 +28,20 @@ public class Obstacles extends Actor
         }
         
     }    
-    //move down speed amount of pixels
-    public void move(){
+    
+    /**
+     * moves the obstacles down with Ontwijken.speed pixels
+     */
+    private void move(){
         setLocation(getX(),getY()+ Ontwijken.speed);
     }
     
    
     
-    //set scoreIncrease
+    /**
+     * sets scoreIncrease
+     * @param val its value is used to set scoreIncrease
+     */
     public void setScoreIncrease(int val){
         scoreIncrease = val;
     }

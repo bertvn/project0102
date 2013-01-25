@@ -3,6 +3,10 @@ import java.awt.Color;
 import java.awt.Font;
 
 public class GravelBag extends Materials{  
+    
+    /**
+     * constructor, it sets all info about the material in it's parent class
+     */
     public GravelBag(){
         super.setDissolveRate(2);
         super.setSpeedReducement(3);
@@ -18,6 +22,11 @@ public class GravelBag extends Materials{
         
     }
     
+    /**
+     * sets image
+     * @param x this decides which image is used
+     * @param location this decides wheter or not the amount is printed on the image.
+     */
     public void imageCreater(int x, int location){
         GreenfootImage creation;
         //selects image

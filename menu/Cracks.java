@@ -8,13 +8,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Cracks extends Obstacles
 {
-    /**
-     * Act - do whatever the Cracks wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    
    
     private Boolean hitAlready = false;
     
+   /**
+    * constructor for the class Cracks
+    */ 
     public Cracks(){
         //sets image
         setImage("ontwijken/cracks.png");
@@ -25,16 +25,25 @@ public class Cracks extends Obstacles
         setScoreIncrease(20);
     }
     
-   public void act() 
-    {
+   /**
+     * Act - do whatever the Cracks wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */ 
+   public void act() {
         //calls the act of Obstacles
         super.act();
-    } 
-    
+   } 
+   
+   /**
+    * checks if this crack has been hit before, so damage calculation only happens once
+    */
    public Boolean isHitAlready(){
        return hitAlready;
     }
-       
+   
+   /**
+    * sets hitAlready to true
+    */
    public void hitAlreadyIndeed(){
        //sets hitAlready to true
        hitAlready = true;

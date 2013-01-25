@@ -5,12 +5,17 @@ public class Dike extends Actor{
     private int dikeHP;
     private Materials material;
     
-    
+    /**
+     * creates a dike object
+     */
     public Dike(){
         dikeHP = 24;
         setImage("dijkdoorbraak/break-1.png");
     }
-
+    
+    /**
+     * method that is run every act, this is contains everything that makes the class do what it does
+     */
     public void act(){
         // See wheter the dike has any of these objects on him
         material = (Materials) getOneObjectAtOffset(0, 40, Materials.class);
@@ -29,14 +34,22 @@ public class Dike extends Actor{
         }       
     }
     
+    /**
+     * decides whether damage should be done to the dike
+     * @param chance this value is multiplied by a random number if this + 1 equals 1 than damage is done
+     */
     public boolean doDamage(int chance){
-        if((int)(Math.random() * chance ) + 1 == 1){
+        if((int)(Math.random() * chance ) + 1 == 1 && !Timer.done){
             return true;
         }else{
             return false;
         }
     }
     
+    /**
+     * if dikeHp is equal or less than zero it will return true
+     * @return boolean that is true if hp is 0 or lower
+     */
     public boolean endGame(){
         if(dikeHP <= 0){
             return true;
@@ -45,6 +58,9 @@ public class Dike extends Actor{
         }
     }
     
+    /**
+     * does damage to dikeHp and changes the image to fit the hp that is left
+     */
     public void doSomeDamage(){       
         dikeHP -= (int) (Math.random() * 3 ) + 1; 
         
@@ -59,6 +75,9 @@ public class Dike extends Actor{
         }
     }
         
+    /**
+     * does damage to the material that is on it
+     */
     public void doSomeDamageToMaterial(){
         material.decreaseBaseHealth((int) (Math.random() * 3) + 1);
     }

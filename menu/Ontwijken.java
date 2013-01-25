@@ -3,7 +3,7 @@ import java.awt.Color;
 import java.util.List;
 
 /**
- * Write a description of class WorldWorde here.
+ * Write a description of class Ontwijken here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
@@ -12,21 +12,22 @@ public class Ontwijken extends World{
 
     public static int speed; // set speed as global variable
     public static int distance; //distance to goal
+    public static int score;// sets score
+    public static int random; //selects player car image
+    public static boolean go; //game runs if go == true
     
     private TimerDisplay td;
     private TextDisplay theMessage;
 
-    private int speedTimer;
-    private int spawnTimer;
-    public static int score;
-    private boolean placed;
-    public static GreenfootSound music;
-    public static int random;
+    private int speedTimer = 0;
+    private int spawnTimer = 0;
     
-    public static boolean go;
+    private boolean placed = false; //true if finish is placed
+    
+    public static GreenfootSound music; //music object
     
     /**
-     * Constructor for objects of class WorldWorde.
+     * Constructor for objects of class Ontwijken.
      * 
      */
     public Ontwijken(){    
@@ -43,13 +44,18 @@ public class Ontwijken extends World{
         spawnTimer = 0;
         score = 0;
         
-        placed = false; //true if finish is placed
-        go = false; //set the game starter
         speed = 0; //choose speed
         distance = 40000; //set distance
+
+        //set score
+        score = 0;
+        
+        //set starter
+        go = false;
     }
-    
-    
+    /**
+     * method that is run every act, this is contains everything that makes the class do what it does
+     */
     public void act(){
         if(Greenfoot.mouseClicked(null)) {//when mouse button is pressed
             MouseInfo mouse = Greenfoot.getMouseInfo(); // get mouse info
@@ -86,18 +92,8 @@ public class Ontwijken extends World{
         
     }
     
-    //return speed
-    public int getSpeed(){
-        return speed;
-    }
-
-    //set speed
-    public void setSpeed(int speedVal){
-        speed = speedVal;
-    }
-    
     //choses when to spawn
-    public void spawnRate(){
+    private void spawnRate(){
         spawnTimer++; // add 1 to spawnTimer
         
         int condition = 200 - (12 * speed); // define the condition
@@ -106,9 +102,13 @@ public class Ontwijken extends World{
             spawnTimer = 0; // reset spawnTimer
         }
     }
-    
-    //increases speed
-    public void speedUp(){
+
+    /**
+     * Increases speed
+     * if speedTimer = 200 the speed is increased by 1
+     * if speed >= 20 speed is not increased
+     */
+    private void speedUp(){
         speedTimer++; // add speed to timer
         
         if(speedTimer == 200){ //when speed timer = 200, speed up
@@ -119,9 +119,12 @@ public class Ontwijken extends World{
             speedTimer = 0; // reset speed timer
         }
     }
-    
-    //spawns obstacles
-    public void randomSpawner(){
+
+    /**
+     * spawns new obstacles to evade
+     * randomly spawns 1-5 cars or 1 crack
+     */
+    private void randomSpawner(){
 
         int amount = (int) (Math.random()*5); // get random amount of obstakels to place
         for(int i = 0; i < amount; i++){
@@ -142,12 +145,13 @@ public class Ontwijken extends World{
         return score;
     }
     //return score as string
-    public String getScoreString(){
-        return "" + score;
-    } 
-    
-    //decreases distance to win state
-    public void decreaseDistance(){
+    p
+   
+   /**
+    * decreases distance to win state with the amount of speed
+    */
+   //decreases distance to win state
+   public void decreaseDistance(){
        distance -= speed;
        //if distance is 0 place object in world
        // boolean placed to make sure it is only placed once
@@ -157,7 +161,9 @@ public class Ontwijken extends World{
         }
     }
     
-    //fills world
+    /**
+     * fills world
+     */
     public void populate(){
         // add the grass on the left
         addObject(new Grass(), 59, 320);
@@ -212,6 +218,12 @@ public class Ontwijken extends World{
         randomSpawner(); // call random spawner 
     }
     
+    /**
+     * creates message image
+     * @param xCoord The x coord of where the image will spawn
+     * @param yCoord The y coord of where the image will spawn
+     * @param message The message that will be shown
+     */
     public void createMessage(int xCoord, int yCoord, String message){
         theMessage = new TextDisplay();
         theMessage.setBackgroundColor(255, 255, 255, 160);
