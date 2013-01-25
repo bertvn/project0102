@@ -34,7 +34,7 @@ public class ScoreDisp extends Actor{
         }
     }    
     
-    public void updateScore(){
+    private void updateScore(){
         image = new GreenfootImage(WIDTH,HEIGHT);  // place background image
         font = image.getFont();  // get current font
         font = font.deriveFont(FONT_SIZE);  // set font size

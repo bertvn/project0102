@@ -6,13 +6,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class CalamiteitenIcon extends Icons
+public class ControlecentrumIcon extends Icons
 {
     private GreenfootImage backGround;
     
-    public CalamiteitenIcon() {
+    public ControlecentrumIcon() {
         
-        backGround = new GreenfootImage("icons/calamiteiten.png"); // prepare panel image
+        backGround = new GreenfootImage("icons/controlecentrum.png"); // prepare panel image
         setImage(backGround); // set MenuPanel image
     }
     

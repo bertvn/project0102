@@ -39,7 +39,7 @@ public class Timers extends Actor{
     }
     
     // This method updates the timer to the 
-    public void updateImage(){
+    private void updateImage(){
         GreenfootImage timerImage = getImage();
         timerImage.clear();
         
@@ -56,14 +56,14 @@ public class Timers extends Actor{
         setFontBold = newValue;
     }
     
-    public void boldThisFont(){
+    private void boldThisFont(){
         GreenfootImage timerImage = getImage();
         Font timerFont = timerImage.getFont();
         Font newFont = timerFont.deriveFont(Font.BOLD);
         timerImage.setFont(newFont);
     }
     
-    public void plainThisFont(){
+    private void plainThisFont(){
         GreenfootImage timerImage = getImage();
         Font timerFont = timerImage.getFont();
         Font newFont = timerFont.deriveFont(Font.PLAIN);

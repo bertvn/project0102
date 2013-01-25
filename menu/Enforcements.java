@@ -13,7 +13,7 @@ public class Enforcements extends TimeInformation{
     public void createTimer(int xCoordinate, int minimumTime){ // create timer on given xCoordinate
         createTimeInformation(minimumTime, 5);
         
-        enforcementTimer = new EnforcementTimer("Busy: ", super.getTimeLeft(), super.getTimeEnd());
+        enforcementTimer = new EnforcementTimer("Bezig: ", super.getTimeLeft(), super.getTimeEnd());
         getWorld().addObject(enforcementTimer, xCoordinate, 585);
     }
     
@@ -32,20 +32,20 @@ public class Enforcements extends TimeInformation{
         }
     }
 
-    public void newStatus(boolean status){
+    private void newStatus(boolean status){
         setImage("controlecentrum/" + enfType + "Used.png"); // display normal image.
         isBusy = status;
         
         if(enfType == "EnfFirefighter"){
-            createTimer(396, 15);
+            createTimer(396, 12);
         }else if(enfType == "EnfPolice"){
-            createTimer(497, 9);
+            createTimer(497, 8);
         }else if(enfType == "EnfAmbulance"){
             createTimer(600, 15);
         }
     }
 
-    public void resetStatus(boolean status){
+    private void resetStatus(boolean status){
         setImage("controlecentrum/" + enfType + ".png"); // display used image.
         isBusy = status;
     }

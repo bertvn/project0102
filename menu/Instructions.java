@@ -7,8 +7,7 @@ import java.awt.Color;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Instructions extends Actor
-{
+public class Instructions extends Actor{
     /**
      * Act - do whatever the Highscore wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -27,9 +26,7 @@ public class Instructions extends Actor
     private int width;
     private int fontSize;
     private int borderSize;
-   
-    /* <---- */
-    
+
     public Instructions(int page) {
         
         /* prepare highscores */
@@ -52,7 +49,7 @@ public class Instructions extends Actor
             if(i < 18 || i > 31) {
                 text = text + "\b";
             } else if(i == 19) {
-                text = text + " INSTRUCTIONS ";
+                text = text + " INSTRUCTIES ";
             }
         }
         text = text + "\n\n"; // go to next line
@@ -65,7 +62,7 @@ public class Instructions extends Actor
             if(i < 17 || i > 34) {
                 text = text + "\b";
             } else if(i == 17) {
-                text = text + " CLICK TO CLOSE ";
+                text = text + " KLIK OM DOOR TE GAAN ";
             }
         }       
                
@@ -97,26 +94,43 @@ public class Instructions extends Actor
     }
     
     private void getPages() {
-         // first page text
-         pages[0] = "Rotterdam verkeerd in zwaar weer met veel regen en \n " +
-                    "een harde wind. Het water stijgt snel en niets lijkt \n "+
-                    "het water te kunnen stoppen voor het rotterdam in stroomd. \n\n" +
-                    "Het spel bestaat uit 5 dagen. In deze 5 dagen is het de bedoeling  \n" +
-                    "dat je calamiteiten oplost door elke dag 1 tot 3 minigames  \n" +
-                    "te voltooien. \n\n" +
-                    "Druk op een icoontje op de kaart om het spel te starten.\n" +
-                    "Elk spel draait om 1 onderwerp: voorkom slachtoffers! ";
-         
-         //third page text            
-         pages[2] = "Op de weg is een ongeluk gebeurd.\n" +  
-                    "Aan jou de taak om zo snel mogelijk bij het ongeluk te komen\n" +  
-                    "om hulp te bieden.\n" + 
-                    "\n" +
-                    "Gebruik de linker en rechter pijltjes toetsen om de\n" +
-                    "auto's op en de scheuren in de weg te ontwijken.\n" + 
-                    "onder in het scherm wordt de voortgang getoond. \n" + 
-                    "Blijf op de weg en ontwijk de obstakels";
-        
+    // menu 
+    pages[0] = "Rotterdam verkeerd in zwaar weer met veel regen en \n " +
+               "een harde wind. Het water stijgt snel en niets lijkt \n "+
+               "het water te kunnen stoppen voor het rotterdam in stroomd. \n\n" +
+               "Het spel bestaat uit 5 dagen. In deze 5 dagen is het de bedoeling  \n" +
+               "dat je calamiteiten oplost door elke dag 1 tot 3 minigames  \n" +
+               "te voltooien. \n\n" +
+               "Druk op een icoontje op de kaart om het spel te starten.\n" +
+               "Elk spel draait om 1 onderwerp: voorkom slachtoffers! ";
+               
+    // Controle centrum
+    pages[1] = "Moeten nog geschreven worden. ";
+                
+     // Controle centrum
+    pages[2] = "Neem voor een dag plaats in de controlekamer van Rotterdam. \n" +
+               "Onderneem actie tegen de calamiteiten die ontstaan in \n" +
+               "Rotterdam, door op de timer te klikken en de bijhorende \n" +
+               "hulpdienst er naar toe te sturen. \n\n " +
+               "Als je de hulpdiensten naar de juiste calamiteiten stuurt \n" +
+               "verdien je punten. Als je faalt om binnen de tijd een calamiteit \n" +
+               "op te lossen verlies je punten. \n\n" +
+               "Je kunt van te voren de timer of hulpdienst aanklikken. Wees \n " +
+               "dus voorbereid wanneer een hulpdienst terug keert! Je kunt hem \n" +
+               "daarna direct weer op pad sturen! \n\n" +
+               "Stuur politie naar volgelopen straten of plunderaars. Stuur de \n" +
+               "brandweer naar een uitslaande brand en verzorg de gewonden bij \n" +
+               "een auto ongeluk met de ambulance.";
+     
+     // ontwijken            
+    pages[3] = "Op de weg is een ongeluk gebeurd.\n" +  
+               "Aan jou de taak om zo snel mogelijk bij het ongeluk te komen\n" +  
+               "om hulp te bieden.\n" + 
+               "\n" +
+               "Gebruik de linker en rechter pijltjes toetsen om de\n" +
+               "auto's op en de scheuren in de weg te ontwijken.\n" + 
+               "onder in het scherm wordt de voortgang getoond. \n" + 
+               "Blijf op de weg en ontwijk de obstakels";
     } 
 }
 

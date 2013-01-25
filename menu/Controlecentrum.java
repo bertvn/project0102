@@ -46,12 +46,10 @@ public class Controlecentrum extends World{
             0, 184, 330, 1, 425, 390,
             2, 366, 165, 3, 40, 369,
             4, 59, 119, 5, 137, 51,
-            6, 545, 162, 7, 457, 128
-        };
+            6, 545, 162, 7, 457, 128 };
         
         usedSpots = new int[]{ // Making array with spots still open.
-            0, 3, 6, 9, 12, 15, 18, 21
-        };
+            0, 3, 6, 9, 12, 15, 18, 21 };
         
         nextTimerPosition = 500;
         
@@ -60,34 +58,31 @@ public class Controlecentrum extends World{
         clickedEnforcement = null;
         
         calamitiesRemoved = 0;
+        scoreControl = 0;
     }
     
     public void populate(){
         setBackground("controlecentrum/controlecentrum.jpg"); // Setting background image
         
-        // Headertext aanmaken voor kopje Calamiteiten
-        addObject(new HeaderText("Calamities"), 138, 477);
-        
-        // Headertext aanmaken voor kopje Hulpdiensten
-        addObject(new HeaderText("Enforcements"), 593, 477);
+        // Headertext aanmaken voor kopje Calamiteiten / Hulpdiensten
+        addObject(new HeaderText("Calamiteiten"), 138, 477);
+        addObject(new HeaderText("Hulpdiensten"), 593, 477);
         
         // Scoreobject aanmaken
         addObject(new ScoreDisp(), 260, 477);
         
         // Adding enforcements to the world.
         fireTruck = new EnfFirefighter();
-        
         addObject(fireTruck, 375, 550);
         
         policeCar = new EnfPolice();
         addObject(policeCar, 480, 550);
         
         ambulanceCar = new EnfAmbulance();
-        addObject(ambulanceCar, 585, 550);
+        addObject(ambulanceCar, 585, 550);        
         
-        theMessage = new TheMessage("Get ready! Click to start..");
-        addObject(theMessage, 320, 225);
-        gameIsRunning = false;
+        // Preparing start message
+        addObject(new Instructions(2),320,320);
     }
     
     public void act(){
@@ -113,9 +108,12 @@ public class Controlecentrum extends World{
                 mouseInteraction(); // run checks for mouse input
             
             }else{
-                theMessage = new TheMessage("You've completed the game!");
+                theMessage = new TheMessage("Vandaag zit erop, keer terug.");
                 addObject(theMessage, 320, 225);
-                        
+                
+                MiniGameMemory.gameFinished();
+                Score.addScore(scoreControl);
+                
                 removeAllGameObjects();
                 
                 gameIsRunning = false;
@@ -123,26 +121,27 @@ public class Controlecentrum extends World{
             
         }
         
-        if(Greenfoot.mouseClicked(null)){
-        MouseInfo mouse = Greenfoot.getMouseInfo();
-        List<TextDisplay> textDisplays = getObjectsAt(mouse.getX(), mouse.getY(), TextDisplay.class);
-        if(!textDisplays.isEmpty()){
-            removeObject(theMessage);
-            gameIsRunning = true;
-        }
-    }
-
-    }
+        if(Greenfoot.mouseClicked(null)){ //when mouse button is pressed
+            MouseInfo mouse = Greenfoot.getMouseInfo(); // get mouse info
+            int x = mouse.getX();
+            int y = mouse.getY();
             
-    public boolean textDisplayClicked(){
-        if(getObjects(TextDisplay.class).isEmpty()){
-            return true;
-        }else{
-            return false;
+            List<Instructions> instructionsPanel = getObjectsAt(x, y, Instructions.class); // get the object that hits mouse of instructions (panel)
+            List<TheMessage> theMessage = getObjectsAt(x, y, TheMessage.class); // get the object that hits mouse of instructions (panel)
+            
+            if(!instructionsPanel.isEmpty()){ // if there is an object hit (if pressed on instructions panel
+                removeObject(instructionsPanel.get(0));
+                gameIsRunning = true;
+            }
+            
+            if(!theMessage.isEmpty()){ // if there is an object hit (if pressed on TextDisplay panel
+                //go back to menu
+                Greenfoot.setWorld(new Menu());
+            }
         }
     }
     
-    public boolean createNewFlood(){
+    private boolean createNewFlood(){
         if(maxTimersReached){
             return false;
         }else if(totalStreetFloodings >= 8){
@@ -175,7 +174,7 @@ public class Controlecentrum extends World{
         }
     }
     
-    public void updateNextTimerPosition(){
+    private void updateNextTimerPosition(){
         int counter = getObjects(CalamityTimer.class).size(); // Amount of timers 
         if(counter < 9){
             maxTimersReached = false;
@@ -185,11 +184,15 @@ public class Controlecentrum extends World{
         }
     }
     
+    public static void setNextTimerPosition(){
+        nextTimerPosition += 15;
+    }
+    
     public static int getNextTimerPosition(){
         return nextTimerPosition;
     }
     
-    public void mouseInteraction(){
+    private void mouseInteraction(){
         if(Greenfoot.mouseClicked(null)) { // when mouse button is pressed
             MouseInfo mouse = Greenfoot.getMouseInfo(); // get mouse info
             List<CalamityTimer> calTimer = getObjectsAt(mouse.getX(), mouse.getY(), CalamityTimer.class);
@@ -221,7 +224,7 @@ public class Controlecentrum extends World{
         }
     }
     
-    public void checkForCombinations(){
+    private void checkForCombinations(){
         if(clickedCalamity.getBelongsTo().getCalamityTimer() == null){
             clickedCalamity = null;
             clickedItems--;
@@ -229,8 +232,8 @@ public class Controlecentrum extends World{
             addScore(clickedCalamity.getBelongsTo());
             
             if(clickedCalamity.getBelongsTo().getClass() != CalStreetFlooding.class){
-                removeObject(clickedCalamity.getBelongsTo());
                 clickedCalamity.removeCalamityTimer();
+                removeObject(clickedCalamity.getBelongsTo());
             }else{
                 clickedCalamity.getBelongsTo().removeCalamityTimer();
             }
@@ -243,16 +246,16 @@ public class Controlecentrum extends World{
         }
     }
     
-    public int getScoreControl(){
+    private int getScoreControl(){
         return scoreControl;
     }
     
-    public void addScore(Calamities clickedCalamity){
+    private void addScore(Calamities clickedCalamity){
         int pointIncrease = (int) (Math.random() * 13) + 49 + ((int) (clickedCalamity.getDuration() / 1.25));
         scoreControl += pointIncrease;
     }
     
-    public void removeAllGameObjects(){                // Removing CalStreetFloodings
+    private void removeAllGameObjects(){                // Removing CalStreetFloodings
         List<CalStreetFlooding> floodings = getObjects(CalStreetFlooding.class);
         for(CalStreetFlooding csf : floodings){
            csf.removeAllObjects();

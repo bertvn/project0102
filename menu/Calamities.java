@@ -24,6 +24,7 @@ public class Calamities extends TimeInformation{
         
         calamityTimer = new CalamityTimer(suffix, super.getTimeLeft(), super.getTimeEnd(), calamityTypeVal, classVal);
         getWorld().addObject(calamityTimer, 130, Controlecentrum.getNextTimerPosition());
+        Controlecentrum.setNextTimerPosition();
     }
     
     // Method for removing the timer and moving all timers beneath up.
