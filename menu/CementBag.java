@@ -17,9 +17,6 @@ public class CementBag extends Materials{
         imageCreater(1,501);
     }
 
-    public void act(){
-        
-    }
     /**
      * sets image
      * @param x this decides which image is used

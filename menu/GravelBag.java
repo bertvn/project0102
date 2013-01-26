@@ -17,10 +17,6 @@ public class GravelBag extends Materials{
         imageCreater(1,501);
 
     }
-
-    public void act(){
-        
-    }
     
     /**
      * sets image
@@ -52,5 +48,4 @@ public class GravelBag extends Materials{
         }
         setImage(creation);
     }
-    
 }

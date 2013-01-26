@@ -6,14 +6,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Grass extends DesignObjects
-{
+public class Grass extends DesignObjects{
+
     private int speed;
     
     /**
      * constructor of the class Grass
      */
-    public Grass() {
+    public Grass(){
         // prepare the image
         img = new GreenfootImage("ontwijken/grass01.jpg");
         setImage(img); // set the image
@@ -24,8 +24,7 @@ public class Grass extends DesignObjects
      * Act - do whatever the Grass wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void act() 
-    {
+    public void act(){
         speed = Ontwijken.speed; // assign the global speed to var ww
         switch(speed) {
             case 1:                 

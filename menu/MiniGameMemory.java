@@ -4,8 +4,7 @@
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class MiniGameMemory  
-{
+public class MiniGameMemory{
     public static int currentGameX; // holder for icon of current game running Xaxis
     public static int currentGameY; // holder for icon of current game running Yaxis
 

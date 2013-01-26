@@ -15,13 +15,8 @@ public class SandBag extends Materials{
         super.setScoreDecrease(100);
 
         imageCreater(1,501);
-
     }
 
-    public void act(){
-        
-    }
-    
     /**
      * sets image
      * @param x this decides which image is used

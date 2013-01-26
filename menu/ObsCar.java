@@ -6,8 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class ObsCar extends Obstacles
-{
+public class ObsCar extends Obstacles{
     
     /**
      * constructor for the class ObsCar
@@ -30,8 +29,7 @@ public class ObsCar extends Obstacles
      * Act - do whatever the ObsCar wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void act() 
-    {
+    public void act(){
         // Add your action code here.
         //calls the act of Obstacles
         super.act();

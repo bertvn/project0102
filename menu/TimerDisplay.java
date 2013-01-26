@@ -29,7 +29,7 @@ public class TimerDisplay extends Actor{
         if(endGame() && !done){ // Check if the timer has reached 0.
             Ontwijken.speed = 0;
             Ontwijken.go = false;
-            createMessage(320, 320, "You ran out of time! Click to continue..");
+            createMessage(320, 320, "Tijd zit erop! Ga terug..");
             MiniGameMemory.gameFinished();
             Score.addScore(-500);
             done = true;
@@ -42,6 +42,7 @@ public class TimerDisplay extends Actor{
             }
         }
     }
+    
     /**
      * creates message image
      * @param xCoord The x coord of where the image will spawn
@@ -110,6 +111,7 @@ public class TimerDisplay extends Actor{
     public int getCurrentValue(){
         return currentValue;
     }
+    
     /**
      * starts timer
      */

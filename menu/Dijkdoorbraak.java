@@ -329,6 +329,7 @@ public class Dijkdoorbraak extends World{
             selectable(selectedActor.getPower());
             return;
         }
+        
         List<Materials> mat = getObjectsAt(mouse.getX(),mouse.getY(), Materials.class);
         if(!mat.isEmpty()&& selectedActor != null){
             //select 1
@@ -341,6 +342,7 @@ public class Dijkdoorbraak extends World{
                 return;
             }
         }
+        
         //select all dike objects on current mouse x and y
         List<Dike> dk = getObjectsAt(mouse.getX(), mouse.getY(), Dike.class);
         if(!dk.isEmpty() && selectedMaterials != null){
@@ -384,7 +386,6 @@ public class Dijkdoorbraak extends World{
             selectedMaterials = null;
             resetSelectable();
             return;
-        
         }
     }
     

@@ -16,11 +16,6 @@ public class Cardboard extends Materials{
 
         imageCreater(1,501);
     }
-
-    @Override
-    public void act(){
-        
-    }
     
     /**
      * sets image

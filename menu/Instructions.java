@@ -8,6 +8,7 @@ import java.awt.Color;
  * @version (a version number or a date)
  */
 public class Instructions extends Actor{
+
     /**
      * Act - do whatever the Highscore wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -28,7 +29,6 @@ public class Instructions extends Actor{
     private int borderSize;
 
     public Instructions(int page) {
-        
         /* prepare highscores */
         getPages();
         
@@ -104,10 +104,18 @@ public class Instructions extends Actor{
                "Druk op een icoontje op de kaart om het spel te starten.\n" +
                "Elk spel draait om 1 onderwerp: voorkom slachtoffers! ";
                
-    // Controle centrum
-    pages[1] = "Moeten nog geschreven worden. ";
+    // Dijkdoorbraak
+    pages[1] = "Help, de dijken breken door! \n\n" +
+               "Gebruik poppetjes (v.l.n.r burger, poltie en soldaat) \n" +
+               "om de dijk te beschermen. De dijk breekt door op willekeurige \n" +
+               "momenten en plaatsen. Klik op de materialen om de dijk \n" +
+               "tijdelijk te verstevigen.\n\n" +
+               "De materialen zijn in beperkte hoeveelheid beschikbaar en \n" +
+               "elk materiaal kost punten. Bedenk dus goed welke materialen \n" +
+               "je wilt gebruiken! \n\n" +
+               "Succes!";
                 
-     // Controle centrum
+     // Minigame: Controlecentrum
     pages[2] = "Neem voor een dag plaats in de controlekamer van Rotterdam. \n" +
                "Onderneem actie tegen de calamiteiten die ontstaan in \n" +
                "Rotterdam, door op de timer te klikken en de bijhorende \n" +
@@ -122,7 +130,7 @@ public class Instructions extends Actor{
                "brandweer naar een uitslaande brand en verzorg de gewonden bij \n" +
                "een auto ongeluk met de ambulance.";
      
-     // ontwijken            
+     // Minigame: Ontwijken            
     pages[3] = "Op de weg is een ongeluk gebeurd.\n" +  
                "Aan jou de taak om zo snel mogelijk bij het ongeluk te komen\n" +  
                "om hulp te bieden.\n" + 
