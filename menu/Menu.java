@@ -2,19 +2,19 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.*;
 
 /**
- * Write a description of class Map here.
+ * Menu is starts the menu it self, it places all the objects and invokes most of the calculation
+ * Next to that, Menu controls all mouse input from the user, in the menu
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author  RU development: Patrick Aleman 
+ * @version 1.1
  */
 public class Menu extends World{
 
     /**
-     * Constructor for objects of class Map.
+     * Constructor for variables of class Menu.
      * 
      */
     /* standard variables */
-    private int flooded; // how far the flood has come, according to the day
     private final int FLOODSTAGES; // amount of floodstages the game has
     
     private GreenfootImage backGround; // background of menu
@@ -38,17 +38,30 @@ public class Menu extends World{
     /* the current day and init amount of games played */
     public static int DAY = 0; 
     
+    /**
+     * Constructor for objects of class Menu.
+     * 
+     */
     public Menu(){    
         // Create a new world with 640x640 cells with a cell size of 1x1 pixels;
         super(640, 640, 1); 
         
         amountPlaced = 0; // start with no icons placed
-        flooded = 0; // start with no flood at all;
         FLOODSTAGES = 9; // amount of floods, starting with 0 (so there's 10);
         
         populate();       
     }
     
+    /**
+     * Places all the objects on the world
+     * en checks if game needs to go to next day
+     * 
+     * if MiniGameMemory.readyNextDay is true, 
+     *      call goToNextDay()
+     * else 
+     *      placeGamesMemory()
+     * endif
+     */
     public void populate() {
         backGround = new GreenfootImage("overstromingen/"+MiniGameMemory.background+".jpg"); // prepare the background;
         setBackground(backGround); // set the background;  
@@ -78,6 +91,39 @@ public class Menu extends World{
         }
     }
     
+    /**
+     * Act is run every act of greenfoot
+     * Gets mouse info and preform checks
+     * 
+     * note: @objectList.isEmpty -> if false, means the mouse was pressed on the object
+     * 
+     * if !icon.isEmpty() 
+     *      if iconItem.getClass.equals(DijkdoorbraakIcon.class 
+     *          setWorld(Dijkdoorbraak) <<-- starts dijkdoobraak
+     *      else if iconItem.getClass.equals(ControlecentrumIcon.class 
+     *          setWorld(Controlecentrum) <<-- starts controlecentrum
+     *      else if iconItem.getClass.equals(OntwijkenIcon.class 
+     *          setWorld(ontwijken) <<-- starts ontwijken
+     *      end if
+     * end if
+     * 
+     * if !iconHigh.isEmpty 
+     *      addObject(Highscore) <<-- opens highscore panel
+     * end if
+     * 
+     * if !highscorePanel.isEmpty() 
+     *      removeObject(highscorePanel) <<-- close the highscorePanel when clicked on with mouse
+     * end if
+     * 
+     * if !iconsIns.isEmpty() 
+     *      addObject(Instructions) <<-- opens instructions panel
+     * end if
+     * 
+     * if !instructionsPanel.isEmpty() 
+     *      removeObject(InstructionsPanel) <<-- closes instructions panel
+     * end if
+     * 
+     */
     public void act() {
         if(Greenfoot.mouseClicked(null)) { // when mouse button is pressed
             MouseInfo mouse = Greenfoot.getMouseInfo(); // get mouse info
@@ -125,6 +171,16 @@ public class Menu extends World{
         }
     }
     
+    /**
+     * places the games that still need to be played before the day can end
+     * Reads from static variables from MiniGameMemory
+     * 
+     * switch gameNumber
+     *      1: Controlecentrum 
+     *      2: Dijkdoorbraak
+     *      3: ontwijken
+     * end switch
+     */
     public void placeGamesMemory() {
         for(int i = 0; i < MiniGameMemory.gameTypes.length; i++) {
             
@@ -146,6 +202,10 @@ public class Menu extends World{
         }
     }
     
+    /**
+     * selects amount of minigames about to place
+     * and invokes the placeMinigames method
+     */
     public void selectMinigames() {
         /// Changed to 2 games per day as default;
         /// amountOfGames = (int) (Math.random() * 3) + 1; // pick random amount of games
@@ -154,6 +214,25 @@ public class Menu extends World{
         placeMinigames(); // place minigames
     }
     
+    /**
+     * places minigames 
+     * 
+     * while ( not all games are place )
+     *      ** continue placing **
+     *     
+     *      select random game 
+     *      get X and Y positions 
+     *      
+     *      switch gameNumber
+     *         1: Controlecentrum 
+     *         2: Dijkdoorbraak
+     *         3: ontwijken
+     *      end switch
+     *      
+     *      **reset variables**
+     *      
+     *      add game that is placed to MiniGameMemory variables for later use
+     */
     public void placeMinigames() {
         placedX = new int[3];
         placedY = new int[3];
@@ -197,6 +276,15 @@ public class Menu extends World{
         MiniGameMemory.setMiniGames(amountPlaced, gameMemory, placedX, placedY);
     }
     
+    /**
+     * Gets a random X value for minigame to be placed
+     * 
+     * for every minigame X value
+     *      if getPposX > compareX 
+     *          add getPosX to placedX
+     *      end if
+     * end for
+     */
     public int randomX() {
         // get random position on the X axis with a minimum of the set minimum on that day
         int getPosX = (int) (Math.random() * marge) + positionsX[DAY];
@@ -216,6 +304,15 @@ public class Menu extends World{
         return 0; // standard zero return, else greenfoot doesnt understand
     }
     
+    /**
+     * Gets a random Y value for minigame to be placed
+     * 
+     * for every minigame Y value
+     *      if getPposY > compareY 
+     *          add getPosY to placedY
+     *      end if
+     * end for
+     */
     public int randomY() {
         // get random position on the Y axis with a minimum of the set minimum on that day
         int getPosY = (int) (Math.random() * marge) + positionsY[DAY];
@@ -235,17 +332,38 @@ public class Menu extends World{
         return 0; // standard zero return, else greenfoot doesnt understand
     }
     
+    /**
+     * setter for day value
+     * @DAY = val
+     */
     public static void setDay(int val) {
         DAY = val; // set the day to given value
     }
-
+    
+    /**
+     * setter for marge value
+     * @marge = val
+     */
     public void setMarge(int val) {
         marge = val;
     }
     
+    /**
+     * set game to the next day 
+     * 
+     * if MiniGameMemory.flooded < FLOODSTAGES
+     *      MiniGameMemory.flooded++;
+     * end if
+     * 
+     * setDay( DAY + 1)
+     * invoke displayTopPanel
+     * changeImage()
+     * 
+     * selectMinigames
+     */
     public void goToNextDay() {
-        if(flooded < FLOODSTAGES) {
-            flooded++; // set flooded to next level (if its not the last);
+        if(MiniGameMemory.flooded < FLOODSTAGES) {
+            MiniGameMemory.flooded++; // set flooded to next level (if its not the last);
         }
         
         setDay(DAY+1); // add 1 day
@@ -257,19 +375,47 @@ public class Menu extends World{
         selectMinigames(); // get new minigames
     }
     
-    public void finishGame() {
-        amountPlaced--;
-    }
-    
+    /**
+     * Removes background and adds a new one
+     * 
+     * clear the background
+     * 
+     * invoke MiniGameMemory.setBackground() to save current background for later use
+     * update backGround
+     * invoke setBackgroud() <<-- sets the new image 
+     */
     private void changeImage() {        
         backGround.clear(); // clear the current image to replace with the new
         
-        MiniGameMemory.setBackground("overstroming0"+flooded);
+        MiniGameMemory.setBackground("overstroming0"+MiniGameMemory.flooded);
         backGround = new GreenfootImage("overstromingen/"+MiniGameMemory.background+".jpg");
 
         setBackground(backGround);
     }
     
+    /**
+     * Creates a new TextDisplay object
+     * Calls the TextDisplay methods to set all the values
+     * Places the object on the screen
+     * 
+     *   add top panel on coordinates 320, 26
+     *   displayTopPanel(320, 26);
+     *   
+     *   add top panel on coordinates 507, 540
+     *   displayMenuPanel(507, 540);
+     *   
+     *   add scoreText
+     *   displayScoreText(457, 475);
+     *   
+     *   add doneText
+     *   displayDoneText(507, 540);
+     *   
+     *   add scoreField
+     *   displayScoreField(515, 495);
+     *   
+     *   add doneTextField
+     *   displayDoneField(515, 560, MiniGameMemory.minigamesPlayed);
+     */
     public void displayTopPanel(int xCoord, int yCoord){
         TextDisplay topPanel = new TextDisplay(); // create new text display
         topPanel.setTheGreenfootImage("opmaak/topPanel.png"); // init background

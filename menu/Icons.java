@@ -1,11 +1,16 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class icons here.
+ * Parent of DoolhofIcon, ControlecentrumIcon, DijkdoorbraakIcon and OntwijkenIcon
+ * Code can be added later
+ * MAIN function is having the icons combined under 1 parent, for the MouseControl in Menu.class
+ * It will interfer with the mouse 
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author  RU development: Patrick Aleman
+ * @version 1.0
  */
-public class Icons extends Actor{
+public abstract class Icons extends Actor{
   
+    public abstract void setBackground();
+    
 }

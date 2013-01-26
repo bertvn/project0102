@@ -2,10 +2,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Color;
 
 /**
- * Write a description of class Instructions here.
+ * Instructions will show an instructions panel
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author  RU development: Patrick Aleman 
+ * @version 1.0
  */
 public class Instructions extends Actor{
 
@@ -27,7 +27,15 @@ public class Instructions extends Actor{
     private int width;
     private int fontSize;
     private int borderSize;
-
+    
+    /** constructor of instructions(int page)
+     * 
+     * Prepares the image 
+     * Get the text for the image
+     * Combines text with the image to 1 new image
+     * 
+     * invokes setImage()
+     */
     public Instructions(int page) {
         /* prepare highscores */
         getPages();
@@ -93,6 +101,9 @@ public class Instructions extends Actor{
         setImage(image);
     }
     
+    /** 
+     * Holds the text information
+     */
     private void getPages() {
     // menu 
     pages[0] = "Rotterdam verkeerd in zwaar weer met veel regen en \n " +

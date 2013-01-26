@@ -1,19 +1,19 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class TopPanel here.
+ * HighscoreButton
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author  RU development: Patrick Aleman 
+ * @version 1.0
  */
-public class HighscoresButton extends Actor
-{
-    /**
-     * Act - do whatever the TopPanel wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+public class HighscoresButton extends Actor {
+   
     private GreenfootImage backGround;
     
+    /**
+     * Constructor updates backGround
+     * and invokes setImage() to place the background
+     */
     public HighscoresButton() {
         
         backGround = new GreenfootImage("opmaak/highscoresButton.png"); // prepare background image

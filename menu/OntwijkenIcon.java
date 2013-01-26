@@ -1,17 +1,29 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class OntwijkenIcon here.
+ * Child of Icons
+ * Sets the background of the Icon
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author  RU development: Patrick Aleman 
+ * @version 1.0
  */
 public class OntwijkenIcon extends Icons{
     
-private GreenfootImage backGround;
+    private GreenfootImage backGround;
     
+    /**
+     * constructor 
+     * invokes setBackground
+     * place image
+     */
     public OntwijkenIcon() {
-        backGround = new GreenfootImage("icons/ontwijken.png"); // prepare panel image
+        setBackground();
         setImage(backGround); // set MenuPanel image
+    }
+    /**
+     * sets background
+     */
+    public void setBackground() {
+        backGround = new GreenfootImage("icons/ontwijken.png"); // prepare panel image
     }
 }

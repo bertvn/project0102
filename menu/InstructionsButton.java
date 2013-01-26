@@ -10,6 +10,11 @@ public class InstructionsButton extends Actor{
 
     private GreenfootImage backGround;
     
+    /**
+     * Constructor
+     * updates backGround
+     * invokes setImage()
+     */
     public InstructionsButton() {
         backGround = new GreenfootImage("opmaak/instructionsButton.png"); // prepare background image
         setImage(backGround); // set background image
