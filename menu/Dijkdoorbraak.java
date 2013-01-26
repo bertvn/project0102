@@ -2,6 +2,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
 
 public class Dijkdoorbraak extends World{
+
     private boolean gameIsRunning;
     
     private Timer gameTimer;
@@ -242,7 +243,6 @@ public class Dijkdoorbraak extends World{
             return 0;
         }
     }
-    
     
     /**
      * This will return wheter we will create a dike or not.

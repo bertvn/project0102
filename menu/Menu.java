@@ -51,6 +51,7 @@ public class Menu extends World{
     
     public void populate() {
         backGround = new GreenfootImage("overstromingen/"+MiniGameMemory.background+".jpg"); // prepare the background;
+        backGround = new GreenfootImage("overstromingen/overstroming00.jpg"); // prepare the background;
         setBackground(backGround); // set the background;  
         
         // add top panel on coordinates 320, 26
@@ -69,6 +70,7 @@ public class Menu extends World{
         addObject(new HighscoresButton(), 520, 610);
         // add instructions button
         addObject(new InstructionsButton(), 94, 610);
+        
         
         if(MiniGameMemory.readyNextDay == true) { // if ready for the next day
             goToNextDay(); // go to the next day
@@ -247,6 +249,7 @@ public class Menu extends World{
         if(flooded < FLOODSTAGES) {
             flooded++; // set flooded to next level (if its not the last);
         }
+        
         setDay(DAY+1); // add 1 day
         
         displayTopPanel(320, 26); // resetToppanel
@@ -258,7 +261,6 @@ public class Menu extends World{
     
     public void finishGame() {
         amountPlaced--;
-        
     }
     
     private void changeImage() {        
@@ -268,7 +270,6 @@ public class Menu extends World{
         MiniGameMemory.setBackground("overstroming0"+flooded);
         setBackground(backGround);
     }
-
     
     public void displayTopPanel(int xCoord, int yCoord){
         TextDisplay topPanel = new TextDisplay(); // create new text display

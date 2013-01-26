@@ -1,14 +1,14 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Color;
 import java.awt.Font;
+
 /**
  * Write a description of class Highscore here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Highscore extends Actor
-{
+public class Highscore extends Actor{
     /**
      * Act - do whatever the Highscore wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -28,11 +28,9 @@ public class Highscore extends Actor
     private int width;
     private int fontSize;
     private int borderSize;
-   
     /* <---- */
     
     public Highscore() {
-        
         /* prepare highscores */
         getHighscores();
         
@@ -165,7 +163,6 @@ public class Highscore extends Actor
         highScoreScore[8] = 4301;
         
         highScoreName[9] = "RU development"; 
-        highScoreScore[9] = 3784;       
-        
+        highScoreScore[9] = 3784;
     } 
 }

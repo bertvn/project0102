@@ -53,6 +53,7 @@ public class Ontwijken extends World{
         //set starter
         go = false;
     }
+    
     /**
      * method that is run every act, this is contains everything that makes the class do what it does
      */
@@ -89,7 +90,6 @@ public class Ontwijken extends World{
             speed = 0;
             td.stopTimer();
         }
-        
     }
     
     //choses when to spawn
@@ -125,7 +125,6 @@ public class Ontwijken extends World{
      * randomly spawns 1-5 cars or 1 crack
      */
     private void randomSpawner(){
-
         int amount = (int) (Math.random()*5); // get random amount of obstakels to place
         for(int i = 0; i < amount; i++){
             addObject(new ObsCar(), (int) (Math.random() * 408) + 118, 0); /* place row of obstakels
@@ -144,20 +143,19 @@ public class Ontwijken extends World{
     public int getScore(){
         return score;
     }
+    
     //return score as string
-    p
-   
-   /**
+    /**
     * decreases distance to win state with the amount of speed
     */
-   //decreases distance to win state
-   public void decreaseDistance(){
-       distance -= speed;
-       //if distance is 0 place object in world
-       // boolean placed to make sure it is only placed once
-       if(distance <= 0 && !placed){
-           addObject(new BurningCar(), 320, 0);
-           placed = true;
+    //decreases distance to win state
+    public void decreaseDistance(){
+        distance -= speed;
+        //if distance is 0 place object in world
+        // boolean placed to make sure it is only placed once
+        if(distance <= 0 && !placed){
+            addObject(new BurningCar(), 320, 0);
+            placed = true;
         }
     }
     

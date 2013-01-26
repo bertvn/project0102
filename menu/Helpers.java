@@ -1,7 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public abstract class Helpers extends Actor{
 
-
     private Boolean movement = false;
     private int x=-1;
     private int y=-1;

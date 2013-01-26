@@ -118,7 +118,6 @@ public class Controlecentrum extends World{
                 
                 gameIsRunning = false;
             }
-            
         }
         
         if(Greenfoot.mouseClicked(null)){ //when mouse button is pressed
