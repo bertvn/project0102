@@ -17,6 +17,7 @@ public class Cardboard extends Materials{
         imageCreater(1,501);
     }
 
+    @Override
     public void act(){
         
     }
@@ -26,6 +27,7 @@ public class Cardboard extends Materials{
      * @param x this decides which image is used
      * @param location this decides wheter or not the amount is printed on the image.
      */
+    @Override
     public void imageCreater(int x, int location){
         GreenfootImage creation;
         //selects image

@@ -36,27 +36,27 @@ public class Ontwijken extends World{
         random = (int) Math.round(Math.random()*2)+1; //choice game images
         populate(); //populate world
         
-        //sets order in which objects are drawn
+2       //sets order in which objects are drawn
         setPaintOrder(Instructions.class,TextDisplay.class,ProgressIndicator.class,ProgressBar.class,BAM.class,Car.class,BurningCar.class,ScoreDisplay.class,TimerDisplay.class,ObsCar.class,Cracks.class,RoadMarking.class,Trees.class,Road.class,Grass.class);
         music = new GreenfootSound("Breakdown.mp3"); //play music
         
         speedTimer = 0;
         spawnTimer = 0;
-        score = 0;
-        
+         
+
         speed = 0; //choose speed
         distance = 40000; //set distance
-
+       
         //set score
         score = 0;
         
         //set starter
         go = false;
     }
-    
     /**
      * method that is run every act, this is contains everything that makes the class do what it does
      */
+>
     public void act(){
         if(Greenfoot.mouseClicked(null)) {//when mouse button is pressed
             MouseInfo mouse = Greenfoot.getMouseInfo(); // get mouse info
@@ -83,21 +83,6 @@ public class Ontwijken extends World{
             speedUp(); // call the speed up function
             spawnRate(); // call the spawn function
             decreaseDistance(); //decreases distance to finish
-            music.play(); //starts music
-        }
-        else{
-            music.stop();//stops music
-            speed = 0;
-            td.stopTimer();
-        }
-    }
-    
-    //choses when to spawn
-    private void spawnRate(){
-        spawnTimer++; // add 1 to spawnTimer
-        
-        int condition = 200 - (12 * speed); // define the condition
-        if(spawnTimer >= condition){ // if spawn timer = at current needed amount
             randomSpawner(); // spawn obstakels
             spawnTimer = 0; // reset spawnTimer
         }
@@ -139,13 +124,7 @@ public class Ontwijken extends World{
         }
     }
     
-    //return score
-    public int getScore(){
-        return score;
-    }
-    
-    //return score as string
-    /**
+   /**
     * decreases distance to win state with the amount of speed
     */
     //decreases distance to win state
@@ -181,6 +160,50 @@ public class Ontwijken extends World{
         //set Timer
         td = new TimerDisplay();
         addObject(td, 60, 34);
+        
+        //add RoadMarkings
+        addObject(new RoadMarking(), 320, 0);
+        addObject(new RoadMarking(), 320, 320);
+        
+        //add trees
+        //right hand side
+        addObject(new Trees(), 567, 65);
+        addObject(new Trees(), 605, 143);
+        addObject(new Trees(), 564, 221);
+        addObject(new Trees(), 605, 301);
+        addObject(new Trees(), 565, 404);
+        addObject(new Trees(), 614, 477);
+        addObject(new Trees(), 567, 538);
+        addObject(new Trees(), 610, 608);
+        
+        //left hand side
+        addObject(new Trees(), 81, 59);
+        addObject(new Trees(), 37, 128);
+        addObject(new Trees(), 79, 183);
+        addObject(new Trees(), 29, 264);
+        addObject(new Trees(), 77, 364);
+        addObject(new Trees(), 27, 434);
+        addObject(new Trees(), 95, 517);
+        addObject(new Trees(), 37, 620);
+        
+        //add progressbar
+        addObject(new ProgressBar(), 320, 542);
+        addObject(new ProgressIndicator(), 28, 625);
+        
+        addObject(new Instructions(3), 320, 320);
+        
+        randomSpawner(); // call random spawner 
+    }
+    
+    /**
+     * creates message image
+     * @param xCoord The x coord of where the image will spawn
+     * @param yCoord The y coord of where the image will spawn
+     * @param message The message that will be shown
+     */
+    public void createMessage(int xCoord, int yCoord, String message){
+        theMessage = new TextDisplay();
+        theMessage.setBackgroundColor(255, 255, 255, 160);
         
         //add RoadMarkings
         addObject(new RoadMarking(), 320, 0);
