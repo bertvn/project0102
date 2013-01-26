@@ -51,7 +51,6 @@ public class Menu extends World{
     
     public void populate() {
         backGround = new GreenfootImage("overstromingen/"+MiniGameMemory.background+".jpg"); // prepare the background;
-        backGround = new GreenfootImage("overstromingen/overstroming00.jpg"); // prepare the background;
         setBackground(backGround); // set the background;  
         
         // add top panel on coordinates 320, 26
@@ -196,7 +195,6 @@ public class Menu extends World{
         }
         
         MiniGameMemory.setMiniGames(amountPlaced, gameMemory, placedX, placedY);
-
     }
     
     public int randomX() {
@@ -266,8 +264,9 @@ public class Menu extends World{
     private void changeImage() {        
         backGround.clear(); // clear the current image to replace with the new
         
-        backGround = new GreenfootImage("/overstromingen/overstroming0"+flooded+".jpg");
         MiniGameMemory.setBackground("overstroming0"+flooded);
+        backGround = new GreenfootImage("overstromingen/"+MiniGameMemory.background+".jpg");
+
         setBackground(backGround);
     }
     

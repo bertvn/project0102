@@ -2,6 +2,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Font;
 
 public class Timer extends Actor{
+
     private int currentValue = 0;
     private int targetValue = 0;
     
@@ -10,7 +11,6 @@ public class Timer extends Actor{
     private String prefix;
     private static String suffix = " second(s)";
     private int stringLength;
-    
     
     /**
      * Constructor of the class Timer, uses the prefix as prefix for the image text
@@ -34,14 +34,12 @@ public class Timer extends Actor{
         
         // Start updating the image.
         updateImage();
-        
     }
     
     /**
      * method that is run every act, this is contains everything that makes the class do what it does
      */
     public void act(){
-        
         if(!done){ 
             if(endGame()){// Check if the timer has reached 0.
                 createMessage(320, 320, "You won! Click to continue..");

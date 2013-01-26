@@ -8,8 +8,7 @@ import java.awt.Color;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class ScoreDisplayer extends Actor
-{
+public class ScoreDisplayer extends Actor{
     private GreenfootImage image;
     private Font font;
     private Color color;
@@ -31,8 +30,7 @@ public class ScoreDisplayer extends Actor
      * Act - do whatever the ScoreDisplayer wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void act() 
-    {
+    public void act(){
         // Add your action code here.
         scoreNew = Dijkdoorbraak.score;
         if(scoreOld != scoreNew){
@@ -51,7 +49,6 @@ public class ScoreDisplayer extends Actor
         image.setFont(font);  // set font
         image.setColor(Color.BLACK);  // set font color
         image.drawString("score: " + scoreNew, 10, 17);   // place score
-        setImage(image); 
-        
+        setImage(image);
     }    
 }

@@ -8,14 +8,14 @@ import java.util.List;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Car extends Actor
-{
+public class Car extends Actor{
+
     private GreenfootSound crash;
     
     /**
      * contructor of the class Car
      */
-    public Car() {       
+    public Car(){       
         // choice image
         GreenfootImage img = new GreenfootImage("ontwijken/car" + Ontwijken.random + ".png");
         setImage(img); // set image
@@ -28,8 +28,7 @@ public class Car extends Actor
      * Act - do whatever the Car wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void act() 
-    {          
+    public void act(){          
         //checks if car hits something
         hitDetection();
         //checks if a key is pressed and if so the car changes rotation and movement
@@ -42,8 +41,6 @@ public class Car extends Actor
         } else{
             setRotation(0);
         }
-        
-        
     }    
     
     /**
@@ -64,8 +61,7 @@ public class Car extends Actor
                 if(getX() < 503){
                     setLocation(getX() + 2, getY());
                 }
-                break;
-                
+                break; 
         }
     }
     
@@ -126,6 +122,4 @@ public class Car extends Actor
                 
         }
     }
-    
-    
 }

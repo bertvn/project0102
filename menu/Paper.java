@@ -15,10 +15,6 @@ public class Paper extends Materials{
         super.setScoreDecrease(10);
         imageCreater(1,501);
     }
-
-    public void act(){
-        
-    }
     
     /**
      * sets image

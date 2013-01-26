@@ -1,7 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Soldier extends Helpers{
-
     /**
      * sets alle attributes in parent class and sets the image
      */

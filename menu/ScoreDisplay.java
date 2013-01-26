@@ -1,14 +1,14 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Font;
 import java.awt.Color;
+
 /**
  * Write a description of class ScoreDisplay here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class ScoreDisplay extends Actor
-{
+public class ScoreDisplay extends Actor{
     /**
      * Act - do whatever the ScoreDisplay wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -32,8 +32,7 @@ public class ScoreDisplay extends Actor
     /**
      * method that is run every act, this is contains everything that makes the class do what it does
      */
-    public void act() 
-    {
+    public void act(){
         // Add your action code here.
         scoreNew = Ontwijken.score;
         if(scoreOld != scoreNew){
@@ -55,5 +54,4 @@ public class ScoreDisplay extends Actor
         setImage(image); 
         
     }
-    
 }

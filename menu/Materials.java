@@ -1,6 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public abstract class Materials extends Actor{
+
     private int dissolveRate;
     private int speedReducement;
     private int baseHealth;
@@ -140,11 +141,11 @@ public abstract class Materials extends Actor{
     public void unselectable(){
         imageCreater(1, 501);
     }
+    
     /**
      * method to change image, it is overriden by the child class
      */
     public void imageCreater(int x, int location){
-    
 
     }
 }

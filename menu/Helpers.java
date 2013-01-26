@@ -29,6 +29,7 @@ public abstract class Helpers extends Actor{
             move();
         }
     }
+    
     /**
      * moves the helpers, x is prioritised over y
      * if the helper has reached it's destination it will return to it's initial location

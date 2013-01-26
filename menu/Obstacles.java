@@ -1,5 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
+
 /**
  * Write a description of class Obstacels here.
  * 
@@ -7,11 +8,11 @@ import java.util.List;
  * @version (a version number or a date)
  */
 public abstract class Obstacles extends Actor{
+    
     /**
      * Act - do whatever the Obstacels wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */  
-    
     private int scoreIncrease;
     
     /**

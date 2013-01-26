@@ -6,8 +6,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class BurningCar extends Actor
-{
+public class BurningCar extends Actor{
+
     private boolean done = false;
     private TextDisplay theMessage;
     
@@ -21,8 +21,7 @@ public class BurningCar extends Actor
     /**
      * method that is run every act, this is contains everything that makes the class do what it does
      */
-    public void act() 
-    {
+    public void act(){
         // Add your action code here.
         if(getY() >= 320 && !done){
             Ontwijken.music.stop();
