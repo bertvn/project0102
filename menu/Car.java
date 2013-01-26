@@ -3,10 +3,12 @@ import java.awt.Color;
 import java.util.List;
 
 /**
- * Write a description of class Car here.
+ * Car will show an car on the road
+ * User will control the car and the car will check for collision
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author  RU development: Patrick Aleman \ Bert van Nimwegen
+ *              -last ajust: Bert van Nimwegen
+ * @version 1.2
  */
 public class Car extends Actor{
 

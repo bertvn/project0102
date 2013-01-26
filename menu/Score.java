@@ -1,11 +1,12 @@
+
 /**
- * Write a description of class Score here.
+ * Score keeps track of score and adds score when method is invoked
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author  RU development: Patrick Aleman 
+ * @version 1.0
  */
 public class Score{
-    // instance variables - replace the example below with your own
+
     public static int score;
 
     /**
@@ -15,6 +16,11 @@ public class Score{
         score = 0;
     }
     
+    /**
+     * @score adds value of score recieved with last game
+     * 
+     * @param val   the score achieved in the last game played
+     */
     public static void addScore(int val){
         score += val;
     }

@@ -3,10 +3,10 @@ import java.awt.Color;
 import java.awt.Font;
 
 /**
- * Write a description of class Highscore here.
+ * Highscore will show an highscore panel
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author  RU development: Patrick Aleman 
+ * @version 1.0
  */
 public class Highscore extends Actor{
     /**
@@ -30,6 +30,48 @@ public class Highscore extends Actor{
     private int borderSize;
     /* <---- */
     
+    /**
+     * Constructor of the class
+     * 
+     * invoke getHighscore()
+     * ** prepare values **
+     * 
+     * for( i < lineLength )
+     *      if ( i < 19 or i > 32 )
+     *          @text add "\b" 
+     *      else if ( i equals 19 )
+     *          @text add " HIGHSCORES "
+     *      end if
+     * end for
+     * @text add "\n\n"
+     * 
+     * for( 10 <<-- highscores amoutn )
+     *      @text add highScoreName
+     *      
+     *      for ( j < lineLength )
+     *          @startPrint is highScoreName.length()
+     *          
+     *          if( j > startPrin and j < highScoreScore.lenght )
+     *              @text add "\b"
+     *          end if
+     *          
+     *          @text add highScoreScore
+     *          @text add "\n"
+     *      end for
+     * end for
+     * 
+     * @text add "\n\n"
+     * for ( i < lineLength ) 
+     *      if ( i < 17 or i > 34 )
+     *          @text add "\b"
+     *      else if ( i equals 17 )
+     *          @text add " CLICK TO CLOSE "
+     *      end if
+     * end for
+     * 
+     * set required variables 
+     * invoke setImage()
+     */
     public Highscore() {
         /* prepare highscores */
         getHighscores();
@@ -72,7 +114,6 @@ public class Highscore extends Actor{
                                        */
             
             text = text + highScoreName[i]; // add the name to the string
-            text = text + highScoreName[i].length();
             for(int j = 0; j < lineLength; j++) {
                 
                 // this should normally be enough but not for greenfoot
@@ -134,6 +175,9 @@ public class Highscore extends Actor{
         setImage(image);
     }
     
+    /**
+     * sets all the highscores
+     */
     private void getHighscores() {
         highScoreName[0] = "RU development"; 
         highScoreScore[0] = 9804;

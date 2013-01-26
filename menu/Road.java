@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Road here.
+ * This is a child of DesignObjects, this will show the road
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author  RU development: Patrick Aleman 
+ * @version 1.0
  */
 public class Road extends DesignObjects{
     

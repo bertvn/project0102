@@ -3,10 +3,13 @@ import java.awt.Color;
 import java.util.List;
 
 /**
- * Write a description of class Ontwijken here.
+ * Onwijken is the very main of the minigame: ontwijken
+ * it will place the objects, start the timer and start the game
+ * Also keeps check on score
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author  RU development: Patrick Aleman \ Bert van Nimwegen
+ *              -last ajust: Bert van Nimwegen
+ * @version 1.2
  */
 public class Ontwijken extends World{
 

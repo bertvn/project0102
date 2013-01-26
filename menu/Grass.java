@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Grass here.
+ * Child of DesignObject, this will show the grass next to the road
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author  RU development: Patrick Aleman 
+ * @version 1.0
  */
 public class Grass extends DesignObjects{
 
