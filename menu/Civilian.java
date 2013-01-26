@@ -22,6 +22,7 @@ public class Civilian extends Helpers{
     /**
      * sets image for when helper is selected
      */
+    @Override
     public void select(){
         setImage("dijkdoorbraak/selectedcivilian.png");
     }
@@ -29,6 +30,7 @@ public class Civilian extends Helpers{
     /**
      * sets image for when helper is deselected
      */
+    @Override
     public void deselect(){
         setImage("dijkdoorbraak/civilian.png");
     }

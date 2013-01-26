@@ -140,13 +140,6 @@ public class Ontwijken extends World{
         }
     }
     
-    //return score
-    public int getScore(){
-        return score;
-    }
-    //return score as string
-    p
-   
    /**
     * decreases distance to win state with the amount of speed
     */
