@@ -3,6 +3,13 @@ import java.util.*;
 import java.awt.Color;
 import java.awt.Font;
 
+/**
+ * Controlecentrum starts the minigame Controlecentrum. 
+ * When it is done greenfoot will return to menu
+ * 
+ * @author  RU development 
+ * @version 1.0
+ */
 public class Controlecentrum extends World{
     
     private int totalStreetFloodings;
@@ -36,6 +43,9 @@ public class Controlecentrum extends World{
     private TheMessage theMessage;
     private boolean gameIsRunning;
     
+    /**
+     * Constructor of the class Controlecentrum
+     */
     public Controlecentrum(){    
         // Create a new world with 640x640 cells with a cell size of 1x1 pixels.
         super(640, 640, 1);
@@ -61,6 +71,9 @@ public class Controlecentrum extends World{
         scoreControl = 0;
     }
     
+    /**
+     * This method will populate our world with objects.
+     */
     public void populate(){
         setBackground("controlecentrum/controlecentrum.jpg"); // Setting background image
         
@@ -85,6 +98,9 @@ public class Controlecentrum extends World{
         addObject(new Instructions(2),320,320);
     }
     
+    /**
+     * method that is run every act, this is contains everything that makes the class do what it does
+     */
     public void act(){
         if(gameIsRunning == true){
             if(calamitiesRemoved < 25){
@@ -139,7 +155,10 @@ public class Controlecentrum extends World{
             }
         }
     }
-    
+    /**
+     * searches for a new location to spawn a CalStreetFlooding object
+     * @return boolean true if location is found else false
+     */
     private boolean createNewFlood(){
         if(maxTimersReached){
             return false;
@@ -173,6 +192,9 @@ public class Controlecentrum extends World{
         }
     }
     
+    /**
+     * updates the location of the timers
+     */
     private void updateNextTimerPosition(){
         int counter = getObjects(CalamityTimer.class).size(); // Amount of timers 
         if(counter < 9){
@@ -183,14 +205,26 @@ public class Controlecentrum extends World{
         }
     }
     
+    /**
+     * sets next timer position
+     */
     public static void setNextTimerPosition(){
         nextTimerPosition += 15;
     }
     
+    /**
+     * gets next timer position
+     * @return int containing the next timer position
+     */
     public static int getNextTimerPosition(){
         return nextTimerPosition;
     }
     
+    /**
+     * handels mouse input
+     * checks if calamities and enforcers are clicked
+     * if one of each is selected it checks if the combinaties solves the calamity
+     */
     private void mouseInteraction(){
         if(Greenfoot.mouseClicked(null)) { // when mouse button is pressed
             MouseInfo mouse = Greenfoot.getMouseInfo(); // get mouse info
@@ -223,6 +257,10 @@ public class Controlecentrum extends World{
         }
     }
     
+    /**
+     * checks if combination of enforcer and calamity is correct
+     * if so removes calamity and sets enforcer to busy
+     */
     private void checkForCombinations(){
         if(clickedCalamity.getBelongsTo().getCalamityTimer() == null){
             clickedCalamity = null;
@@ -245,16 +283,31 @@ public class Controlecentrum extends World{
         }
     }
     
+    /**
+     * returns score
+     * @return int value of scoreControle
+     */
     private int getScoreControl(){
         return scoreControl;
     }
     
+    /**
+     * adds points to score
+     * points are based on a random number between 0 and 13
+     * plus 49
+     * plus the amount of time left in miliseconds / 1.25
+     * @param clickedCalamity the calamity which points are earned for
+     */
     private void addScore(Calamities clickedCalamity){
         int pointIncrease = (int) (Math.random() * 13) + 49 + ((int) (clickedCalamity.getDuration() / 1.25));
         scoreControl += pointIncrease;
     }
     
-    private void removeAllGameObjects(){                // Removing CalStreetFloodings
+    /**
+     * removes all game objects from the game
+     * used when game has ended
+     */
+    private void removeAllGameObjects(){
         List<CalStreetFlooding> floodings = getObjects(CalStreetFlooding.class);
         for(CalStreetFlooding csf : floodings){
            csf.removeAllObjects();

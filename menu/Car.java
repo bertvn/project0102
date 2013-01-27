@@ -6,8 +6,7 @@ import java.util.List;
  * Car will show an car on the road
  * User will control the car and the car will check for collision
  * 
- * @author  RU development: Patrick Aleman \ Bert van Nimwegen
- *              -last ajust: Bert van Nimwegen
+ * @author  RU development
  * @version 1.2
  */
 public class Car extends Actor{

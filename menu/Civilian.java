@@ -1,5 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
+/**
+ * Civilian game object in Dijkdoorbraak
+ * extends Helpers
+ * 
+ * @author  RU development 
+ * @version 1.0
+ */
 public class Civilian extends Helpers{
     /**
      * sets alle attributes in parent class and sets the image

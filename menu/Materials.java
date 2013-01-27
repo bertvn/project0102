@@ -1,5 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
+/**
+ * Class materials is used as extend by the various materials
+ * it saves all the variables for the child classes and contains most of the functions
+ * 
+ * @author  RU development 
+ * @version 1.0
+ */
 public abstract class Materials extends Actor{
 
     private int dissolveRate;

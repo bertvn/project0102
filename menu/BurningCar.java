@@ -1,10 +1,11 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class BurningCar here.
+ * End destination for the minigame Ontwijken
+ * if reached game will end
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author  RU development 
+ * @version 1.0
  */
 public class BurningCar extends Actor{
 

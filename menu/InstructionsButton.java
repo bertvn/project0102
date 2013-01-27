@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class TopPanel here.
+ * class that makes the instructions button in menu
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author  RU development 
+ * @version 1.0
  */
 public class InstructionsButton extends Actor{
 
@@ -12,8 +12,6 @@ public class InstructionsButton extends Actor{
     
     /**
      * Constructor
-     * updates backGround
-     * invokes setImage()
      */
     public InstructionsButton() {
         backGround = new GreenfootImage("opmaak/instructionsButton.png"); // prepare background image

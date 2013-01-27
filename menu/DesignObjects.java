@@ -4,7 +4,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * DesignObjects is the parent for Grass and Road
  * more code will be added later
  * 
- * @author  RU development: Patrick Aleman 
+ * @author  RU development
  * @version 1.0
  */
 public abstract class DesignObjects extends Actor{

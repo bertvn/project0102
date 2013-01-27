@@ -2,6 +2,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Font;
 import java.awt.Color;
 
+/**
+ * class that displays score in Controlecentrum
+ * 
+ * @author  RU development 
+ * @version 1.0
+ */
 public class ScoreDisp extends Actor{
 
     private GreenfootImage image;
@@ -14,7 +20,9 @@ public class ScoreDisp extends Actor{
     private final int HEIGHT;
     private final int WIDTH;
     
-    //place initial score image
+    /**
+     * constructor for the class ScoreDisp
+     */
     public ScoreDisp(){
         scoreOld = 0;
         scoreNew = 0;
@@ -25,8 +33,10 @@ public class ScoreDisp extends Actor{
         updateScore();
     }
     
+    /**
+     * method that is run every act, this is contains everything that makes the class do what it does
+     */
     public void act(){
-        // Add your action code here.
         scoreNew = Controlecentrum.scoreControl;
         if(scoreOld != scoreNew){
             updateScore();
@@ -34,6 +44,9 @@ public class ScoreDisp extends Actor{
         }
     }    
     
+    /**
+     * makes image with the new score
+     */
     private void updateScore(){
         image = new GreenfootImage(WIDTH,HEIGHT);  // place background image
         font = image.getFont();  // get current font

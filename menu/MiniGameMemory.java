@@ -9,7 +9,7 @@
  * stores the current background
  * stores the current flooding of the map
  * 
- * @author  RU development: Patrick Aleman 
+ * @author  RU development
  * @version 1.1
  */
 public class MiniGameMemory{
@@ -29,8 +29,8 @@ public class MiniGameMemory{
     /**
      * updates the currentGameX and currentGameY values 
      * 
-     * @param valX  the X value of the currentGame
-     * @param valY  the Y value of the currentGame
+     * @param valX the X value of the currentGame
+     * @param valY the Y value of the currentGame
      */
     public static void setCurrentGame(int valX, int valY) {
         currentGameX = valX;
@@ -40,7 +40,7 @@ public class MiniGameMemory{
     /**
      * updates the background value
      * 
-     * @param name  the name of the current background : String
+     * @param name the name of the current background : String
      */
     public static void setBackground(String name) {
         background = name; // store background image name
@@ -53,10 +53,10 @@ public class MiniGameMemory{
      *          gamesX
      *          gamesY
      * 
-     * @param amount    the amount of games on the current day
-     * @param gameType  the type of game the current day is
-     * @param placedX   the X value of the game that is placed
-     * @param placedY   the Y value of the game that is placed
+     * @param amount the amount of games on the current day
+     * @param gameType the type of game the current day is
+     * @param placedX the X value of the game that is placed
+     * @param placedY the Y value of the game that is placed
      */
     public static void setMiniGames(int amount, int[] gameType, int[] placedX, int[] placedY){
         readyNextDay = false;
@@ -68,17 +68,8 @@ public class MiniGameMemory{
     
     /**
      * is invoked when is game is finished
-     * 
-     * removes the gamefinished from the menu and variables
-     * substract 1 from amountOfGames
-     * 
-     * if ( amountOfGames equals 0 )
-     *      readyNextDay is TRUE
-     * else 
-     *      readyNextDay is FALSE
-     * end if
-     * 
-     * add 1 to miniGamesPlayed
+     * adds to minigamesPlayed
+     * and if necessary the ingame day is changed
      */
     public static void gameFinished() {
         int position = 99; // set position to a false state

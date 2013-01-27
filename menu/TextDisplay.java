@@ -4,9 +4,10 @@ import java.awt.Font;
 import java.util.Calendar;
 
 /**
- * @author      RU Development
- * @version     1.0
- * @since       26-01-2013
+ * TextDisplay class is used to print most text images
+ * 
+ * @author RU Development 
+ * @version 1.0
  */
 public class TextDisplay extends Actor{
 
@@ -50,7 +51,7 @@ public class TextDisplay extends Actor{
 
     /**
      * Setter for the font size used in the image.
-     * @param Requires a fontsize (e.g. 20.0f).
+     * @param fontsize a fontsize (e.g. 20.0f).
      */
     public void setFontSize(float fontSize){
         this.fontSize = fontSize;
@@ -58,7 +59,7 @@ public class TextDisplay extends Actor{
 
     /**
      * Setter for the message that will be shown in the image.
-     * @param Requires string input as message.
+     * @param input the message that will be printed.
      */
     public void setInput(String input){
         this.input = input;
@@ -66,7 +67,8 @@ public class TextDisplay extends Actor{
     
     /**
      * Setter for mesurements of the field.
-     * @param Requires two integers for the width and height of the field.
+     * @param fieldWidth width of the field
+     * @param fieldHeight height of the field.
      */
     public void setField(int fieldWidth, int fieldHeight){
         this.fieldWidth = fieldWidth;
@@ -76,7 +78,8 @@ public class TextDisplay extends Actor{
     /**
      * Setter to adjust the border thickness. Input 0 will results in having
      * no border at all.
-     * @param Requires two integers to set the width of the border. 
+     * @param borderHeight height of the border
+     * @param borderWidth width of the border. 
      */
     public void setBorder(int borderHeight, int borderWidth){
         this.borderHeight = borderHeight;
@@ -85,7 +88,8 @@ public class TextDisplay extends Actor{
 
     /**
      * Setter for the coordinates where the image needs to be drawn.
-     * @param Requires two integers that represent the x and y coordinate.
+     * @param drawStringX the x coordinate where the String will be drawn
+     * @param drawStringY the Y coordinate where the String will be drawn
      */
     public void setDrawString(int drawStringX, int drawStringY){
         this.drawStringX = drawStringX;
@@ -95,7 +99,7 @@ public class TextDisplay extends Actor{
     /**
      * Setter with a true or false boolean to check wheter the class should
      * draw a background or not.
-     * @param Requires a true or false boolean.
+     * @param hasBackground used to set hasBackground
      */
     public void setHasBackground(boolean hasBackground){
         this.hasBackground = hasBackground;
@@ -103,8 +107,10 @@ public class TextDisplay extends Actor{
 
     /**
      * Setter to adjust the font color.
-     * @param Requires integers that represent the red, green, blue and alpha
-     * values for the new font color.
+     * @param red the amount of red in the color
+     * @param green the amount of green in the color
+     * @param blue the amount of blue in the color
+     * @param alpha the alpha value of the color
      */
     public void setFontColor(int red, int green, int blue, int alpha){
         if(isTheColorInputCorrect(red, green, blue, alpha)){
@@ -114,8 +120,10 @@ public class TextDisplay extends Actor{
     
     /**
      * Setter to adjust border color.
-     * @param Requires integers that represent the red, green, blue and alpha
-     * values for the new border color.
+     * @param red the amount of red in the color
+     * @param green the amount of green in the color
+     * @param blue the amount of blue in the color
+     * @param alpha the alpha value of the color
      */
     public void setBorderColor(int red, int green, int blue, int alpha){
         if(isTheColorInputCorrect(red, green, blue, alpha)){
@@ -125,8 +133,10 @@ public class TextDisplay extends Actor{
     
     /**
      * Setter to adjust the background color.
-     * @param Requires integers that represent the red, green, blue and alpha
-     * values for the new background color.
+     * @param red the amount of red in the color
+     * @param green the amount of green in the color
+     * @param blue the amount of blue in the color
+     * @param alpha the alpha value of the color
      */
     public void setBackgroundColor(int red, int green, int blue, int alpha){
         if(isTheColorInputCorrect(red, green, blue, alpha)){
@@ -135,9 +145,8 @@ public class TextDisplay extends Actor{
     } 
     
     /**
-     * Setter with an true or false boolean. Used to check wheter we use a color or
-     * or image as background.
-     * @param Requires a true or false boolean.
+     * Setter for the image that will be used
+     * @param String referring to an image file
      */
     public void setTheGreenfootImage(String value){
         theGreenfootImage = value;
@@ -145,8 +154,10 @@ public class TextDisplay extends Actor{
     
     /**
      * A method that oversees if there is valid input for a color.
-     * @param Requires the integers that represent values for its kind (ie.
-     * red, green, blue and alpha).
+     * @param red the amount of red in the color
+     * @param green the amount of green in the color
+     * @param blue the amount of blue in the color
+     * @param alpha the alpha value of the color
      */
     private boolean isTheColorInputCorrect(int red, int green, int blue, int alpha){
         if(red > 255 || green > 255 || blue > 255 || alpha > 255){
@@ -163,7 +174,8 @@ public class TextDisplay extends Actor{
     /**
      * A method that creates two rectangles that represent the background of 
      * the new image.
-     * @param Requires the border sizes.
+     * @param borderWidth width of the border
+     * @param borderHeight height of the border
      */
     private void createAreaWithBorder(int borderWidth, int borderHeight){
         image.setColor(borderColor);

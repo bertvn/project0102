@@ -5,14 +5,10 @@ import java.awt.Font;
 /**
  * Highscore will show an highscore panel
  * 
- * @author  RU development: Patrick Aleman 
+ * @author  RU development
  * @version 1.0
  */
 public class Highscore extends Actor{
-    /**
-     * Act - do whatever the Highscore wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     /* image attributes -> */
     private GreenfootImage textImage;
     private GreenfootImage image; 
@@ -32,45 +28,6 @@ public class Highscore extends Actor{
     
     /**
      * Constructor of the class
-     * 
-     * invoke getHighscore()
-     * ** prepare values **
-     * 
-     * for( i < lineLength )
-     *      if ( i < 19 or i > 32 )
-     *          @text add "\b" 
-     *      else if ( i equals 19 )
-     *          @text add " HIGHSCORES "
-     *      end if
-     * end for
-     * @text add "\n\n"
-     * 
-     * for( 10 <<-- highscores amoutn )
-     *      @text add highScoreName
-     *      
-     *      for ( j < lineLength )
-     *          @startPrint is highScoreName.length()
-     *          
-     *          if( j > startPrin and j < highScoreScore.lenght )
-     *              @text add "\b"
-     *          end if
-     *          
-     *          @text add highScoreScore
-     *          @text add "\n"
-     *      end for
-     * end for
-     * 
-     * @text add "\n\n"
-     * for ( i < lineLength ) 
-     *      if ( i < 17 or i > 34 )
-     *          @text add "\b"
-     *      else if ( i equals 17 )
-     *          @text add " CLICK TO CLOSE "
-     *      end if
-     * end for
-     * 
-     * set required variables 
-     * invoke setImage()
      */
     public Highscore() {
         /* prepare highscores */

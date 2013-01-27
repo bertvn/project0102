@@ -1,9 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * @author      RU Development
- * @version     1.0
- * @since       26-01-2013
+ * the firefighter enforcer class
+ * 
+ * @author  RU development 
+ * @version 1.0
  */
 public class EnfFirefighter extends Enforcements {
    
@@ -17,6 +18,7 @@ public class EnfFirefighter extends Enforcements {
     
     /**
      * Method to change the current status.
+     * @param status contains wheter or not firefighter is busy
      */
     private void setIsBusy(boolean status){
         isNowBusy(status);

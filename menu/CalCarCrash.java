@@ -1,9 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * @author      RU Development
- * @version     1.0
- * @since       26-01-2013
+ * Calamity for car crash
+ * 
+ * @author  RU development 
+ * @version 1.0
  */
 public class CalCarCrash extends Calamities{
 

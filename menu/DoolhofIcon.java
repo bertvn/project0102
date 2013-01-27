@@ -4,7 +4,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * Child of Icons
  * Sets the background of the Icon
  * 
- * @author  RU development: Patrick Aleman
+ * @author  RU development
  * @version 1.0
  */
 public class DoolhofIcon extends Icons{
@@ -12,9 +12,7 @@ public class DoolhofIcon extends Icons{
     private GreenfootImage backGround;
     
     /**
-     * constructor 
-     * invokes setBackground
-     * place image
+     * constructor
      */
     public DoolhofIcon(){
         setBackground();
@@ -24,6 +22,7 @@ public class DoolhofIcon extends Icons{
     /**
      * sets background
      */
+    @Override
     public void setBackground() {
         backGround = new GreenfootImage("icons/doolhof.png"); // prepare panel image
     }

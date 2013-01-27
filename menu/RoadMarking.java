@@ -1,10 +1,11 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class RoadMarking here.
+ * RoadMarking speedIndicator
+ * extends speedIndicators
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author  RU development 
+ * @version 1.0
  */
 
 public class RoadMarking extends SpeedIndicators{

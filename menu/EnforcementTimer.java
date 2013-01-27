@@ -8,8 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class EnforcementTimer extends Timers{
     /**
      * Constructor for this class. Creates a timer belonging to an enforcement.
-     * @param Requires a prefix, amount of seconds left and the 
-     * amount of seconds till the end is reached.
+     * @param prefix String that is placed in front of the time
+     * @param timeLeftVal amount of seconds left 
+     * @param timeEndVal the amount of seconds till the end is reached.
      */
     public EnforcementTimer(String prefix, long timeLeft, long timeEnd){       
         super(prefix, timeLeft, timeEnd);

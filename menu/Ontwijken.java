@@ -7,8 +7,7 @@ import java.util.List;
  * it will place the objects, start the timer and start the game
  * Also keeps check on score
  * 
- * @author  RU development: Patrick Aleman \ Bert van Nimwegen
- *              -last ajust: Bert van Nimwegen
+ * @author  RU development
  * @version 1.2
  */
 public class Ontwijken extends World{
@@ -93,14 +92,16 @@ public class Ontwijken extends World{
         }
     }
     
-    //choses when to spawn
+    /**
+     * counts untill it is time to spawn new obstacles
+     */
     private void spawnRate(){
-    spawnTimer++; // add 1 to spawnTimer
+        spawnTimer++; // add 1 to spawnTimer
      
-    int condition = 200 - (12 * speed); // define the condition
+        int condition = 200 - (12 * speed); // define the condition
 
         if(spawnTimer >= condition){ // if spawn timer = at current needed amount
-            randomSpawner(); // spawn obstakels
+            randomSpawner(); // spawn obstacles
             spawnTimer = 0; // reset spawnTimer
         }
     }
@@ -138,11 +139,6 @@ public class Ontwijken extends World{
         }
     }
         
-    //return score
-    public int getScore(){
-        return score;
-    }
-    
     /**
     * decreases distance to win state with the amount of speed
     */

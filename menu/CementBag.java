@@ -2,6 +2,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Color;
 import java.awt.Font;
 
+/**
+ * CementBags are 1 of the materials that can be used to stop a dike from breaking
+ * it extends Materials
+ * 
+ * @author  RU development 
+ * @version 1.0
+ */
 public class CementBag extends Materials{
 
     /**

@@ -4,7 +4,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * Child of Icons
  * Sets the background of the Icon
  * 
- * @author  RU development: Patrick Aleman 
+ * @author  RU development 
  * @version 1.0
  */
 public class ControlecentrumIcon extends Icons{
@@ -12,8 +12,6 @@ public class ControlecentrumIcon extends Icons{
     
     /**
      * constructor 
-     * invokes setBackground
-     * place image
      */
     public ControlecentrumIcon(){
         setBackground();        
@@ -22,6 +20,7 @@ public class ControlecentrumIcon extends Icons{
     /**
      * sets background
      */
+    @Override
     public void setBackground() {
         backGround = new GreenfootImage("icons/controlecentrum.png"); // prepare panel image
     }

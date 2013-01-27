@@ -1,10 +1,11 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class ObsCar here.
+ * ObsCar is one of the Obstacles in the Ontwijken minigame
+ * extends Obstacles
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author  RU development 
+ * @version 1.0
  */
 public class ObsCar extends Obstacles{
     

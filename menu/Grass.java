@@ -3,7 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Child of DesignObject, this will show the grass next to the road
  * 
- * @author  RU development: Patrick Aleman 
+ * @author  RU development
  * @version 1.0
  */
 public class Grass extends DesignObjects{

@@ -1,11 +1,13 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * @author      RU Development
- * @version     1.0
- * @since       26-01-2013
+ * Enforcements is a class used for extends
+ * extends TimeInformation
+ * 
+ * @author  RU development 
+ * @version 1.0
  */
-public class Enforcements extends TimeInformation{
+public abstract class Enforcements extends TimeInformation{
     
     private EnforcementTimer enforcementTimer;
     private boolean isBusy;
@@ -13,7 +15,7 @@ public class Enforcements extends TimeInformation{
     
     /**
      * Constructor for this class that sets the type of enforcement associated with it.
-     * @param Requires a string based value of what enforcement it belongs to.
+     * @param enfTypeVal a string based value of what enforcement it belongs to.
      */
     public Enforcements(String enfTypeVal){
         enfType = enfTypeVal;
@@ -21,7 +23,8 @@ public class Enforcements extends TimeInformation{
     
     /**
      * Method to create a timer in the world we are in.
-     * @param Requires a X coordinate and the minimum running time in seconds 
+     * @param xCoordinate the x coordinate 
+     * @param minimumTime the minimum running time in seconds 
      */
     public void createTimer(int xCoordinate, int minimumTime){ // create timer on given xCoordinate
         createTimeInformation(minimumTime, 5);
@@ -40,7 +43,7 @@ public class Enforcements extends TimeInformation{
     
     /**
      * Method to set the enforcement status (will also chance image and create timer if needed).
-     * @params Requires the new true or false status of this enforcement..
+     * @params status the new true or false status of this enforcement.
      */
     public void isNowBusy(boolean status){
         if(status){
@@ -69,7 +72,7 @@ public class Enforcements extends TimeInformation{
     
     /**
      * Method will make the enforcement available agian.
-     * @params Requires the new true or false status of this enforcement..
+     * @params boolean the new true or false status of this enforcement..
      */
     private void resetStatus(boolean status){
         setImage("controlecentrum/" + enfType + ".png"); // display used image.
@@ -78,6 +81,7 @@ public class Enforcements extends TimeInformation{
     
     /**
      * Method to get the enforcement type it belongs to as string.
+     * @return String contains enfType
      */
     public String getEnfType(){
         return enfType;
@@ -85,6 +89,7 @@ public class Enforcements extends TimeInformation{
     
     /**
      * Method to get current status of this enforcment.
+     * @return boolean contains wheter or not the enforcement is busy
      */
     public boolean getStatus(){
         return isBusy;
@@ -92,6 +97,7 @@ public class Enforcements extends TimeInformation{
     
     /**
      * Method to get timer belonging to this enforcement.
+     * @return EnforcementTimer contains timer that belongs to this enforcement
      */
     public EnforcementTimer getEnforcementTimer(){
         return enforcementTimer;

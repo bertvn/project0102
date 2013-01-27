@@ -9,10 +9,6 @@ import java.awt.Color;
  */
 public class Instructions extends Actor{
 
-    /**
-     * Act - do whatever the Highscore wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     /* image attributes -> */
     private GreenfootImage textImage;
     private GreenfootImage image; 
@@ -28,13 +24,10 @@ public class Instructions extends Actor{
     private int fontSize;
     private int borderSize;
     
-    /** constructor of instructions(int page)
-     * 
-     * Prepares the image 
-     * Get the text for the image
-     * Combines text with the image to 1 new image
-     * 
-     * invokes setImage()
+    /** 
+     * constructor of instructions
+     * each minigame has it's own instructions page
+     * @param page used to get instructions for a specifik game
      */
     public Instructions(int page) {
         /* prepare highscores */

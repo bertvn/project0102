@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class ProgressBar here.
+ * Image which progressIndicator moves along
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author RU Development 
+ * @version 1.0
  */
 public class ProgressBar extends Actor{
 

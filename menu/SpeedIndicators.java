@@ -1,10 +1,11 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class SpeedIndicators here.
+ * moves objects that are used to make it seem like the Car in Ontwijken is moving forward
+ * if object reaches the bottom of the screen it is placed at the top
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author  RU development 
+ * @version 1.0
  */
 public abstract class SpeedIndicators extends Actor{
     /**

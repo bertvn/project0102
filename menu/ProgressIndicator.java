@@ -1,10 +1,11 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class ProgressIndicator here.
+ * image of the car that moves along the Progressbar
+ * is used to indicate progress in the ontwijken minigame
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author  RU development 
+ * @version 1.0
  */
 public class ProgressIndicator extends Actor{
     private int counter = 0;

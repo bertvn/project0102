@@ -1,7 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Font;
 import java.awt.Color;
-
+/**
+ * Displays time in the minigame Ontwijken
+ * 
+ * @author  RU development 
+ * @version 1.0
+ */
 public class TimerDisplay extends Actor{
     public static int currentValue;
     private int targetValue = 0;

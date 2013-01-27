@@ -1,6 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Font;
 
+/**
+ * Timer used to count down time, if time hits 0 the minigame Dijkdoorbraak ends and returns to menu
+ * 
+ * @author  RU development 
+ * @version 1.0
+ */
 public class Timer extends Actor{
 
     private int currentValue = 0;

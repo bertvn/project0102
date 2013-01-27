@@ -1,9 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * @author      RU Development
- * @version     1.0
- * @since       26-01-2013
+ * the police enforcer class
+ * 
+ * @author  RU development 
+ * @version 1.0
  */
 public class EnfPolice extends Enforcements {
     
@@ -17,6 +18,7 @@ public class EnfPolice extends Enforcements {
     
     /**
      * Method to change the current status.
+     * @param status contains wheter or not police is busy
      */
     private void setIsBusy(boolean status){
         isNowBusy(status);

@@ -1,6 +1,15 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
 
+/**
+ * Dike is a part of the Dijkdoorbraak minigame
+ * It has 8 states, when it is done with its last state the game will end
+ * The dike recieves damage untill it is destroyed
+ * if material is placed on it the material will recieve damage instead of the dike
+ * 
+ * @author  RU development 
+ * @version 1.0
+ */
 public class Dike extends Actor{
     private int dikeHP;
     private Materials material;
@@ -37,6 +46,7 @@ public class Dike extends Actor{
     /**
      * decides whether damage should be done to the dike
      * @param chance this value is multiplied by a random number if this + 1 equals 1 than damage is done
+     * @return boolean that is true if damage will be done
      */
     public boolean doDamage(int chance){
         if((int)(Math.random() * chance ) + 1 == 1 && !Timer.done){

@@ -1,6 +1,13 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
 
+/**
+ * Dijkdoorbraak starts the minigame Dijkdoorbraak. 
+ * When it is done greenfoot will return to menu
+ * 
+ * @author  RU development 
+ * @version 2.0
+ */
 public class Dijkdoorbraak extends World{
 
     private boolean gameIsRunning;
@@ -36,7 +43,7 @@ public class Dijkdoorbraak extends World{
     public static int score;
 
     /**
-     * Constructor of the class WorldSpawner.
+     * Constructor of the class Dijkdoorbraak.
      */
     public Dijkdoorbraak(){    
         // Create a new world with 640x640 cells with a cell size of 1x1 pixels.

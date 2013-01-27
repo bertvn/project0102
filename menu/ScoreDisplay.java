@@ -3,17 +3,13 @@ import java.awt.Font;
 import java.awt.Color;
 
 /**
- * Write a description of class ScoreDisplay here.
+ * scoreDisplay displays the score for minigame ontwijken
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author  RU development 
+ * @version 1.0
  */
 public class ScoreDisplay extends Actor{
-    /**
-     * Act - do whatever the ScoreDisplay wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    
+        
     private GreenfootImage image;
     private Font font;
     private Color color;

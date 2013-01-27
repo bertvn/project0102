@@ -1,11 +1,13 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * @author      RU Development
- * @version     1.0
- * @since       26-01-2013
+ * class that is used for extends of calamaities
+ * extends TimeInformation
+ * 
+ * @author  RU development 
+ * @version 1.0
  */
-public class Calamities extends TimeInformation{
+public abstract class Calamities extends TimeInformation{
     
     private CalamityTimer calamityTimer;
     
@@ -28,8 +30,10 @@ public class Calamities extends TimeInformation{
     
     /**
      * Method for creating a new timer.
-     * @param Requires the minimal time of his duration, a suffix, string
-     * based calamity type and the name of the calamity it belongs to.
+     * @param minimumTime the minimal time of this duration
+     * @param suffix String containing what is displayed after the time
+     * @param calamityTypeVal contains the type of calamity
+     * @param classVal contains the calamity
      */
     public void createTimer(int minimumTime, String suffix, String calamityTypeVal, Calamities classVal){
         createTimeInformation(minimumTime, 10);
@@ -49,7 +53,7 @@ public class Calamities extends TimeInformation{
     
     /**
      * Get information about timer (ie. used to check if it exists or not).
-     * @return The name of the timer that belongs to this calamity.
+     * @return CalamityTimer the timer that belongs to this calamity.
      */
     public CalamityTimer getCalamityTimer(){
         return calamityTimer;
@@ -57,7 +61,7 @@ public class Calamities extends TimeInformation{
 
     /**
      * Adding information to the calamity timer variable for further reference.
-     * @param Requires the timer object that is going to belong to this calamity.
+     * @param newVal the timer object that is going to belong to this calamity.
      */
     public void setCalamityTimer(CalamityTimer newVal){
         calamityTimer = newVal;

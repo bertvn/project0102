@@ -1,4 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+
+/**
+ * Class that is used as extend
+ * it saves all variables of child classes
+ * 
+ * @author  RU development 
+ * @version 1.0
+ */
 public abstract class Helpers extends Actor{
 
     private Boolean movement = false;

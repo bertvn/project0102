@@ -3,10 +3,10 @@ import java.awt.Font;
 import java.awt.Color;
 
 /**
- * Write a description of class ScoreDisplayer here.
+ * scoreDisplayer displays the score for the minigame Dijkdoorbraak
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author  RU development 
+ * @version 2.0
  */
 public class ScoreDisplayer extends Actor{
     private GreenfootImage image;

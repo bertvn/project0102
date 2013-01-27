@@ -1,9 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * @author      RU Development
- * @version     1.0
- * @since       26-01-2013
+ * used to create a timer for a calamities
+ * 
+ * @author  RU development 
+ * @version 1.0
  */
 public class CalamityTimer extends Timers{
     
@@ -12,9 +13,11 @@ public class CalamityTimer extends Timers{
 
     /**
      * Constructor for this class. Creates a timer belonging to calamities.
-     * @param Requires a prefix, amount of seconds left, the 
-     * amount of seconds till the end is reached, description of the calamity
-     * it belongs to and the name of the class it belongs to.
+     * @param prefix String that is placed in front of the time
+     * @param timeLeft amount of seconds left
+     * @param timeEnd the amount of seconds till the end is reached
+     * @param clamityTypeVal description of the calamity it belongs to
+     * @param classVal the name of the class it belongs to.
      */
     public CalamityTimer(String prefix, long timeLeft, long timeEnd, String calamityTypeVal, Calamities classVal){//, int streetFloodingRefNr){
         super(prefix, timeLeft, timeEnd);

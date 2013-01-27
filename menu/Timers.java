@@ -2,9 +2,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Font;
 
 /**
- * @author      RU Development
- * @version     1.0
- * @since       26-01-2013
+ * Creates a Timer
+ * 
+ * @author  RU development 
+ * @version 1.0
  */
 public class Timers extends Actor{
     
@@ -19,8 +20,9 @@ public class Timers extends Actor{
     
     /**
      * Constructor for this class. Creates a timer with required input.
-     * @param Requires a prefix, amount of seconds left and the amount
-     * of seconds till the end is reached.
+     * @param prefix String that is placed in front of the time
+     * @param timeLeftVal amount of seconds left 
+     * @param timeEndVal the amount of seconds till the end is reached.
      */
     public Timers(String prefixVal, long timeLeftVal, long timeEndVal){
         // Set the prefix for later use.
@@ -45,7 +47,7 @@ public class Timers extends Actor{
     
     /**
      * Setter for the private variable timeLeft. Updates his timer image.
-     * @param Requires input with the amount of time left.
+     * @param timeLeftVal amount of time left.
      */
     public void setCurrentValue(long timeLeftVal){
         timeLeft = timeLeftVal;
@@ -70,7 +72,7 @@ public class Timers extends Actor{
     
     /**
      * Method to set boolean FontBold to true or false.
-     * @param Requires an true or false input.
+     * @param newValue used to set SetFontBold
      */
     public void setFontBold(boolean newValue){
         setFontBold = newValue;

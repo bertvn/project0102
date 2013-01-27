@@ -5,15 +5,11 @@ import java.util.*;
  * Menu is starts the menu it self, it places all the objects and invokes most of the calculation
  * Next to that, Menu controls all mouse input from the user, in the menu
  * 
- * @author  RU development: Patrick Aleman 
+ * @author  RU development 
  * @version 1.1
  */
 public class Menu extends World{
 
-    /**
-     * Constructor for variables of class Menu.
-     * 
-     */
     /* standard variables */
     private final int FLOODSTAGES; // amount of floodstages the game has
     
@@ -40,7 +36,6 @@ public class Menu extends World{
     
     /**
      * Constructor for objects of class Menu.
-     * 
      */
     public Menu(){    
         // Create a new world with 640x640 cells with a cell size of 1x1 pixels;
@@ -54,13 +49,7 @@ public class Menu extends World{
     
     /**
      * Places all the objects on the world
-     * en checks if game needs to go to next day
-     * 
-     * if MiniGameMemory.readyNextDay is true, 
-     *      call goToNextDay()
-     * else 
-     *      placeGamesMemory()
-     * endif
+     * and checks if game needs to go to next day
      */
     public void populate() {
         backGround = new GreenfootImage("overstromingen/"+MiniGameMemory.background+".jpg"); // prepare the background;
@@ -94,35 +83,6 @@ public class Menu extends World{
     /**
      * Act is run every act of greenfoot
      * Gets mouse info and preform checks
-     * 
-     * note: @objectList.isEmpty -> if false, means the mouse was pressed on the object
-     * 
-     * if !icon.isEmpty() 
-     *      if iconItem.getClass.equals(DijkdoorbraakIcon.class 
-     *          setWorld(Dijkdoorbraak) <<-- starts dijkdoobraak
-     *      else if iconItem.getClass.equals(ControlecentrumIcon.class 
-     *          setWorld(Controlecentrum) <<-- starts controlecentrum
-     *      else if iconItem.getClass.equals(OntwijkenIcon.class 
-     *          setWorld(ontwijken) <<-- starts ontwijken
-     *      end if
-     * end if
-     * 
-     * if !iconHigh.isEmpty 
-     *      addObject(Highscore) <<-- opens highscore panel
-     * end if
-     * 
-     * if !highscorePanel.isEmpty() 
-     *      removeObject(highscorePanel) <<-- close the highscorePanel when clicked on with mouse
-     * end if
-     * 
-     * if !iconsIns.isEmpty() 
-     *      addObject(Instructions) <<-- opens instructions panel
-     * end if
-     * 
-     * if !instructionsPanel.isEmpty() 
-     *      removeObject(InstructionsPanel) <<-- closes instructions panel
-     * end if
-     * 
      */
     public void act() {
         if(Greenfoot.mouseClicked(null)) { // when mouse button is pressed
@@ -174,12 +134,6 @@ public class Menu extends World{
     /**
      * places the games that still need to be played before the day can end
      * Reads from static variables from MiniGameMemory
-     * 
-     * switch gameNumber
-     *      1: Controlecentrum 
-     *      2: Dijkdoorbraak
-     *      3: ontwijken
-     * end switch
      */
     public void placeGamesMemory() {
         for(int i = 0; i < MiniGameMemory.gameTypes.length; i++) {
@@ -216,22 +170,6 @@ public class Menu extends World{
     
     /**
      * places minigames 
-     * 
-     * while ( not all games are place )
-     *      ** continue placing **
-     *     
-     *      select random game 
-     *      get X and Y positions 
-     *      
-     *      switch gameNumber
-     *         1: Controlecentrum 
-     *         2: Dijkdoorbraak
-     *         3: ontwijken
-     *      end switch
-     *      
-     *      **reset variables**
-     *      
-     *      add game that is placed to MiniGameMemory variables for later use
      */
     public void placeMinigames() {
         placedX = new int[3];
@@ -278,12 +216,7 @@ public class Menu extends World{
     
     /**
      * Gets a random X value for minigame to be placed
-     * 
-     * for every minigame X value
-     *      if getPposX > compareX 
-     *          add getPosX to placedX
-     *      end if
-     * end for
+     * @return int that contains xCoord for the minigame
      */
     public int randomX() {
         // get random position on the X axis with a minimum of the set minimum on that day
@@ -306,12 +239,7 @@ public class Menu extends World{
     
     /**
      * Gets a random Y value for minigame to be placed
-     * 
-     * for every minigame Y value
-     *      if getPposY > compareY 
-     *          add getPosY to placedY
-     *      end if
-     * end for
+     * @return int that contains yCoord for the minigame
      */
     public int randomY() {
         // get random position on the Y axis with a minimum of the set minimum on that day
@@ -334,7 +262,7 @@ public class Menu extends World{
     
     /**
      * setter for day value
-     * @DAY = val
+     * @param val value that is used to set DAY
      */
     public static void setDay(int val) {
         DAY = val; // set the day to given value
@@ -342,7 +270,7 @@ public class Menu extends World{
     
     /**
      * setter for marge value
-     * @marge = val
+     * @param val value that is used to set marge
      */
     public void setMarge(int val) {
         marge = val;
@@ -350,16 +278,6 @@ public class Menu extends World{
     
     /**
      * set game to the next day 
-     * 
-     * if MiniGameMemory.flooded < FLOODSTAGES
-     *      MiniGameMemory.flooded++;
-     * end if
-     * 
-     * setDay( DAY + 1)
-     * invoke displayTopPanel
-     * changeImage()
-     * 
-     * selectMinigames
      */
     public void goToNextDay() {
         if(MiniGameMemory.flooded < FLOODSTAGES) {
@@ -377,12 +295,6 @@ public class Menu extends World{
     
     /**
      * Removes background and adds a new one
-     * 
-     * clear the background
-     * 
-     * invoke MiniGameMemory.setBackground() to save current background for later use
-     * update backGround
-     * invoke setBackgroud() <<-- sets the new image 
      */
     private void changeImage() {        
         backGround.clear(); // clear the current image to replace with the new
@@ -394,27 +306,7 @@ public class Menu extends World{
     }
     
     /**
-     * Creates a new TextDisplay object
-     * Calls the TextDisplay methods to set all the values
-     * Places the object on the screen
-     * 
-     *   add top panel on coordinates 320, 26
-     *   displayTopPanel(320, 26);
-     *   
-     *   add top panel on coordinates 507, 540
-     *   displayMenuPanel(507, 540);
-     *   
-     *   add scoreText
-     *   displayScoreText(457, 475);
-     *   
-     *   add doneText
-     *   displayDoneText(507, 540);
-     *   
-     *   add scoreField
-     *   displayScoreField(515, 495);
-     *   
-     *   add doneTextField
-     *   displayDoneField(515, 560, MiniGameMemory.minigamesPlayed);
+     * Creates a new TextDisplay object for topPanel
      */
     public void displayTopPanel(int xCoord, int yCoord){
         TextDisplay topPanel = new TextDisplay(); // create new text display
@@ -427,6 +319,9 @@ public class Menu extends World{
         addObject(topPanel, xCoord, yCoord);
     }
     
+    /**
+     * Creates a new TextDisplay object for menuPanel
+     */
     public void displayMenuPanel(int xCoord, int yCoord){
         TextDisplay menuPanel = new TextDisplay();
         menuPanel.setTheGreenfootImage("opmaak/menuPanel.png");
@@ -435,6 +330,9 @@ public class Menu extends World{
         addObject(menuPanel, xCoord, yCoord);
     }
     
+    /**
+     * Creates a new TextDisplay object for score
+     */
     public void displayScoreText(int xCoord, int yCoord){
         TextDisplay scoreText = new TextDisplay();
         scoreText.setFontColor(255, 255, 255, 0);
@@ -444,6 +342,9 @@ public class Menu extends World{
         addObject(scoreText, xCoord, yCoord);
     }
     
+    /**
+     * Creates a new TextDisplay object for calamities completed
+     */
     public void displayDoneText(int xCoord, int yCoord){
         TextDisplay doneText = new TextDisplay();
         doneText.setFontColor(255, 255, 255, 0);
@@ -454,6 +355,9 @@ public class Menu extends World{
         addObject(doneText, xCoord, yCoord);
     }
     
+    /**
+     * Creates a new TextDisplay object for scorePoints
+     */
     public void displayScoreField(int xCoord, int yCoord){
         TextDisplay scoreField = new TextDisplay();
         scoreField.setFontColor(0, 0, 0, 0);
@@ -469,6 +373,9 @@ public class Menu extends World{
         addObject(scoreField, xCoord, yCoord);
     }
     
+    /**
+     * Creates a new TextDisplay object for minigames played
+     */
     public void displayDoneField(int xCoord, int yCoord, int minigamesPlayed){
         TextDisplay doneField = new TextDisplay();
         doneField.setFontColor(0, 0, 0, 0);
@@ -484,6 +391,9 @@ public class Menu extends World{
         addObject(doneField, xCoord, yCoord);
     }
     
+    /**
+     * Creates a new TextDisplay object for highscore button
+     */
     public void displayHighscoresButton(int xCoord, int yCoord){
         TextDisplay highscoresButton = new TextDisplay();
         highscoresButton.setTheGreenfootImage("opmaak/highscoresButton.png");

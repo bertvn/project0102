@@ -2,7 +2,7 @@
 /**
  * Score keeps track of score and adds score when method is invoked
  * 
- * @author  RU development: Patrick Aleman 
+ * @author  RU development 
  * @version 1.0
  */
 public class Score{
@@ -17,8 +17,7 @@ public class Score{
     }
     
     /**
-     * @score adds value of score recieved with last game
-     * 
+     * adds val to score
      * @param val   the score achieved in the last game played
      */
     public static void addScore(int val){

@@ -1,9 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * @author      RU Development
- * @version     1.0
- * @since       26-01-2013
+ * calamity for flooding streets
+ * 
+ * @author  RU development 
+ * @version 1.0
  */
 public class CalStreetFlooding extends Calamities{
 
@@ -25,8 +26,7 @@ public class CalStreetFlooding extends Calamities{
 
     /**
      * Constructor for this class.
-     * @param Requires an image number to set the correct image for this 
-     * flooding.
+     * @param imgNr image number to set the correct image for this flooding.
      */
     public CalStreetFlooding(int imgNr){
         setImage("controlecentrum/overstroming" + imgNr + ".png");

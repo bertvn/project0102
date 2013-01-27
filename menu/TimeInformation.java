@@ -1,11 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * @author      RU Development
- * @version     1.0
- * @since       26-01-2013
+ * TimeInformation class is used for for extends
+ * 
+ * @author  RU development 
+ * @version 1.0
  */
-public class TimeInformation extends Actor{
+public abstract class TimeInformation extends Actor{
     
     private int duration;
     private long timeEnd;
@@ -13,8 +14,9 @@ public class TimeInformation extends Actor{
 
     /**
      * This method is used for creating time information for the objects.
-     * @param Requires a minimum duration for the timer and between what 
-     * amount of seconds it should keep running after.
+     * @param minimun minimum duration for the timer
+     * @param between between what amount of seconds it should keep running after.
+     * (0-between)
      */
     public void createTimeInformation(int minimum, int between){
         long timeCurrent = System.currentTimeMillis() / 1000;
@@ -27,7 +29,7 @@ public class TimeInformation extends Actor{
     
     /**
      * This method first updates the amount of time left.
-     * @return The amount of time left.
+     * @return long The amount of time left.
      */
     public long getTimeLeft(){
         long timeCurrent = System.currentTimeMillis() / 1000;
@@ -36,14 +38,14 @@ public class TimeInformation extends Actor{
     }
     
     /**
-     * @return The ending time.
+     * @return long The ending time.
      */
     public long getTimeEnd(){
         return timeEnd;
     }
     
     /**
-     * @return The duration of this object.
+     * @return int The duration of this object.
      */
     public int getDuration(){
         return duration;

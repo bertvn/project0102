@@ -4,7 +4,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * Child of Icons
  * Sets the background of the Icon
  * 
- * @author  RU development: Patrick Aleman 
+ * @author  RU development
  * @version 1.0
  */
 public class DijkdoorbraakIcon extends Icons{
@@ -12,9 +12,7 @@ public class DijkdoorbraakIcon extends Icons{
     private GreenfootImage backGround;
     
     /**
-     * constructor 
-     * invokes setBackground
-     * place image
+     * constructor
      */
     public DijkdoorbraakIcon(){
         setBackground(); 
@@ -23,6 +21,7 @@ public class DijkdoorbraakIcon extends Icons{
     /**
      * sets background
      */
+    @Override
     public void setBackground() {
         backGround = new GreenfootImage("icons/dijkdoorbraak.png"); // prepare panel image
     }

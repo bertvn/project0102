@@ -3,7 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * HighscoreButton
  * 
- * @author  RU development: Patrick Aleman 
+ * @author  RU development 
  * @version 1.0
  */
 public class HighscoresButton extends Actor {
